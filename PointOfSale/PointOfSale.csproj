@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{67BF2B34-1F37-4071-B2F0-C93DABDD2766}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PointOfSale</RootNamespace>
+    <AssemblyName>PointOfSale</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DatabaseContext\SuperShopDatabaseContext.cs" />
+    <Compile Include="Manager\EmployeeManager.cs" />
+    <Compile Include="Manager\ExpenseItemManager.cs" />
+    <Compile Include="Manager\ExpenseManager.cs" />
+    <Compile Include="Manager\ItemSetupManager.cs" />
+    <Compile Include="Manager\OrganaizationManager.cs" />
+    <Compile Include="Manager\OutlateManager.cs" />
+    <Compile Include="Manager\SetupItemCatagoryManager.cs" />
+    <Compile Include="Manager\ExpenseCategoryManager.cs" />
+    <Compile Include="Manager\PartyManager.cs" />
+    <Compile Include="Migrations\201802031821544_PartySetup.cs" />
+    <Compile Include="Migrations\201802031821544_PartySetup.Designer.cs">
+      <DependentUpon>201802031821544_PartySetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802052200525_ExpenseCategory.cs" />
+    <Compile Include="Migrations\201802052200525_ExpenseCategory.Designer.cs">
+      <DependentUpon>201802052200525_ExpenseCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802061843540_ItemSetupCatagoryAdded.cs" />
+    <Compile Include="Migrations\201802061843540_ItemSetupCatagoryAdded.Designer.cs">
+      <DependentUpon>201802061843540_ItemSetupCatagoryAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802162011459_AllinOne.cs" />
+    <Compile Include="Migrations\201802162011459_AllinOne.Designer.cs">
+      <DependentUpon>201802162011459_AllinOne.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802162019188_PartySetupModelChange.cs" />
+    <Compile Include="Migrations\201802162019188_PartySetupModelChange.Designer.cs">
+      <DependentUpon>201802162019188_PartySetupModelChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802170810250_Purchase.cs" />
+    <Compile Include="Migrations\201802170810250_Purchase.Designer.cs">
+      <DependentUpon>201802170810250_Purchase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802170915201_PurchaseItem.cs" />
+    <Compile Include="Migrations\201802170915201_PurchaseItem.Designer.cs">
+      <DependentUpon>201802170915201_PurchaseItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802171839288_PurchaseModelChange.cs" />
+    <Compile Include="Migrations\201802171839288_PurchaseModelChange.Designer.cs">
+      <DependentUpon>201802171839288_PurchaseModelChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802171944559_ExpenceModelAdded.cs" />
+    <Compile Include="Migrations\201802171944559_ExpenceModelAdded.Designer.cs">
+      <DependentUpon>201802171944559_ExpenceModelAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802171953238_ExpencesItemsModelAdded.cs" />
+    <Compile Include="Migrations\201802171953238_ExpencesItemsModelAdded.Designer.cs">
+      <DependentUpon>201802171953238_ExpencesItemsModelAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802172027558_expenceItemModelChane.cs" />
+    <Compile Include="Migrations\201802172027558_expenceItemModelChane.Designer.cs">
+      <DependentUpon>201802172027558_expenceItemModelChane.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802181421597_SalesModelAdded.cs" />
+    <Compile Include="Migrations\201802181421597_SalesModelAdded.Designer.cs">
+      <DependentUpon>201802181421597_SalesModelAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802181439559_SalesItem.cs" />
+    <Compile Include="Migrations\201802181439559_SalesItem.Designer.cs">
+      <DependentUpon>201802181439559_SalesItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\Expence.cs" />
+    <Compile Include="Models\ExpenceItems.cs" />
+    <Compile Include="Models\ExpenseItem.cs" />
+    <Compile Include="Models\ItemSetups.cs" />
+    <Compile Include="Models\Organaization.cs" />
+    <Compile Include="Models\Outlate.cs" />
+    <Compile Include="Models\Purchase.cs" />
+    <Compile Include="Models\PurchaseItem.cs" />
+    <Compile Include="Models\Sales.cs" />
+    <Compile Include="Models\SalesItem.cs" />
+    <Compile Include="Models\SetupItemCatagory.cs" />
+    <Compile Include="Models\ExpenseCategory.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="UI\Employee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Employee.Designer.cs">
+      <DependentUpon>Employee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ExpenceUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ExpenceUI.Designer.cs">
+      <DependentUpon>ExpenceUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmExpenseCategorySetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmExpenseCategorySetup.designer.cs">
+      <DependentUpon>FrmExpenseCategorySetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PartySetup.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\FrmSetupExpenseItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmSetupExpenseItem.Designer.cs">
+      <DependentUpon>FrmSetupExpenseItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ItemSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ItemSetup.Designer.cs">
+      <DependentUpon>ItemSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Organaization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Organaization.Designer.cs">
+      <DependentUpon>Organaization.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Outlate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Outlate.Designer.cs">
+      <DependentUpon>Outlate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PartySetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\PartySetup.Designer.cs">
+      <DependentUpon>PartySetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\POSManagementSystem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\POSManagementSystem.designer.cs">
+      <DependentUpon>POSManagementSystem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PurchaseResultUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\PurchaseResultUI.Designer.cs">
+      <DependentUpon>PurchaseResultUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PurchaseUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\PurchaseUI.Designer.cs">
+      <DependentUpon>PurchaseUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SalesUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SalesUI.Designer.cs">
+      <DependentUpon>SalesUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SetupItemCatagory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SetupItemCatagory.Designer.cs">
+      <DependentUpon>SetupItemCatagory.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Migrations\201802031821544_PartySetup.resx">
+      <DependentUpon>201802031821544_PartySetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802052200525_ExpenseCategory.resx">
+      <DependentUpon>201802052200525_ExpenseCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802061843540_ItemSetupCatagoryAdded.resx">
+      <DependentUpon>201802061843540_ItemSetupCatagoryAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802162011459_AllinOne.resx">
+      <DependentUpon>201802162011459_AllinOne.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802162019188_PartySetupModelChange.resx">
+      <DependentUpon>201802162019188_PartySetupModelChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802170810250_Purchase.resx">
+      <DependentUpon>201802170810250_Purchase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802170915201_PurchaseItem.resx">
+      <DependentUpon>201802170915201_PurchaseItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802171839288_PurchaseModelChange.resx">
+      <DependentUpon>201802171839288_PurchaseModelChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802171944559_ExpenceModelAdded.resx">
+      <DependentUpon>201802171944559_ExpenceModelAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802171953238_ExpencesItemsModelAdded.resx">
+      <DependentUpon>201802171953238_ExpencesItemsModelAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802172027558_expenceItemModelChane.resx">
+      <DependentUpon>201802172027558_expenceItemModelChane.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802181421597_SalesModelAdded.resx">
+      <DependentUpon>201802181421597_SalesModelAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802181439559_SalesItem.resx">
+      <DependentUpon>201802181439559_SalesItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Employee.resx">
+      <DependentUpon>Employee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ExpenceUI.resx">
+      <DependentUpon>ExpenceUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmExpenseCategorySetup.resx">
+      <DependentUpon>FrmExpenseCategorySetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UI\FrmSetupExpenseItem.resx">
+      <DependentUpon>FrmSetupExpenseItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ItemSetup.resx">
+      <DependentUpon>ItemSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Organaization.resx">
+      <DependentUpon>Organaization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Outlate.resx">
+      <DependentUpon>Outlate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PartySetup.resx">
+      <DependentUpon>PartySetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\POSManagementSystem.resx">
+      <DependentUpon>POSManagementSystem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PurchaseResultUI.resx">
+      <DependentUpon>PurchaseResultUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PurchaseUI.resx">
+      <DependentUpon>PurchaseUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SalesUI.resx">
+      <DependentUpon>SalesUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SetupItemCatagory.resx">
+      <DependentUpon>SetupItemCatagory.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="bin\Debug\PointOfSale.exe.config" />
+    <None Include="bin\Debug\PointOfSale.vshost.exe.config" />
+    <None Include="bin\Debug\PointOfSale.vshost.exe.manifest" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\PointOfSale.vshost.exe" />
+    <Content Include="obj\Debug\PointOfSale.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
