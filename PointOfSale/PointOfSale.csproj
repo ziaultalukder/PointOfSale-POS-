@@ -118,6 +118,10 @@
     <Compile Include="Migrations\201802181439559_SalesItem.Designer.cs">
       <DependentUpon>201802181439559_SalesItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802211651116_Expence_Sales_Purchase_ModelChangeDateName.cs" />
+    <Compile Include="Migrations\201802211651116_Expence_Sales_Purchase_ModelChangeDateName.Designer.cs">
+      <DependentUpon>201802211651116_Expence_Sales_Purchase_ModelChangeDateName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Expence.cs" />
@@ -135,11 +139,17 @@
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
-    <Compile Include="UI\Employee.cs">
+    <Compile Include="UI\EmployeeUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Employee.Designer.cs">
-      <DependentUpon>Employee.cs</DependentUpon>
+    <Compile Include="UI\EmployeeUI.Designer.cs">
+      <DependentUpon>EmployeeUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ExpenceReportUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ExpenceReportUI.Designer.cs">
+      <DependentUpon>ExpenceReportUI.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\ExpenceUI.cs">
       <SubType>Form</SubType>
@@ -255,8 +265,14 @@
     <EmbeddedResource Include="Migrations\201802181439559_SalesItem.resx">
       <DependentUpon>201802181439559_SalesItem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Employee.resx">
-      <DependentUpon>Employee.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201802211651116_Expence_Sales_Purchase_ModelChangeDateName.resx">
+      <DependentUpon>201802211651116_Expence_Sales_Purchase_ModelChangeDateName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EmployeeUI.resx">
+      <DependentUpon>EmployeeUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ExpenceReportUI.resx">
+      <DependentUpon>ExpenceReportUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ExpenceUI.resx">
       <DependentUpon>ExpenceUI.cs</DependentUpon>

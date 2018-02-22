@@ -55,7 +55,7 @@ namespace PointOfSale.UI
 
         private void btnEmployeeSetup_Click(object sender, EventArgs e)
         {
-            Employee employee = new Employee();
+            EmployeeUI employee = new EmployeeUI();
             employee.Show();
         }
 
@@ -81,6 +81,18 @@ namespace PointOfSale.UI
         {
             PurchaseUI purchase = new PurchaseUI();
             purchase.Show();
+        }
+
+        private void btnPurchaseResult_Click(object sender, EventArgs e)
+        {
+            PurchaseResultUI purchaseResult = new PurchaseResultUI();
+            purchaseResult.Show();
+        }
+
+        private void btnExpenseReport_Click(object sender, EventArgs e)
+        {
+            ExpenceReportUI expnUI = new ExpenceReportUI();
+            expnUI.Show();
         }
     }
 }

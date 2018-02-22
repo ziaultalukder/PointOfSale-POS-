@@ -285,6 +285,7 @@
             this.btnExpenseReport.TabIndex = 0;
             this.btnExpenseReport.Text = "Expense Report";
             this.btnExpenseReport.UseVisualStyleBackColor = true;
+            this.btnExpenseReport.Click += new System.EventHandler(this.btnExpenseReport_Click);
             // 
             // btnPurchaseResult
             // 
@@ -295,6 +296,7 @@
             this.btnPurchaseResult.TabIndex = 0;
             this.btnPurchaseResult.Text = "Purchase Result";
             this.btnPurchaseResult.UseVisualStyleBackColor = true;
+            this.btnPurchaseResult.Click += new System.EventHandler(this.btnPurchaseResult_Click);
             // 
             // label1
             // 

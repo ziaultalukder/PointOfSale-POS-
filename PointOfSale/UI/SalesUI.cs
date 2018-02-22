@@ -93,10 +93,10 @@ namespace PointOfSale.UI
 
         private void customerNumberTextBox_Leave(object sender, EventArgs e)
         {
-            SuperShopDatabaseContext db = new SuperShopDatabaseContext();
-            string number = customerNumberTextBox.Text;
-            var findName = db.PartySetup.FirstOrDefault(c => c.Contact == number).Name;
-            customerNameTextBox.Text = findName;
+            //SuperShopDatabaseContext db = new SuperShopDatabaseContext();
+            //string number = customerNumberTextBox.Text;
+            //var objPartySetup = db.PartySetup.FirstOrDefault(c => c.Contact == number);
+            //customerNameTextBox.Text = objPartySetup!=null?objPartySetup.Name:"Customer Not Fount";
         }
 
         private void dataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -125,7 +125,24 @@ namespace PointOfSale.UI
         List<Sales> SalesList = new List<Sales>();
         private void saveButton_Click(object sender, EventArgs e)
         {
+            SuperShopDatabaseContext db = new SuperShopDatabaseContext();
+
             Random r = new Random();
+
+            //Employee empl = new Employee();
+
+            //if(empl.Name != customerNameTextBox.Text)
+            //{
+            //    empl.Name = customerNameTextBox.Text;
+            //    empl.Contact = customerNumberTextBox.Text;
+            //    db.Employee.Add(empl);
+            //    db.SaveChanges();
+            //}else if(empl.Name == customerNameTextBox.Text)
+            //{
+            //    int CustomerId = empl.Id;
+            //}
+
+            
 
             Sales sales = new Sales();
 
@@ -133,17 +150,17 @@ namespace PointOfSale.UI
             sales.Due = Convert.ToDecimal(dueTextBox.Text);
             sales.Discount = Convert.ToDecimal(discountTextBox.Text);
             sales.Vat = Convert.ToDecimal(vatTextBox.Text);
-            sales.Date = dateTimePicker1.Value;
+            sales.SalesDate = dateTimePicker1.Value;
             sales.SalesNumber = r.Next().ToString();
             sales.SalesItmLst = SalesItemList;
 
-            sales.OutletId = outletComboBox.SelectedIndex;
-            sales.EmployeeId = employeeComboBox.SelectedIndex;
-            //sales.CustomerId = customerNameTextBox.tex
+            sales.OutletId = (int)outletComboBox.SelectedValue;
+            sales.EmployeeId = (int)employeeComboBox.SelectedValue;
+            sales.CustomerId = Convert.ToInt32(customerNumberTextBox.Text);
 
             SalesList.Add(sales);
 
-            SuperShopDatabaseContext db = new SuperShopDatabaseContext();
+            //SuperShopDatabaseContext db = new SuperShopDatabaseContext();
             db.Sales.AddRange(SalesList);
             db.SaveChanges();
 

@@ -79,19 +79,27 @@ namespace PointOfSale.UI
             Expence expence = new Expence();
             expence.TotalAmmount = Convert.ToDecimal(totalAmmountTextBox.Text);
             expence.Due = Convert.ToDecimal(dueTextBox.Text);
-            expence.Date = dateTimePicker.Value;
+            expence.ExpenceDate = dateTimePicker.Value;
             expence.ExpenceList = ExpenceItmList;
 
 
-            expence.OutletId = (int)outletcomboBox.SelectedIndex;
-            expence.EmployeeId = (int)employeecomboBox.SelectedIndex;
-            expence.ItemId = (int)ExpenceitemComboBox.SelectedIndex;
+            expence.OutletId = (int)outletcomboBox.SelectedValue;
+            expence.EmployeeId = (int)employeecomboBox.SelectedValue;
+            expence.ItemId = (int)ExpenceitemComboBox.SelectedValue;
 
             ExpenceList.Add(expence);
 
             SuperShopDatabaseContext db = new SuperShopDatabaseContext();
             db.Expences.AddRange(ExpenceList);
-            db.SaveChanges();
+            int row = db.SaveChanges();
+            if (row > 0)
+            {
+                MessageBox.Show("Expence Item Inserted");
+            }
+            else
+            {
+                MessageBox.Show("Expence Item Inserted Failed");
+            }
         }
         private int outletId;
         private void outletcomboBox_SelectedIndexChanged(object sender, EventArgs e)

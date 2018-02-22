@@ -14,9 +14,9 @@ using PointOfSale.Manager;
 
 namespace PointOfSale.UI
 {
-    public partial class Employee : Form
+    public partial class EmployeeUI : Form
     {
-        public Employee()
+        public EmployeeUI()
         {
             InitializeComponent();
         }

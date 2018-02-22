@@ -67,12 +67,7 @@ namespace PointOfSale.UI
 
 
 
-            if (string.IsNullOrEmpty(cmbParentCategory.Text))
-            {
-                MessageBox.Show("Please Select an Outlate");
-                return;
-            }
-            else if (string.IsNullOrEmpty(txtCategoryName.Text))
+            if (string.IsNullOrEmpty(txtCategoryName.Text))
             {
                 MessageBox.Show("Name Field Empty");
                 return;
