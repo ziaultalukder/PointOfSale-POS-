@@ -26,6 +26,12 @@ namespace PointOfSale.Manager
             db.Entry(setupItemCatagory).State = EntityState.Modified;
             return db.SaveChanges() > 0;
         }
-        
+        public bool DeleteItemCategory(SetupItemCatagory setupItemCatagory)
+        {
+            SuperShopDatabaseContext db = new SuperShopDatabaseContext();
+            db.Entry(setupItemCatagory).State = EntityState.Deleted;
+            return db.SaveChanges() > 0;
+        }
+
     }
 }

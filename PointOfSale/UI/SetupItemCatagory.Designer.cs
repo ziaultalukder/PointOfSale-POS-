@@ -47,6 +47,7 @@
             this.radChildCategory = new System.Windows.Forms.RadioButton();
             this.radRootCategory = new System.Windows.Forms.RadioButton();
             this.setupItemCatagoryDataGridView = new System.Windows.Forms.DataGridView();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.SetupItemCategory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemCatagoryPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.setupItemCatagoryDataGridView)).BeginInit();
@@ -55,6 +56,7 @@
             // SetupItemCategory
             // 
             this.SetupItemCategory.Controls.Add(this.itemCatagoryPictureBox);
+            this.SetupItemCategory.Controls.Add(this.btnCancel);
             this.SetupItemCategory.Controls.Add(this.btnDelete);
             this.SetupItemCategory.Controls.Add(this.btnUpdate);
             this.SetupItemCategory.Controls.Add(this.imageBrowseButton);
@@ -74,33 +76,34 @@
             this.SetupItemCategory.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SetupItemCategory.Location = new System.Drawing.Point(23, 15);
             this.SetupItemCategory.Name = "SetupItemCategory";
-            this.SetupItemCategory.Size = new System.Drawing.Size(744, 325);
+            this.SetupItemCategory.Size = new System.Drawing.Size(744, 311);
             this.SetupItemCategory.TabIndex = 2;
             this.SetupItemCategory.TabStop = false;
             this.SetupItemCategory.Text = "Setup Expense Category";
             // 
             // itemCatagoryPictureBox
             // 
-            this.itemCatagoryPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.itemCatagoryPictureBox.Location = new System.Drawing.Point(507, 69);
+            this.itemCatagoryPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.itemCatagoryPictureBox.Location = new System.Drawing.Point(507, 49);
             this.itemCatagoryPictureBox.Name = "itemCatagoryPictureBox";
-            this.itemCatagoryPictureBox.Size = new System.Drawing.Size(207, 161);
+            this.itemCatagoryPictureBox.Size = new System.Drawing.Size(207, 181);
             this.itemCatagoryPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.itemCatagoryPictureBox.TabIndex = 6;
             this.itemCatagoryPictureBox.TabStop = false;
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(199, 281);
+            this.btnDelete.Location = new System.Drawing.Point(309, 262);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(82, 38);
             this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(106, 281);
+            this.btnUpdate.Location = new System.Drawing.Point(216, 262);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(87, 38);
             this.btnUpdate.TabIndex = 5;
@@ -111,7 +114,7 @@
             // imageBrowseButton
             // 
             this.imageBrowseButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.imageBrowseButton.Location = new System.Drawing.Point(554, 253);
+            this.imageBrowseButton.Location = new System.Drawing.Point(615, 262);
             this.imageBrowseButton.Name = "imageBrowseButton";
             this.imageBrowseButton.Size = new System.Drawing.Size(99, 30);
             this.imageBrowseButton.TabIndex = 5;
@@ -121,7 +124,7 @@
             // 
             // Savebutton
             // 
-            this.Savebutton.Location = new System.Drawing.Point(12, 281);
+            this.Savebutton.Location = new System.Drawing.Point(126, 262);
             this.Savebutton.Name = "Savebutton";
             this.Savebutton.Size = new System.Drawing.Size(82, 38);
             this.Savebutton.TabIndex = 5;
@@ -255,15 +258,25 @@
             this.setupItemCatagoryDataGridView.Location = new System.Drawing.Point(23, 367);
             this.setupItemCatagoryDataGridView.Name = "setupItemCatagoryDataGridView";
             this.setupItemCatagoryDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.setupItemCatagoryDataGridView.Size = new System.Drawing.Size(744, 256);
+            this.setupItemCatagoryDataGridView.Size = new System.Drawing.Size(744, 234);
             this.setupItemCatagoryDataGridView.TabIndex = 3;
             this.setupItemCatagoryDataGridView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.setupItemCatagoryDataGridView_MouseDoubleClick);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(397, 262);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(82, 38);
+            this.btnCancel.TabIndex = 5;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // SetupItemCatagory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(804, 635);
+            this.ClientSize = new System.Drawing.Size(804, 612);
             this.Controls.Add(this.setupItemCatagoryDataGridView);
             this.Controls.Add(this.SetupItemCategory);
             this.Name = "SetupItemCatagory";
@@ -298,5 +311,6 @@
         private System.Windows.Forms.Button imageBrowseButton;
         private System.Windows.Forms.DataGridView setupItemCatagoryDataGridView;
         private System.Windows.Forms.Label idLabel;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

@@ -21,7 +21,9 @@ namespace PointOfSale.Models
         public string PresentAddress { get; set; }
         public string PermanentAddress { get; set; }
         public byte[] Image { get; set; }
-        public int OutlateId { get; set; }
+        public string  Refarence { get; set; }
+        public int? OutlateId { get; set; }
         public Outlate Outlate { get; set; }
+        public bool Delete { get; set; }
     }
 }

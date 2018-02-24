@@ -82,5 +82,25 @@ namespace PointOfSale.UI
             PurchaseUI purchase = new PurchaseUI();
             purchase.Show();
         }
+
+        private void POSManagementSystem_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTime_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblDate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

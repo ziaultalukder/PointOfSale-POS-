@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseContext\SuperShopDatabaseContext.cs" />
+    <Compile Include="ImageManipulation.cs" />
     <Compile Include="Manager\EmployeeManager.cs" />
     <Compile Include="Manager\ExpenseItemManager.cs" />
     <Compile Include="Manager\ExpenseManager.cs" />
@@ -117,6 +118,10 @@
     <Compile Include="Migrations\201802181439559_SalesItem.cs" />
     <Compile Include="Migrations\201802181439559_SalesItem.Designer.cs">
       <DependentUpon>201802181439559_SalesItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802231933456_employee.cs" />
+    <Compile Include="Migrations\201802231933456_employee.Designer.cs">
+      <DependentUpon>201802231933456_employee.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Employee.cs" />
@@ -216,6 +221,7 @@
     <Compile Include="UI\SetupItemCatagory.Designer.cs">
       <DependentUpon>SetupItemCatagory.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinMessageBox.cs" />
     <EmbeddedResource Include="Migrations\201802031821544_PartySetup.resx">
       <DependentUpon>201802031821544_PartySetup.cs</DependentUpon>
     </EmbeddedResource>
@@ -254,6 +260,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802181439559_SalesItem.resx">
       <DependentUpon>201802181439559_SalesItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802231933456_employee.resx">
+      <DependentUpon>201802231933456_employee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Employee.resx">
       <DependentUpon>Employee.cs</DependentUpon>
@@ -310,6 +319,7 @@
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\PointOfSale.Models.Organaization.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

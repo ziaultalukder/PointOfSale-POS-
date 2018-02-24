@@ -14,6 +14,7 @@ namespace PointOfSale.UI
 {
     public partial class Outlate : Form
     {
+        Models.Outlate outlate = new Models.Outlate();
         public Outlate()
         {
             InitializeComponent();
@@ -27,6 +28,7 @@ namespace PointOfSale.UI
             outlateComboBox.ValueMember = "Id";
 
             GetOutlateValue();
+            Clear();
         }
 
         private void GetOutlateValue()
@@ -53,7 +55,7 @@ namespace PointOfSale.UI
         {
             Random r = new Random();
 
-            Models.Outlate outlate = new Models.Outlate();
+            //Models.Outlate outlate = new Models.Outlate();
             outlate.Name = nameTextBox.Text;
             outlate.Code = r.Next().ToString();
             outlate.Contact = contactTextBox.Text;
@@ -99,6 +101,7 @@ namespace PointOfSale.UI
             {
                 MessageBox.Show("Outlate Inserted Failed");
             }
+            Clear();
         }
 
         private void contactTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -111,7 +114,7 @@ namespace PointOfSale.UI
         
         private void updateButton_Click(object sender, EventArgs e)
         {
-            Models.Outlate outlate = new Models.Outlate();
+            //Models.Outlate outlate = new Models.Outlate();
             outlate.Id = Convert.ToInt32(idLabel.Text);
             outlate.Name = nameTextBox.Text;
             outlate.Code = codeTextBox.Text;
@@ -158,6 +161,7 @@ namespace PointOfSale.UI
             {
                 MessageBox.Show("Outlate Updated Failed");
             }
+            Clear();
         }
 
         private void outlateDataGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -176,6 +180,24 @@ namespace PointOfSale.UI
             SuperShopDatabaseContext db = new SuperShopDatabaseContext();
             var data = (from ol in db.Outlates where ol.Name.Contains(searchItem) select ol).ToList();
            outlateDataGridView.DataSource = data;
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            OutlateManager om = new OutlateManager();
+            outlate.Id = Convert.ToInt32(idLabel.Text);
+            var row = om.DeleteOutlet(outlate);
+            if (row)
+            {
+                MessageBox.Show("Delete Successfully.");
+            }
+            GetOutlateValue();
+            Clear();
+        }
+
+        private void Clear()
+        {
+            nameTextBox.Text = outlateComboBox.Text = codeTextBox .Text = contactTextBox.Text = addressTextBox.Text = "";
         }
     }
 }

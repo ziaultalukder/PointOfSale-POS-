@@ -11,6 +11,7 @@ namespace PointOfSale.Manager
 {
     public class OutlateManager
     {
+        SuperShopDatabaseContext db = new SuperShopDatabaseContext();
         public bool Insertoutlate(Outlate outlate)
         {
             SuperShopDatabaseContext db = new SuperShopDatabaseContext();
@@ -22,6 +23,13 @@ namespace PointOfSale.Manager
         {
             SuperShopDatabaseContext db = new SuperShopDatabaseContext();
             db.Entry(outlate).State = EntityState.Modified;
+            return db.SaveChanges() > 0;
+        }
+
+        public bool DeleteOutlet(Outlate outlate)
+        {
+            SuperShopDatabaseContext db = new SuperShopDatabaseContext();
+            db.Entry(outlate).State = EntityState.Deleted;
             return db.SaveChanges() > 0;
         }
     }

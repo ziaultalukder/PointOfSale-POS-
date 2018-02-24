@@ -45,6 +45,10 @@
             this.idLabel = new System.Windows.Forms.Label();
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.outlateDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,7 +83,7 @@
             // saveButton
             // 
             this.saveButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveButton.Location = new System.Drawing.Point(27, 331);
+            this.saveButton.Location = new System.Drawing.Point(27, 270);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(92, 35);
             this.saveButton.TabIndex = 3;
@@ -89,11 +93,14 @@
             // 
             // outlateDataGridView
             // 
+            this.outlateDataGridView.AllowUserToAddRows = false;
+            this.outlateDataGridView.AllowUserToDeleteRows = false;
             this.outlateDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.outlateDataGridView.Location = new System.Drawing.Point(25, 372);
+            this.outlateDataGridView.Location = new System.Drawing.Point(25, 324);
             this.outlateDataGridView.Name = "outlateDataGridView";
+            this.outlateDataGridView.ReadOnly = true;
             this.outlateDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.outlateDataGridView.Size = new System.Drawing.Size(695, 229);
+            this.outlateDataGridView.Size = new System.Drawing.Size(695, 195);
             this.outlateDataGridView.TabIndex = 4;
             this.outlateDataGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.outlateDataGridView_CellMouseDoubleClick);
             // 
@@ -163,13 +170,13 @@
             this.addressTextBox.Location = new System.Drawing.Point(144, 199);
             this.addressTextBox.Multiline = true;
             this.addressTextBox.Name = "addressTextBox";
-            this.addressTextBox.Size = new System.Drawing.Size(289, 106);
+            this.addressTextBox.Size = new System.Drawing.Size(289, 52);
             this.addressTextBox.TabIndex = 2;
             // 
             // updateButton
             // 
             this.updateButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateButton.Location = new System.Drawing.Point(131, 331);
+            this.updateButton.Location = new System.Drawing.Point(131, 270);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(82, 35);
             this.updateButton.TabIndex = 3;
@@ -180,12 +187,13 @@
             // deleteButton
             // 
             this.deleteButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteButton.Location = new System.Drawing.Point(222, 331);
+            this.deleteButton.Location = new System.Drawing.Point(222, 270);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(94, 35);
             this.deleteButton.TabIndex = 3;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // idLabel
             // 
@@ -200,7 +208,7 @@
             // 
             this.searchTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchTextBox.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.searchTextBox.Location = new System.Drawing.Point(357, 335);
+            this.searchTextBox.Location = new System.Drawing.Point(357, 274);
             this.searchTextBox.Name = "searchTextBox";
             this.searchTextBox.Size = new System.Drawing.Size(241, 27);
             this.searchTextBox.TabIndex = 2;
@@ -210,17 +218,65 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(604, 336);
+            this.label6.Location = new System.Drawing.Point(604, 275);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(116, 21);
             this.label6.TabIndex = 1;
             this.label6.Text = "Search Name";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Location = new System.Drawing.Point(446, 17);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(19, 23);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "*";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Red;
+            this.label8.Location = new System.Drawing.Point(445, 58);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(19, 23);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "*";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(446, 108);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(87, 23);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "* (Auto)";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Red;
+            this.label10.Location = new System.Drawing.Point(446, 200);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(19, 23);
+            this.label10.TabIndex = 5;
+            this.label10.Text = "*";
+            // 
             // Outlate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(794, 648);
+            this.ClientSize = new System.Drawing.Size(794, 534);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.outlateDataGridView);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.updateButton);
@@ -267,5 +323,9 @@
         private System.Windows.Forms.Label idLabel;
         private System.Windows.Forms.TextBox searchTextBox;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
     }
 }

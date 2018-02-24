@@ -16,9 +16,19 @@ namespace PointOfSale.UI
 {
     public partial class SetupItemCatagory : Form
     {
+        SuperShopDatabaseContext db = new SuperShopDatabaseContext();
+        Models.SetupItemCatagory setupItemCatagory = new Models.SetupItemCatagory();
         public SetupItemCatagory()
         {
             InitializeComponent();
+            AutoCodeGenerate();
+        }
+
+        private void AutoCodeGenerate()
+        {
+            //int counts = 1;
+            //counts = db.SetupItemCatagories.Include(c => c.Id).Count() + counts;
+            //codeTextBox.Text = "1000" + counts;
         }
         private void imageBrowseButton_Click(object sender, EventArgs e)
         {
@@ -54,11 +64,12 @@ namespace PointOfSale.UI
         private void Savebutton_Click(object sender, EventArgs e)
         {
 
-            Models.SetupItemCatagory setupItemCatagory = new Models.SetupItemCatagory();
+            
 
             setupItemCatagory.Name = nameTextBox.Text;
             setupItemCatagory.Code = codeTextBox.Text;
             setupItemCatagory.Description = descriptionTextBox.Text;
+           // setupItemCatagory.Id = codeTextBox.Text;
             setupItemCatagory.Image = ConvertToFileByte(this.itemCatagoryPictureBox.ImageLocation);
             setupItemCatagory.CatagoryType = radRootCategory.Checked ? "Parent" : "Child";
             if (itemCatagoryComboBox.Text == "")
@@ -105,6 +116,8 @@ namespace PointOfSale.UI
             {
                 MessageBox.Show("Setup Item Catagory Inserted Failed");
             }
+            btnDelete.Enabled = false;
+            GetSetupItemCatagory();
         }
         
         private void SetupItemCatagory_Load(object sender, EventArgs e)
@@ -115,6 +128,7 @@ namespace PointOfSale.UI
             itemCatagoryComboBox.ValueMember = "Id";
 
             GetSetupItemCatagory();
+            ClearAllForm();
         }
 
         private void viewButton_Click(object sender, EventArgs e)
@@ -124,7 +138,7 @@ namespace PointOfSale.UI
 
         private void GetSetupItemCatagory()
         {
-            SuperShopDatabaseContext db = new SuperShopDatabaseContext();
+            
             setupItemCatagoryDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             setupItemCatagoryDataGridView.RowTemplate.Height = 50;
             setupItemCatagoryDataGridView.AllowUserToAddRows = false;
@@ -146,7 +160,7 @@ namespace PointOfSale.UI
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            Models.SetupItemCatagory setupItemCatagory = new Models.SetupItemCatagory();
+            //Models.SetupItemCatagory setupItemCatagory = new Models.SetupItemCatagory();
             setupItemCatagory.Id           = Convert.ToInt32(idLabel.Text);
             setupItemCatagory.Name         = nameTextBox.Text;
             setupItemCatagory.Code         = codeTextBox.Text;
@@ -191,8 +205,7 @@ namespace PointOfSale.UI
                 MessageBox.Show("Description Field Empty");
                 return;
             }
-
-
+            
 
 
             var row = sertupManager.UpdateItemCategory(setupItemCatagory);
@@ -204,6 +217,11 @@ namespace PointOfSale.UI
             {
                 MessageBox.Show("Setup Item Catagory Updated failed");
             }
+
+            //btnDelete.Visible = true;
+            //btnUpdate.Visible = true;
+            GetSetupItemCatagory();
+
         }
 
         private void setupItemCatagoryDataGridView_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -226,6 +244,44 @@ namespace PointOfSale.UI
 
 
             itemCatagoryComboBox.Text = setupItemCatagoryDataGridView.SelectedRows[0].Cells[5].Value.ToString();
+            btnDelete.Enabled = true;
+            btnUpdate.Enabled = true;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            //Models.SetupItemCatagory setupItemCatagory = new Models.SetupItemCatagory();
+            //if (this.IsDelete)
+            //{
+            //    if (MessageBox.Show("Are You Sure to delete this Record", "Information", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            //    {
+                    SetupItemCatagoryManager sicm = new SetupItemCatagoryManager();
+                    setupItemCatagory.Id = Convert.ToInt32(idLabel.Text);
+                    var rows = sicm.DeleteItemCategory(setupItemCatagory);
+                    if (rows)
+                    {
+                        MessageBox.Show("Delete Successfully.");
+                    }
+            //    }
+            //}
+            GetSetupItemCatagory();
+            ClearAllForm();
+        }
+
+        private void ClearAllForm()
+        {
+            itemCatagoryComboBox.SelectedIndex = -1;
+            nameTextBox.Clear();
+            codeTextBox.Clear();
+            descriptionTextBox.Clear();
+            itemCatagoryPictureBox.Image = null;
+            btnDelete.Enabled = false;
+            btnUpdate.Enabled = false;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            ClearAllForm();
         }
     }
 }
