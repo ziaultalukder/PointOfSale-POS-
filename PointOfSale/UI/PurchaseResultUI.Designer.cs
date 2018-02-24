@@ -48,7 +48,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.purchaseResultPrintDocument = new System.Drawing.Printing.PrintDocument();
-            this.label4 = new System.Windows.Forms.Label();
             this.barcodeButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pruchaseresultDataGridView)).BeginInit();
@@ -241,16 +240,6 @@
             // 
             this.purchaseResultPrintDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.purchaseResultPrintDocument_PrintPage);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(325, 284);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(102, 21);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Print Tutoral";
-            // 
             // barcodeButton
             // 
             this.barcodeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -273,7 +262,6 @@
             this.Controls.Add(this.pdfbutton);
             this.Controls.Add(this.pruchaseresultDataGridView);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label12);
             this.Name = "PurchaseResultUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -308,7 +296,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Drawing.Printing.PrintDocument purchaseResultPrintDocument;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button barcodeButton;
     }
 }

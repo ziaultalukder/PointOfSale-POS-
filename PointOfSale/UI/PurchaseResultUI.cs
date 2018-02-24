@@ -129,9 +129,6 @@ namespace PointOfSale.UI
             pruchaseresultDataGridView.DrawToBitmap(bitmap, new System.Drawing.Rectangle(0, 0, this.pruchaseresultDataGridView.Width, this.pruchaseresultDataGridView.Height));
             e.Graphics.DrawImage(bitmap, 50, 150);
         }
-
-        
-
         private void button2_Click(object sender, EventArgs e)
         {
             printPreviewDialog1.Document = purchaseResultPrintDocument;

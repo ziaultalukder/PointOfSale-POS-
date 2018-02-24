@@ -15,7 +15,7 @@ namespace PointOfSale.Models
         public decimal Vat { get; set; }
         public decimal Discount { get; set; }
         public DateTime SalesDate { get; set; }
-
+        public decimal Subtotal { get; set; }
 
         public int OutletId { get; set; }
         public Outlate Outlet { get; set; }
