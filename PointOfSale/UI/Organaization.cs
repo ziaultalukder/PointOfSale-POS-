@@ -69,11 +69,11 @@ namespace PointOfSale.UI
                 MessageBox.Show("Name Field Emplty");
                 return;
             }
-            //else if (string.IsNullOrEmpty(codeTextBox.Text))
-            //{
-            //    MessageBox.Show("Code Field Emplty");
-            //    return;
-            //}
+            else if (organaizationPictureBox.Image == null)
+            {
+                MessageBox.Show("Please Select A Picture");
+                return;
+            }
             else if (organaization.Code.Length < 6)
             {
                 MessageBox.Show("Security Code Must Be 6 Disit");
@@ -110,8 +110,13 @@ namespace PointOfSale.UI
         {
             SuperShopDatabaseContext db = new SuperShopDatabaseContext();
             organaizationdataGridView.DataSource = db.Organaization.ToList();
+            organaizationdataGridView.Columns["Id"].Visible = false;
+
+            //DataGridViewImageColumn dgvc = new DataGridViewImageColumn();
+            //dgvc.HeaderText = "Image";
+            
         }
-        
+
         private void updateButton_Click(object sender, EventArgs e)
         {
             Models.Organaization organaization = new Models.Organaization();
@@ -189,6 +194,11 @@ namespace PointOfSale.UI
 
             var delId = db.Organaization.FirstOrDefault(c => c.Id == Id);
             //DialogResult dialogResult = MessageBox.Show("Are You Sure", "Delete Confirmation",  MessageBoxIcon.Question);
+        }
+
+        private void organaizationdataGridView_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            this.organaizationdataGridView.Rows[e.RowIndex].Cells["sl"].Value = (e.RowIndex + 1).ToString();
         }
     }
 }

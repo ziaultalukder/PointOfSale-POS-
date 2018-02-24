@@ -197,7 +197,7 @@ namespace PointOfSale.UI
             }
             else
             {
-                cmbParentCategory.Text = grdExpenseCategory.SelectedRows[0].Cells[5].Value.ToString();
+                cmbParentCategory.Text = grdExpenseCategory.SelectedRows[0].Cells[4].Value.ToString();
             }
             
         }
