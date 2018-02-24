@@ -16,6 +16,7 @@ namespace PointOfSalePersonal.UI
     public partial class ExpenseCategorySetupUI : Form
     {
         int selectedId;
+        int OldCode;
         ExpenseCategory expenseCategory = new ExpenseCategory();
         ExpenseCategoryManager expenseCategoryManager = new ExpenseCategoryManager();
 
@@ -76,12 +77,18 @@ namespace PointOfSalePersonal.UI
                 bool isInteger = int.TryParse(txtCategoryCode.Text.Trim(), out isInt);
                 if (!isInteger)
                 {
-                    MessageBox.Show("Invalid Code", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please enter the Numbers only, Between 1000 to 99999999!!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+
                 else
                 {
                     int testCode=Convert.ToInt32(txtCategoryCode.Text);
+                    if (testCode<1000 || testCode>99999999)
+                    {
+                        MessageBox.Show("Please enter the Code Between 1000 to 99999999!!!");
+                        return;
+                    }
                     SuperShopDatabaseContext db = new SuperShopDatabaseContext();
                     bool isCodeExist = db.ExpenseCategory.Count(c => c.CategoryCode == testCode) > 0;
                     if (isCodeExist)
@@ -113,7 +120,7 @@ namespace PointOfSalePersonal.UI
                 //Update Method
             else
             {
-                expenseCategory.Id =Convert.ToInt32(txtCategoryId.Text);
+                expenseCategory.Id = Convert.ToInt32(txtCategoryId.Text);
                 if (string.IsNullOrEmpty(txtCategoryName.Text))
                 {
                     MessageBox.Show("Name Field Empty");
@@ -125,7 +132,47 @@ namespace PointOfSalePersonal.UI
                     MessageBox.Show("Code Field Empty");
                     return;
                 }
-                expenseCategory.CategoryCode = Convert.ToInt32(txtCategoryCode.Text);
+                //if (expenseCategory.CategoryCode!=Convert.ToInt32(txtCategoryCode.Text))
+                //{
+                    int isInt;
+                    if (string.IsNullOrEmpty(txtCategoryCode.Text))
+                    {
+                        MessageBox.Show("Code Field Empty");
+                        return;
+                    }
+                    bool isInteger = int.TryParse(txtCategoryCode.Text.Trim(), out isInt);
+                    if (!isInteger)
+                    {
+                        MessageBox.Show("Please enter the Numbers only, Between 1000 to 99999999!!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    else
+                    {
+                        int testCode = Convert.ToInt32(txtCategoryCode.Text);
+                        if (testCode < 1000 || testCode > 99999999)
+                        {
+                            MessageBox.Show("Please enter the Code Between 1000 to 99999999!!!");
+                            return;
+                        }
+                        SuperShopDatabaseContext db = new SuperShopDatabaseContext();
+                        bool isCodeUnchanged = testCode != OldCode;
+                        //bool isCodeSame = db.ExpenseCategory.Count(c => c.CategoryCode == OldCode && c.Id == selectedId) > 0;
+                        bool isCodeExist = db.ExpenseCategory.Count(c => c.CategoryCode == testCode) > 0;
+                        if (isCodeUnchanged)
+                        {
+                            if (isCodeExist)
+                            {
+                                MessageBox.Show("Code is Allready Exist");
+                                return;
+                            }
+
+                        }
+                        expenseCategory.CategoryCode = Convert.ToInt32(txtCategoryCode.Text);
+                    }
+                //}
+//                expenseCategory.CategoryCode = Convert.ToInt32(txtCategoryCode.Text);
+
                 //if (string.IsNullOrEmpty(txtCategoryDiscription.Text))
                 //{
                 //    MessageBox.Show("Description Field Emptyt");
@@ -134,7 +181,7 @@ namespace PointOfSalePersonal.UI
                 expenseCategory.CategoryDescription = txtCategoryDiscription.Text;
                 expenseCategory.CategoryType = GetCategoryType();
                 expenseCategory.IsDelete = false;
-                InsertParentCategory();
+                //InsertParentCategory();
                 //if (cmbParentCategory.SelectedIndex != -1)
                 //{
                 //    expenseCategory.Parentid = (int)cmbParentCategory.SelectedValue;
@@ -177,7 +224,11 @@ namespace PointOfSalePersonal.UI
                 expenseCategory.Parentid = (int)cmbParentCategory.SelectedValue;
                 expenseCategory.ParentName = cmbParentCategory.Text;
             }
-            expenseCategory.IsDelete = true;
+             DialogResult dialogResult=MessageBox.Show("Are you sure want to save ?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+             if (dialogResult == DialogResult.Yes)
+             {
+                 expenseCategory.IsDelete = true;
+             }
 
             var row = expenseCategoryManager.UpdateExpenseCategory(expenseCategory);
             if (row)
@@ -204,6 +255,9 @@ namespace PointOfSalePersonal.UI
             txtCategoryId.Text= selectedRow.Cells[0].Value.ToString();
             txtCategoryName.Text = selectedRow.Cells[1].Value.ToString();
             txtCategoryCode.Text = selectedRow.Cells[2].Value.ToString();
+            txtCategoryCode.Text = selectedRow.Cells[2].Value.ToString();
+            OldCode = (int)selectedRow.Cells[2].Value;
+
 
             if (selectedRow.Cells[4].Value!=null)
                 {
