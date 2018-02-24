@@ -7,13 +7,13 @@ namespace PointOfSale.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class SalesModelAdded : IMigrationMetadata
+    public sealed partial class organization : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(SalesModelAdded));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(organization));
         
         string IMigrationMetadata.Id
         {
-            get { return "201802181421597_SalesModelAdded"; }
+            get { return "201802242244479_organization"; }
         }
         
         string IMigrationMetadata.Source

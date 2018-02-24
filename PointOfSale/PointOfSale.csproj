@@ -70,73 +70,13 @@
     <Compile Include="Manager\SetupItemCatagoryManager.cs" />
     <Compile Include="Manager\ExpenseCategoryManager.cs" />
     <Compile Include="Manager\PartyManager.cs" />
-    <Compile Include="Migrations\201802031821544_PartySetup.cs" />
-    <Compile Include="Migrations\201802031821544_PartySetup.Designer.cs">
-      <DependentUpon>201802031821544_PartySetup.cs</DependentUpon>
+    <Compile Include="Migrations\201802241717359_InitialCreate.cs" />
+    <Compile Include="Migrations\201802241717359_InitialCreate.Designer.cs">
+      <DependentUpon>201802241717359_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201802052200525_ExpenseCategory.cs" />
-    <Compile Include="Migrations\201802052200525_ExpenseCategory.Designer.cs">
-      <DependentUpon>201802052200525_ExpenseCategory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802061843540_ItemSetupCatagoryAdded.cs" />
-    <Compile Include="Migrations\201802061843540_ItemSetupCatagoryAdded.Designer.cs">
-      <DependentUpon>201802061843540_ItemSetupCatagoryAdded.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802162011459_AllinOne.cs" />
-    <Compile Include="Migrations\201802162011459_AllinOne.Designer.cs">
-      <DependentUpon>201802162011459_AllinOne.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802162019188_PartySetupModelChange.cs" />
-    <Compile Include="Migrations\201802162019188_PartySetupModelChange.Designer.cs">
-      <DependentUpon>201802162019188_PartySetupModelChange.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802170810250_Purchase.cs" />
-    <Compile Include="Migrations\201802170810250_Purchase.Designer.cs">
-      <DependentUpon>201802170810250_Purchase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802170915201_PurchaseItem.cs" />
-    <Compile Include="Migrations\201802170915201_PurchaseItem.Designer.cs">
-      <DependentUpon>201802170915201_PurchaseItem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802171839288_PurchaseModelChange.cs" />
-    <Compile Include="Migrations\201802171839288_PurchaseModelChange.Designer.cs">
-      <DependentUpon>201802171839288_PurchaseModelChange.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802171944559_ExpenceModelAdded.cs" />
-    <Compile Include="Migrations\201802171944559_ExpenceModelAdded.Designer.cs">
-      <DependentUpon>201802171944559_ExpenceModelAdded.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802171953238_ExpencesItemsModelAdded.cs" />
-    <Compile Include="Migrations\201802171953238_ExpencesItemsModelAdded.Designer.cs">
-      <DependentUpon>201802171953238_ExpencesItemsModelAdded.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802172027558_expenceItemModelChane.cs" />
-    <Compile Include="Migrations\201802172027558_expenceItemModelChane.Designer.cs">
-      <DependentUpon>201802172027558_expenceItemModelChane.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802181421597_SalesModelAdded.cs" />
-    <Compile Include="Migrations\201802181421597_SalesModelAdded.Designer.cs">
-      <DependentUpon>201802181421597_SalesModelAdded.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802181439559_SalesItem.cs" />
-    <Compile Include="Migrations\201802181439559_SalesItem.Designer.cs">
-      <DependentUpon>201802181439559_SalesItem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802231933456_employee.cs" />
-    <Compile Include="Migrations\201802231933456_employee.Designer.cs">
-      <DependentUpon>201802231933456_employee.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802211651116_Expence_Sales_Purchase_ModelChangeDateName.cs" />
-    <Compile Include="Migrations\201802211651116_Expence_Sales_Purchase_ModelChangeDateName.Designer.cs">
-      <DependentUpon>201802211651116_Expence_Sales_Purchase_ModelChangeDateName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802240807240_SalesModel_Subtotal_Field_Added.cs" />
-    <Compile Include="Migrations\201802240807240_SalesModel_Subtotal_Field_Added.Designer.cs">
-      <DependentUpon>201802240807240_SalesModel_Subtotal_Field_Added.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802240731148_uptadeExpenseCategory.cs" />
-    <Compile Include="Migrations\201802240731148_uptadeExpenseCategory.Designer.cs">
-      <DependentUpon>201802240731148_uptadeExpenseCategory.cs</DependentUpon>
+    <Compile Include="Migrations\201802242244479_organization.cs" />
+    <Compile Include="Migrations\201802242244479_organization.Designer.cs">
+      <DependentUpon>201802242244479_organization.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Employee.cs" />
@@ -262,56 +202,11 @@
     <Compile Include="UI\SuperShopUI.designer.cs">
       <DependentUpon>SuperShopUI.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Migrations\201802031821544_PartySetup.resx">
-      <DependentUpon>201802031821544_PartySetup.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201802241717359_InitialCreate.resx">
+      <DependentUpon>201802241717359_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802052200525_ExpenseCategory.resx">
-      <DependentUpon>201802052200525_ExpenseCategory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802061843540_ItemSetupCatagoryAdded.resx">
-      <DependentUpon>201802061843540_ItemSetupCatagoryAdded.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802162011459_AllinOne.resx">
-      <DependentUpon>201802162011459_AllinOne.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802162019188_PartySetupModelChange.resx">
-      <DependentUpon>201802162019188_PartySetupModelChange.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802170810250_Purchase.resx">
-      <DependentUpon>201802170810250_Purchase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802170915201_PurchaseItem.resx">
-      <DependentUpon>201802170915201_PurchaseItem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802171839288_PurchaseModelChange.resx">
-      <DependentUpon>201802171839288_PurchaseModelChange.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802171944559_ExpenceModelAdded.resx">
-      <DependentUpon>201802171944559_ExpenceModelAdded.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802171953238_ExpencesItemsModelAdded.resx">
-      <DependentUpon>201802171953238_ExpencesItemsModelAdded.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802172027558_expenceItemModelChane.resx">
-      <DependentUpon>201802172027558_expenceItemModelChane.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802181421597_SalesModelAdded.resx">
-      <DependentUpon>201802181421597_SalesModelAdded.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802181439559_SalesItem.resx">
-      <DependentUpon>201802181439559_SalesItem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802231933456_employee.resx">
-      <DependentUpon>201802231933456_employee.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802211651116_Expence_Sales_Purchase_ModelChangeDateName.resx">
-      <DependentUpon>201802211651116_Expence_Sales_Purchase_ModelChangeDateName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802240807240_SalesModel_Subtotal_Field_Added.resx">
-      <DependentUpon>201802240807240_SalesModel_Subtotal_Field_Added.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802240731148_uptadeExpenseCategory.resx">
-      <DependentUpon>201802240731148_uptadeExpenseCategory.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201802242244479_organization.resx">
+      <DependentUpon>201802242244479_organization.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\EmployeeUI.resx">
       <DependentUpon>EmployeeUI.cs</DependentUpon>

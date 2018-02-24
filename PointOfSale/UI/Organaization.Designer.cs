@@ -50,27 +50,26 @@
             this.deleteButton = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-
             this.btnCancel = new System.Windows.Forms.Button();
             this.organaizationBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Contact = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Iamge = new System.Windows.Forms.DataGridViewTextBoxColumn();
-
             this.sl = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-
+            this.organaizationBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contactDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imageDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.organaizationPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.organaizationdataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.organaizationBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.organaizationBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.organaizationBindingSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -89,6 +88,7 @@
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(259, 27);
             this.nameTextBox.TabIndex = 0;
+            this.nameTextBox.TextChanged += new System.EventHandler(this.nameTextBox_TextChanged);
             // 
             // groupBox1
             // 
@@ -236,35 +236,21 @@
             this.organaizationdataGridView.AutoGenerateColumns = false;
             this.organaizationdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.organaizationdataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-
-            this.Id,
-            this.Name,
-            this.Code,
-            this.Contact,
-            this.Description,
-            this.Iamge});
-            this.organaizationdataGridView.DataSource = this.organaizationBindingSource1;
+            this.idDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn,
+            this.codeDataGridViewTextBoxColumn,
+            this.contactDataGridViewTextBoxColumn,
+            this.descriptionDataGridViewTextBoxColumn,
+            this.imageDataGridViewImageColumn});
+            this.organaizationdataGridView.DataSource = this.organaizationBindingSource2;
             this.organaizationdataGridView.Location = new System.Drawing.Point(12, 371);
-
-            //this.sl,
-            //this.Column1,
-            //this.Column2,
-            //this.Column3,
-            //this.Column4
-            //this.organaizationdataGridView.Location = new System.Drawing.Point(12, 414);
-
             this.organaizationdataGridView.Name = "organaizationdataGridView";
             this.organaizationdataGridView.ReadOnly = true;
             this.organaizationdataGridView.RowTemplate.Height = 50;
             this.organaizationdataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.organaizationdataGridView.Size = new System.Drawing.Size(766, 204);
             this.organaizationdataGridView.TabIndex = 3;
-            this.organaizationdataGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.organaizationdataGridView_CellMouseDoubleClick);
-            this.organaizationdataGridView.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.organaizationdataGridView_RowPostPaint);
-            // 
-            // organaizationBindingSource1
-            // 
-//            this.organaizationBindingSource1.DataSource = typeof(PointOfSale.Models.Organaization);
+            this.organaizationdataGridView.DoubleClick += new System.EventHandler(this.organaizationdataGridView_DoubleClick);
             // 
             // saveButton
             // 
@@ -308,7 +294,6 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Search Name";
             // 
-
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -320,54 +305,6 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // organaizationBindingSource
-            // 
-//            this.organaizationBindingSource.DataSource = typeof(PointOfSale.Models.Organaization);
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            // 
-            // Name
-            // 
-            this.Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Name.DataPropertyName = "Name";
-            this.Name.HeaderText = "Name";
-            this.Name.Name = "Name";
-            this.Name.ReadOnly = true;
-            // 
-            // Code
-            // 
-            this.Code.DataPropertyName = "Code";
-            this.Code.HeaderText = "Code";
-            this.Code.Name = "Code";
-            this.Code.ReadOnly = true;
-            // 
-            // Contact
-            // 
-            this.Contact.DataPropertyName = "Contact";
-            this.Contact.HeaderText = "Contact";
-            this.Contact.Name = "Contact";
-            this.Contact.ReadOnly = true;
-            // 
-            // Description
-            // 
-            this.Description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Description.DataPropertyName = "Description";
-            this.Description.HeaderText = "Address";
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            // 
-            // Iamge
-            // 
-            this.Iamge.DataPropertyName = "Image";
-            this.Iamge.HeaderText = "Logo";
-            this.Iamge.Name = "Iamge";
-            this.Iamge.ReadOnly = true;
-
             // sl
             // 
             this.sl.HeaderText = "SL";
@@ -398,7 +335,54 @@
             this.Column4.HeaderText = "Description";
             this.Column4.Name = "Column4";
             this.Column4.Width = 150;
-
+            // 
+            // organaizationBindingSource2
+            // 
+            this.organaizationBindingSource2.DataSource = typeof(PointOfSale.Models.Organaization);
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // codeDataGridViewTextBoxColumn
+            // 
+            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
+            this.codeDataGridViewTextBoxColumn.HeaderText = "Code";
+            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
+            this.codeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // contactDataGridViewTextBoxColumn
+            // 
+            this.contactDataGridViewTextBoxColumn.DataPropertyName = "Contact";
+            this.contactDataGridViewTextBoxColumn.HeaderText = "Contact";
+            this.contactDataGridViewTextBoxColumn.Name = "contactDataGridViewTextBoxColumn";
+            this.contactDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // imageDataGridViewImageColumn
+            // 
+            this.imageDataGridViewImageColumn.DataPropertyName = "Image";
+            this.imageDataGridViewImageColumn.HeaderText = "Image";
+            this.imageDataGridViewImageColumn.Name = "imageDataGridViewImageColumn";
+            this.imageDataGridViewImageColumn.ReadOnly = true;
             // 
             // Organaization
             // 
@@ -412,7 +396,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label5);
-            //this.Name = "Organaization";
+            this.Name = "Organaization";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Organaization";
             this.Load += new System.EventHandler(this.Organaization_Load);
@@ -422,6 +406,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.organaizationdataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.organaizationBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.organaizationBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.organaizationBindingSource2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -453,18 +438,18 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.BindingSource organaizationBindingSource1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Code;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Contact;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Iamge;
 
         private System.Windows.Forms.DataGridViewTextBoxColumn sl;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contactDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewImageColumn imageDataGridViewImageColumn;
+        private System.Windows.Forms.BindingSource organaizationBindingSource2;
     }
 }

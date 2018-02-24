@@ -11,25 +11,29 @@ namespace PointOfSale.Manager
 {
     public class OrganaizationManager
     {
+        SuperShopDatabaseContext db = new SuperShopDatabaseContext();
         public bool InsertOrganaization(Organaization Organaization)
         {
-            SuperShopDatabaseContext bd = new SuperShopDatabaseContext();
-            bd.Organaization.Add(Organaization);
-            return bd.SaveChanges() > 0;
+            db.Organaization.Add(Organaization);
+            return db.SaveChanges() > 0;
         }
 
         public bool IsNameAlreadyExist(string name)
         {
-            SuperShopDatabaseContext bd = new SuperShopDatabaseContext();
-            bd.Organaization.Where(c => c.Name == name);
-            return bd.SaveChanges() > 0;
+            db.Organaization.Where(c => c.Name == name);
+            return db.SaveChanges() > 0;
+        }
+
+        public bool IsContactNoAlreadyExist(string contact)
+        {
+            db.Organaization.Where(c => c.Contact == contact);
+            return db.SaveChanges() > 0;
         }
 
         public bool UpdateOrganaization(Organaization organaization)
         {
-            SuperShopDatabaseContext bd = new SuperShopDatabaseContext();
-            bd.Entry(organaization).State = EntityState.Modified;
-            return bd.SaveChanges() > 0;
+            db.Entry(organaization).State = EntityState.Modified;
+            return db.SaveChanges() > 0;
         }
     }
 }

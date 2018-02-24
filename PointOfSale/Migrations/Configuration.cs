@@ -10,6 +10,7 @@ namespace PointOfSale.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            ContextKey = "PointOfSale.DatabaseContext.SuperShopDatabaseContext";
         }
 
         protected override void Seed(PointOfSale.DatabaseContext.SuperShopDatabaseContext context)

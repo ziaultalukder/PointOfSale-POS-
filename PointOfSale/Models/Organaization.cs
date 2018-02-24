@@ -20,6 +20,7 @@ namespace PointOfSale.Models
         public string Description { get; set; }
         public byte[] Image { get; set; }
         public List<Outlate> ListOutlates { get; set; }
+        public bool  IsDelete { get; set; }
 
     }
 }
