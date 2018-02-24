@@ -1,6 +1,6 @@
 ﻿namespace PointOfSale.UI
 {
-    partial class Employee
+    partial class EmployeeUI
     {
         /// <summary>
         /// Required designer variable.

@@ -11,32 +11,39 @@ namespace PointOfSale.Manager
 {
     class ExpenseItemManager
     {
-        public bool InsertExpenseItem(ExpenseItem expenseItem)
+        private SuperShopDatabaseContext db;
+
+        public bool InsertExpenseCategoryItems(ExpenseCategoryItems expenseItem)
         {
-            SuperShopDatabaseContext db = new SuperShopDatabaseContext();
-            db.ExpenseItem.Add(expenseItem);
-            return db.SaveChanges() > 0;
+            using (db = new SuperShopDatabaseContext())
+            {
+                db.ExpenseCategoryItems.Add(expenseItem);
+                return db.SaveChanges() > 0;
+            }
+        }
+        public bool UpdateExpenseCategoryItems(ExpenseCategoryItems expenseItem)
+        {
+            using (db = new SuperShopDatabaseContext())
+            {
+                db.Entry(expenseItem).State = EntityState.Modified;
+                return db.SaveChanges() > 0;
+            }
         }
 
-        public bool UpdateExpenseCategory(ExpenseCategory expenseItem)
+        public object DeleteExpenseCategoryItems(ExpenseCategoryItems expenseItem)
         {
-            SuperShopDatabaseContext db = new SuperShopDatabaseContext();
-            db.Entry(expenseItem).State = EntityState.Modified;
-            return db.SaveChanges() > 0;
+            using (db = new SuperShopDatabaseContext())
+            {
+                db.Entry(expenseItem).State = EntityState.Deleted;
+                return db.SaveChanges() > 0;
+            }
         }
 
-        public object DeleteExpenseCategory(ExpenseCategory expenseItem)
-        {
-            SuperShopDatabaseContext db = new SuperShopDatabaseContext();
-            db.Entry(expenseItem).State = EntityState.Deleted;
-            return db.SaveChanges() > 0;
-        }
-
-        public bool UpdateExpense(ExpenseItem expenseItem)
-        {
-            SuperShopDatabaseContext db = new SuperShopDatabaseContext();
-            db.Entry(expenseItem).State = EntityState.Modified;
-            return db.SaveChanges() > 0;
-        }
+        //public bool UpdateExpense(ExpenseItem expenseItem)
+        //{
+        //    SuperShopDatabaseContext db = new SuperShopDatabaseContext();
+        //    db.Entry(expenseItem).State = EntityState.Modified;
+        //    return db.SaveChanges() > 0;
+        //}
     }
 }

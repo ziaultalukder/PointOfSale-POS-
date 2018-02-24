@@ -15,12 +15,14 @@ using PointOfSale.Manager;
 
 namespace PointOfSale.UI
 {
-    public partial class Employee : Form
+    public partial class EmployeeUI : Form
     {
+
         SuperShopDatabaseContext db = new SuperShopDatabaseContext();
         Models.Employee employee = new Models.Employee();
         private bool isUpadteMode = false;
-        public Employee()
+
+        public EmployeeUI()
         {
             InitializeComponent();
             AutoCodeGenerate();

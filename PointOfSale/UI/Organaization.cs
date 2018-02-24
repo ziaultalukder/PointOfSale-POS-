@@ -17,8 +17,9 @@ namespace PointOfSale.UI
 {
     public partial class Organaization : Form
     {
-        //SuperShopDatabaseContext db = new SuperShopDatabaseContext();
+        SuperShopDatabaseContext db = new SuperShopDatabaseContext();
         Models.Organaization organaization = new Models.Organaization();
+        OrganaizationManager organaizationManager = new OrganaizationManager();
         public Organaization()
         {
             InitializeComponent();
@@ -94,6 +95,7 @@ namespace PointOfSale.UI
                 ViewOrganaization();
                 WinMessageBox.ShowSuccessMessage("Record save successfully");
             }
+
             //Random r = new Random();
 
             
@@ -114,7 +116,20 @@ namespace PointOfSale.UI
         }
         private string AutoCodeShow()
         {
-            using (SuperShopDatabaseContext db = new SuperShopDatabaseContext())
+            if (organaizationPictureBox.Image == null)
+            {
+                MessageBox.Show("Please Select A Picture");
+                return null;
+
+
+            }
+            else if (organaization.Code.Length < 6)
+            {
+                MessageBox.Show("Security Code Must Be 6 Disit");
+                return null;
+
+            }else if (organaizationManager.IsNameAlreadyExist(organaization.Name))
+
             {
                 int count = 1;
                 count = db.Organaization.DefaultIfEmpty().Max(c => c == null ? 0 : c.Id);
@@ -122,7 +137,7 @@ namespace PointOfSale.UI
                 var result = "1000" + count;
                 return result;
             }
-            
+            return null;
         }
 
         private bool IsFormValidated()
@@ -162,13 +177,20 @@ namespace PointOfSale.UI
 
         private void ViewOrganaization()
         {
+
             organaizationdataGridView.AutoGenerateColumns = false;
             using (SuperShopDatabaseContext db = new SuperShopDatabaseContext())
             {
                 organaizationdataGridView.DataSource = db.Organaization.ToList<Models.Organaization>();
             }
+            organaizationdataGridView.Columns["Id"].Visible = false;
+
+            //DataGridViewImageColumn dgvc = new DataGridViewImageColumn();
+            //dgvc.HeaderText = "Image";
+            
+
         }
-        
+
         private void updateButton_Click(object sender, EventArgs e)
         {
             //Models.Organaization organaization = new Models.Organaization();
@@ -297,6 +319,7 @@ namespace PointOfSale.UI
             Clear();
         }
 
+
         private void Clear()
         {
             nameTextBox.Text = "";
@@ -332,5 +355,11 @@ namespace PointOfSale.UI
         //    //    deleteButton.Enabled = true;
         //    //}
         //}
+
+        private void organaizationdataGridView_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            this.organaizationdataGridView.Rows[e.RowIndex].Cells["sl"].Value = (e.RowIndex + 1).ToString();
+        }
+
     }
 }

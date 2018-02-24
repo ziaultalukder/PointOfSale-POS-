@@ -18,7 +18,7 @@ namespace PointOfSale.Models
         [StringLength(1000)]
         public string Remarks { get; set; }
         [Required]
-        public DateTime Date { get; set; }
+        public DateTime PurchaseDate { get; set; }
 
         [Required]
         [StringLength(255)]

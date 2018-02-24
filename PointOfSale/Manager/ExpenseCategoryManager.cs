@@ -12,25 +12,34 @@ namespace PointOfSale.Manager
 {
     public class ExpenseCategoryManager
     {
+        //SuperShopDatabaseContext db = new SuperShopDatabaseContext();
+        private SuperShopDatabaseContext db;
+
         public bool InsertExpenseCategory(ExpenseCategory expenseCategory)
         {
-            SuperShopDatabaseContext db = new SuperShopDatabaseContext();
-            db.ExpenseCategory.Add(expenseCategory);
-            return db.SaveChanges() > 0;
+            using (db = new SuperShopDatabaseContext())
+            {
+                db.ExpenseCategory.Add(expenseCategory);
+                return db.SaveChanges() > 0;
+            }
         }
 
         public bool UpdateExpenseCategory(ExpenseCategory expenseCategory)
         {
-            SuperShopDatabaseContext db = new SuperShopDatabaseContext();
-            db.Entry(expenseCategory).State = EntityState.Modified;
-            return db.SaveChanges() > 0;
+            using (db = new SuperShopDatabaseContext())
+            {
+                db.Entry(expenseCategory).State = EntityState.Modified;
+                return db.SaveChanges() > 0;
+            }
         }
 
         public object DeleteExpenseCategory(ExpenseCategory expenseCategory)
         {
-            SuperShopDatabaseContext db = new SuperShopDatabaseContext();
-            db.Entry(expenseCategory).State = EntityState.Deleted;
-            return db.SaveChanges() > 0;
+            using (db = new SuperShopDatabaseContext())
+            {
+                db.Entry(expenseCategory).State = EntityState.Deleted;
+                return db.SaveChanges() > 0;
+            }
         }
     }
 }

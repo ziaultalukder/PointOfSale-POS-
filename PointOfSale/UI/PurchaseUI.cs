@@ -25,10 +25,20 @@ namespace PointOfSale.UI
             purchaseDataGridView.AutoGenerateColumns = false;
 
             SuperShopDatabaseContext db = new SuperShopDatabaseContext();
+
+
+            var supplier = db.PartySetup.Where(c => c.Supplier != c.Customer);
+
+
             itemComboBox.DataSource = db.ItemSetups.ToList();
             itemComboBox.DisplayMember = "Name";
             itemComboBox.ValueMember = "Id";
             //itemComboBox.SelectedIndex = -1;
+
+
+
+            
+
 
 
             outletcomboBox.DataSource = db.Outlates.ToList();
@@ -98,7 +108,7 @@ namespace PointOfSale.UI
             purchase.TotalAmmount = Convert.ToDecimal(totalAmmountTextBox.Text);
             purchase.Due = Convert.ToDecimal(dueTextBox.Text);
             purchase.Remarks = remarksTextBox.Text;
-            purchase.Date = dateTimePicker.Value;
+            purchase.PurchaseDate = dateTimePicker.Value;
             purchase.SalesNumber = r.Next().ToString();
             purchase.OutletId = (int)outletcomboBox.SelectedValue;
             purchase.EmployeeId = (int)employeecomboBox.SelectedValue;

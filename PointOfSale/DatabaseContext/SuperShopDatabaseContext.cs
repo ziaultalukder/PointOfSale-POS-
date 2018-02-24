@@ -21,6 +21,7 @@ namespace PointOfSale.DatabaseContext
         public DbSet<Purchase> Purchases { get; set; }
         public DbSet<PurchaseItem> PurchaseItems { get; set; }
         public DbSet<Expence> Expences { get; set; }
+        public DbSet<ExpenseCategoryItems> ExpenseCategoryItems { get; set; }
         public DbSet<ExpenceItems> ExpenceItems { get; set; }
         public DbSet<Sales> Sales { get; set; }
         public DbSet<SalesItem> SalesItem { get; set; }

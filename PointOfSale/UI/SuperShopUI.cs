@@ -1,4 +1,5 @@
-﻿using PointOfSalePersonal.UI;
+﻿using PointOfSale.Models;
+using PointOfSale.Manager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,20 +9,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PointOfSalePersonal.UI;
+
 
 namespace PointOfSale.UI
 {
-    public partial class POSManagementSystem : Form
+    public partial class SuperShopUI : Form
     {
-        public POSManagementSystem()
+        public SuperShopUI()
         {
             InitializeComponent();
-        }
-
-        private void btnExpenseCategorySetup_Click(object sender, EventArgs e)
-        {
-            ExpenseCategorySetupUI expenseCategorySetup = new ExpenseCategorySetupUI();
-            expenseCategorySetup.Show();
+            timer1.Start();
+            lblCurrentTime.Text = DateTime.Now.ToLongTimeString();
+            lblDateToday.Text = DateTime.Now.ToLongDateString();
         }
 
         private void btnPartySetup_Click(object sender, EventArgs e)
@@ -60,22 +60,36 @@ namespace PointOfSale.UI
             employee.Show();
         }
 
-        private void btnExpenseItemSetup_Click(object sender, EventArgs e)
+        private void btnExpenseCategorySetup_Click(object sender, EventArgs e)
         {
-            ExpenseItemSetupUI frmSetupExpenseItem = new ExpenseItemSetupUI();
-            frmSetupExpenseItem.Show();
+            ExpenseCategorySetupUI expenseCategorySetup = new ExpenseCategorySetupUI();
+            expenseCategorySetup.Show();
         }
 
-        private void btnSalesOperations_Click(object sender, EventArgs e)
+        private void btnExpenseItemSetup_Click(object sender, EventArgs e)
         {
-            SalesUI sales = new SalesUI();
-            sales.Show();
+            ExpenseItemSetupUI setupExpenseItem = new ExpenseItemSetupUI();
+            setupExpenseItem.Show();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblCurrentTime.Text = DateTime.Now.ToLongTimeString();
+            timer1.Start();
         }
 
         private void btnExpenseOperations_Click(object sender, EventArgs e)
         {
+            //ExpenseOpUI expenseOperation = new ExpenseOpUI();
+            //expenseOperation.Show();
             ExpenceUI exp = new ExpenceUI();
             exp.Show();
+        }
+
+        private void btnSalesOperations_Click(object sender, EventArgs e)
+        {
+            SalesUI salesOperation = new SalesUI();
+            salesOperation.Show();
         }
 
         private void btnPurchaseOperations_Click(object sender, EventArgs e)
@@ -84,38 +98,35 @@ namespace PointOfSale.UI
             purchase.Show();
         }
 
-
-        private void POSManagementSystem_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblTime_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblDate_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-}
-
-
-
         private void btnPurchaseResult_Click(object sender, EventArgs e)
         {
-            PurchaseResultUI purchaseResult = new PurchaseResultUI();
-            purchaseResult.Show();
+            PurchaseUI purchaseOperation = new PurchaseUI();
+            purchaseOperation.Show();
+        }
+
+        private void btnPurchaseReport_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void btnExpenseReport_Click(object sender, EventArgs e)
         {
             ExpenceReportUI expnUI = new ExpenceReportUI();
             expnUI.Show();
+        }
+
+        private void btnIncomeReport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnStopckReport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSalesReport_Click(object sender, EventArgs e)
+        {
 
         }
     }

@@ -50,6 +50,7 @@
             this.deleteButton = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+
             this.btnCancel = new System.Windows.Forms.Button();
             this.organaizationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,6 +59,13 @@
             this.Contact = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Iamge = new System.Windows.Forms.DataGridViewTextBoxColumn();
+
+            this.sl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.organaizationPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.organaizationdataGridView)).BeginInit();
@@ -228,6 +236,7 @@
             this.organaizationdataGridView.AutoGenerateColumns = false;
             this.organaizationdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.organaizationdataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+
             this.Id,
             this.Name,
             this.Code,
@@ -236,6 +245,14 @@
             this.Iamge});
             this.organaizationdataGridView.DataSource = this.organaizationBindingSource1;
             this.organaizationdataGridView.Location = new System.Drawing.Point(12, 371);
+
+            //this.sl,
+            //this.Column1,
+            //this.Column2,
+            //this.Column3,
+            //this.Column4
+            //this.organaizationdataGridView.Location = new System.Drawing.Point(12, 414);
+
             this.organaizationdataGridView.Name = "organaizationdataGridView";
             this.organaizationdataGridView.ReadOnly = true;
             this.organaizationdataGridView.RowTemplate.Height = 50;
@@ -243,6 +260,7 @@
             this.organaizationdataGridView.Size = new System.Drawing.Size(766, 204);
             this.organaizationdataGridView.TabIndex = 3;
             this.organaizationdataGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.organaizationdataGridView_CellMouseDoubleClick);
+            this.organaizationdataGridView.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.organaizationdataGridView_RowPostPaint);
             // 
             // organaizationBindingSource1
             // 
@@ -290,6 +308,7 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Search Name";
             // 
+
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -348,6 +367,38 @@
             this.Iamge.HeaderText = "Logo";
             this.Iamge.Name = "Iamge";
             this.Iamge.ReadOnly = true;
+
+            // sl
+            // 
+            this.sl.HeaderText = "SL";
+            this.sl.Name = "sl";
+            this.sl.Width = 50;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "Name";
+            this.Column1.HeaderText = "Name";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "Code";
+            this.Column2.HeaderText = "Code";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "Contact";
+            this.Column3.HeaderText = "Contact";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "Description";
+            this.Column4.HeaderText = "Description";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 150;
+
             // 
             // Organaization
             // 
@@ -395,6 +446,7 @@
         private System.Windows.Forms.Label idLabel;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label5;
+
         private System.Windows.Forms.BindingSource organaizationBindingSource;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
@@ -407,5 +459,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Contact;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn Iamge;
+
+        private System.Windows.Forms.DataGridViewTextBoxColumn sl;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+
     }
 }

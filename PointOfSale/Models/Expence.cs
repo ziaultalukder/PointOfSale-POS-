@@ -16,7 +16,7 @@ namespace PointOfSale.Models
         public decimal Due { get; set; }
 
         [Required]
-        public DateTime Date { get; set; }
+        public DateTime ExpenceDate { get; set; }
 
 
         [Required]
