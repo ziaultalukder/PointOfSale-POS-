@@ -13,16 +13,17 @@ using System.Windows.Forms;
 
 namespace PointOfSale.UI
 {
-    public partial class FrmSetupExpenseItem : Form
+    public partial class ExpenseItemSetupUI : Form
     {
-        private void FrmSetupExpenseItem_Load(object sender, EventArgs e)
+        private void ExpenseItemSetupUI_Load(object sender, EventArgs e)
         {
-            GetDataExpenceItem();
+            
         }
-        public FrmSetupExpenseItem()
+        public ExpenseItemSetupUI()
         {
             InitializeComponent();
             GetExpenseCategoryCmbBoxItems();
+            GetDataExpenceItem();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -33,7 +34,7 @@ namespace PointOfSale.UI
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            ExpenseItem expenseItem = new ExpenseItem();
+            ExpenseCategoryItems expenseItem = new ExpenseCategoryItems();
             ExpenseItemManager expenseItemManager = new ExpenseItemManager();
 
 
@@ -64,7 +65,7 @@ namespace PointOfSale.UI
             expenseItem.Description = txtExpenseItemDescription.Text;
             expenseItem.Name =txtExpenseItemName.Text;
 
-            var row = expenseItemManager.InsertExpenseItem(expenseItem);
+            var row = expenseItemManager.InsertExpenseCategoryItems(expenseItem);
             if (row)
             {
                 MessageBox.Show("Data Inserted Successfully");
@@ -123,7 +124,7 @@ namespace PointOfSale.UI
 
         private void updateButton_Click(object sender, EventArgs e)
         {
-            ExpenseItem expenseItem = new ExpenseItem();
+            ExpenseCategoryItems expenseItem = new ExpenseCategoryItems();
             ExpenseItemManager expenseItemManager = new ExpenseItemManager();
 
 
@@ -154,7 +155,7 @@ namespace PointOfSale.UI
             expenseItem.Description = txtExpenseItemDescription.Text;
             expenseItem.Name = txtExpenseItemName.Text;
 
-            var row = expenseItemManager.UpdateExpense(expenseItem);
+            var row = expenseItemManager.UpdateExpenseCategoryItems(expenseItem);
             if (row)
             {
                 MessageBox.Show("Data Updated Successfully");

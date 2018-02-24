@@ -1,6 +1,6 @@
 ﻿namespace PointOfSale.UI
 {
-    partial class FrmSetupExpenseItem
+    partial class ExpenseItemSetupUI
     {
         /// <summary>
         /// Required designer variable.
@@ -216,7 +216,7 @@
             this.Name = "FrmSetupExpenseItem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Expense Item Setup form";
-            this.Load += new System.EventHandler(this.FrmSetupExpenseItem_Load);
+            this.Load += new System.EventHandler(this.ExpenseItemSetupUI_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdExpenseItems)).EndInit();

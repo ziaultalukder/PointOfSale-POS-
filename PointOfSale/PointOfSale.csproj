@@ -43,7 +43,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="itextsharp">
-      <HintPath>C:\Users\Ziaul\Downloads\Compressed\itextsharp-all-5.5.10\itextsharp-dll-core\itextsharp.dll</HintPath>
+      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -128,11 +128,15 @@
     <Compile Include="Migrations\201802240807240_SalesModel_Subtotal_Field_Added.cs" />
     <Compile Include="Migrations\201802240807240_SalesModel_Subtotal_Field_Added.Designer.cs">
       <DependentUpon>201802240807240_SalesModel_Subtotal_Field_Added.cs</DependentUpon>
+    <Compile Include="Migrations\201802240731148_uptadeExpenseCategory.cs" />
+    <Compile Include="Migrations\201802240731148_uptadeExpenseCategory.Designer.cs">
+      <DependentUpon>201802240731148_uptadeExpenseCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Expence.cs" />
     <Compile Include="Models\ExpenceItems.cs" />
+    <Compile Include="Models\ExpenseCategoryItems.cs" />
     <Compile Include="Models\ExpenseItem.cs" />
     <Compile Include="Models\ItemSetups.cs" />
     <Compile Include="Models\Organaization.cs" />
@@ -164,26 +168,38 @@
     <Compile Include="UI\ExpenceUI.Designer.cs">
       <DependentUpon>ExpenceUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmExpenseCategorySetup.cs">
+    <Compile Include="UI\ExpenseCategorySetupUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmExpenseCategorySetup.designer.cs">
-      <DependentUpon>FrmExpenseCategorySetup.cs</DependentUpon>
+    <Compile Include="UI\ExpenseCategorySetupUI.designer.cs">
+      <DependentUpon>ExpenseCategorySetupUI.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\PartySetup.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\FrmSetupExpenseItem.cs">
+    <Compile Include="UI\ExpenseOpUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmSetupExpenseItem.Designer.cs">
-      <DependentUpon>FrmSetupExpenseItem.cs</DependentUpon>
+    <Compile Include="UI\ExpenseOpUI.designer.cs">
+      <DependentUpon>ExpenseOpUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ExpenseItemSetupUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ExpenseItemSetupUI.Designer.cs">
+      <DependentUpon>ExpenseItemSetupUI.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\ItemSetup.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\ItemSetup.Designer.cs">
       <DependentUpon>ItemSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LogInUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LogInUI.designer.cs">
+      <DependentUpon>LogInUI.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Organaization.cs">
       <SubType>Form</SubType>
@@ -233,6 +249,12 @@
     <Compile Include="UI\SetupItemCatagory.Designer.cs">
       <DependentUpon>SetupItemCatagory.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\SuperShopUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SuperShopUI.designer.cs">
+      <DependentUpon>SuperShopUI.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Migrations\201802031821544_PartySetup.resx">
       <DependentUpon>201802031821544_PartySetup.cs</DependentUpon>
     </EmbeddedResource>
@@ -277,6 +299,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802240807240_SalesModel_Subtotal_Field_Added.resx">
       <DependentUpon>201802240807240_SalesModel_Subtotal_Field_Added.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201802240731148_uptadeExpenseCategory.resx">
+      <DependentUpon>201802240731148_uptadeExpenseCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\EmployeeUI.resx">
       <DependentUpon>EmployeeUI.cs</DependentUpon>
@@ -287,8 +311,8 @@
     <EmbeddedResource Include="UI\ExpenceUI.resx">
       <DependentUpon>ExpenceUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmExpenseCategorySetup.resx">
-      <DependentUpon>FrmExpenseCategorySetup.cs</DependentUpon>
+    <EmbeddedResource Include="UI\ExpenseCategorySetupUI.resx">
+      <DependentUpon>ExpenseCategorySetupUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -300,11 +324,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UI\FrmSetupExpenseItem.resx">
-      <DependentUpon>FrmSetupExpenseItem.cs</DependentUpon>
+    <EmbeddedResource Include="UI\ExpenseOpUI.resx">
+      <DependentUpon>ExpenseOpUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ExpenseItemSetupUI.resx">
+      <DependentUpon>ExpenseItemSetupUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ItemSetup.resx">
       <DependentUpon>ItemSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LogInUI.resx">
+      <DependentUpon>LogInUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Organaization.resx">
       <DependentUpon>Organaization.cs</DependentUpon>
@@ -329,6 +359,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SetupItemCatagory.resx">
       <DependentUpon>SetupItemCatagory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SuperShopUI.resx">
+      <DependentUpon>SuperShopUI.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="bin\Debug\PointOfSale.exe.config" />
     <None Include="bin\Debug\PointOfSale.vshost.exe.config" />
