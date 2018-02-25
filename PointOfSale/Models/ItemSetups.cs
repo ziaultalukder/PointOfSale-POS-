@@ -17,5 +17,6 @@ namespace PointOfSale.Models
         public byte[] Image { get; set; }
         public int CatagoryId { get; set; }
         public SetupItemCatagory Catagory { get; set; }
+        public bool  IsDeleteMode { get; set; }
     }
 }

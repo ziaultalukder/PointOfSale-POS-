@@ -18,19 +18,22 @@ namespace PointOfSale.UI
 {
     public partial class ItemSetup : Form
     {
+        Models.ItemSetups itemSetup = new Models.ItemSetups();
+        SuperShopDatabaseContext db = new SuperShopDatabaseContext();
+        ItemSetupManager itemSetupManager = new ItemSetupManager();
         public ItemSetup()
         {
             InitializeComponent();
+            ShowLastCode();
         }
         
         private void ItemSetup_Load(object sender, EventArgs e)
         {
-            SuperShopDatabaseContext db = new SuperShopDatabaseContext();
             catagoryComboBox.DataSource = db.SetupItemCatagories.ToList();
             catagoryComboBox.DisplayMember = "Name";
             catagoryComboBox.ValueMember = "Id";
 
-
+            ClearAllForm();
             GetAllDataItemPartySetup();
         }
         private void browserButton_Click(object sender, EventArgs e)
@@ -58,69 +61,75 @@ namespace PointOfSale.UI
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-
-            
-            
-            Models.ItemSetups itemSetup = new Models.ItemSetups();
-            itemSetup.Name = nameTextBox.Text;
-            itemSetup.CostPrice =Convert.ToDouble(costPriceTextBox.Text);
-            itemSetup.SalesPrice = Convert.ToDouble(salesPriceTextBox.Text);
-            itemSetup.Code = codeTextBox.Text;
-            itemSetup.Description = descriptionTextBox.Text;
-            itemSetup.Image = ConvertToFileByte(this.itemPictureBox.ImageLocation);
-            itemSetup.CatagoryId = (int)catagoryComboBox.SelectedValue;
-
-            ItemSetupManager itemSetupManager = new ItemSetupManager();
+            Random ran = new Random();
+            if (IsFormValidated())
+            {
+                itemSetup.Name = nameTextBox.Text;
+                itemSetup.CostPrice = Convert.ToDouble(costPriceTextBox.Text);
+                itemSetup.SalesPrice = Convert.ToDouble(salesPriceTextBox.Text);
+                itemSetup.Code = ran.Next().ToString();
+                itemSetup.Description = descriptionTextBox.Text;
+                itemSetup.Image = ConvertToFileByte(this.itemPictureBox.ImageLocation);
+                itemSetup.CatagoryId = (int) catagoryComboBox.SelectedValue;
 
 
+                //if (IsFormValidated()) return;
+                updateButton.Enabled = false;
+                deleteButton.Enabled = false;
+
+
+                var row = itemSetupManager.InsertSetupItemCatagory(itemSetup);
+                if (row)
+                {
+                    MessageBox.Show("Item Setup Added");
+                    GetAllDataItemPartySetup();
+                }
+                else
+                {
+                    MessageBox.Show("Item Setup Added Faild");
+                }
+                ClearAllForm();
+            }
+        }
+
+        private bool IsFormValidated()
+        {
             if (string.IsNullOrEmpty(catagoryComboBox.Text))
             {
                 MessageBox.Show("Please Select A Catagory");
-                return;
+                return true;
             }
-            else if (string.IsNullOrEmpty(nameTextBox.Text))
+            if (string.IsNullOrEmpty(nameTextBox.Text))
             {
                 MessageBox.Show("Name Field Empty");
-                return;
+                return true;
             }
-            else if (costPriceTextBox.Text == String.Empty)
+            if (costPriceTextBox.Text == String.Empty)
             {
                 MessageBox.Show("Cost Price Field Empty");
-                return;
+                return true;
             }
-            else if (salesPriceTextBox.Text == String.Empty)
+            if (salesPriceTextBox.Text == String.Empty)
             {
                 MessageBox.Show("Sales Price Field Empty");
-                return;
+                return true;
             }
-            else if (string.IsNullOrEmpty(codeTextBox.Text))
-            {
-                MessageBox.Show("Code Field Empty");
-                return;
-            }
-            else if (itemSetup.Code.Length <= 6)
-            {
-                MessageBox.Show("Security Code Must Be 6 Disit");
-                return;
-            }
-            else if (string.IsNullOrEmpty(descriptionTextBox.Text))
+            //else if (string.IsNullOrEmpty(codeTextBox.Text))
+            //{
+            //    MessageBox.Show("Code Field Empty");
+            //    return;
+            //}
+            //else if (itemSetup.Code.Length <= 6)
+            //{
+            //    MessageBox.Show("Security Code Must Be 6 Disit");
+            //    return;
+            //}
+            if (string.IsNullOrEmpty(descriptionTextBox.Text))
             {
                 MessageBox.Show("description Field Empty");
-                return;
+                return true;
             }
-            
-
-
-            var row = itemSetupManager.InsertSetupItemCatagory(itemSetup);
-            if (row)
-            {
-                MessageBox.Show("Item Setup Added");
-                GetAllDataItemPartySetup();
-            }
-            else
-            {
-                MessageBox.Show("Item Setup Added Faild");
-            }
+            return true;
         }
 
         private void viewButton_Click(object sender, EventArgs e)
@@ -130,7 +139,6 @@ namespace PointOfSale.UI
 
         private void GetAllDataItemPartySetup()
         {
-            SuperShopDatabaseContext db = new SuperShopDatabaseContext();
             //itmeSetupDataGridView.DataSource = db.SetupItem.ToList();
 
             var allItems = (from item in db.ItemSetups
@@ -165,6 +173,9 @@ namespace PointOfSale.UI
 
             catagoryCodeTextBox.Text = itmeSetupDataGridView.SelectedRows[0].Cells[8].Value.ToString();
 
+            updateButton.Enabled = true;
+            deleteButton.Enabled = true;
+
         }
 
         private void itmeSetupDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -172,16 +183,15 @@ namespace PointOfSale.UI
             
         }
 
-        private void catagoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string valueCode = catagoryComboBox.Text;
-            SuperShopDatabaseContext db = new SuperShopDatabaseContext();
-            var catagoryCode = from codeValue in db.SetupItemCatagories
-                               where codeValue.Code == valueCode
-                               select codeValue;
+        //private void catagoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    string valueCode = catagoryComboBox.Text;
+        //    var catagoryCode = from codeValue in db.SetupItemCatagories
+        //                       where codeValue.Code == valueCode
+        //                       select codeValue;
 
-            catagoryCodeTextBox.Text = catagoryCode.ToString();
-        }
+        //    catagoryCodeTextBox.Text = catagoryCode.ToString();
+        //}
 
         private void costPriceTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -201,78 +211,83 @@ namespace PointOfSale.UI
 
         private void updateButton_Click(object sender, EventArgs e)
         {
-            
-
-            Models.ItemSetups itemSetup = new Models.ItemSetups();
-            itemSetup.Id = Convert.ToInt32(idLabel.Text);
-            itemSetup.Name = nameTextBox.Text;
-            itemSetup.CostPrice = Convert.ToDouble(costPriceTextBox.Text);
-            itemSetup.SalesPrice = Convert.ToDouble(salesPriceTextBox.Text);
-            itemSetup.Code = codeTextBox.Text;
-            itemSetup.Description = descriptionTextBox.Text;
-            itemSetup.Image = ConvertToFileByte(this.itemPictureBox.ImageLocation);
-            itemSetup.CatagoryId = (int)catagoryComboBox.SelectedValue;
-
-            ItemSetupManager itemSetupManager = new ItemSetupManager();
-
-
-
-            if (string.IsNullOrEmpty(catagoryComboBox.Text))
+            if (IsFormValidated())
             {
-                MessageBox.Show("Please Select A Catagory");
-                return;
-            }
-            else if (string.IsNullOrEmpty(nameTextBox.Text))
-            {
-                MessageBox.Show("Name Field Empty");
-                return;
-            }
-            else if (costPriceTextBox.Text == String.Empty)
-            {
-                MessageBox.Show("Cost Price Field Empty");
-                return;
-            }
-            else if (salesPriceTextBox.Text == String.Empty)
-            {
-                MessageBox.Show("Sales Price Field Empty");
-                return;
-            }
-            else if (string.IsNullOrEmpty(codeTextBox.Text))
-            {
-                MessageBox.Show("Code Field Empty");
-                return;
-            }
-            else if (itemSetup.Code.Length <= 6)
-            {
-                MessageBox.Show("Security Code Must Be 6 Disit");
-                return;
-            }
-            else if (string.IsNullOrEmpty(descriptionTextBox.Text))
-            {
-                MessageBox.Show("description Field Empty");
-                return;
-            }
+                Models.ItemSetups itemSetup = new Models.ItemSetups();
+                itemSetup.Id = Convert.ToInt32(idLabel.Text);
+                itemSetup.Name = nameTextBox.Text;
+                itemSetup.CostPrice = Convert.ToDouble(costPriceTextBox.Text);
+                itemSetup.SalesPrice = Convert.ToDouble(salesPriceTextBox.Text);
+                itemSetup.Code = codeTextBox.Text;
+                itemSetup.Description = descriptionTextBox.Text;
+                itemSetup.Image = ConvertToFileByte(this.itemPictureBox.ImageLocation);
+                itemSetup.CatagoryId = (int) catagoryComboBox.SelectedValue;
 
+                updateButton.Enabled = true;
+                deleteButton.Enabled = true;
 
-
-
-            var row = itemSetupManager.UpdateSetupItemCatagory(itemSetup);
-            if (row)
-            {
-                MessageBox.Show("Item Setup Updated Successfully");
-                GetAllDataItemPartySetup();
-            }
-            else
-            {
-                MessageBox.Show("Item Setup Updated Faild");
+                var row = itemSetupManager.UpdateSetupItemCatagory(itemSetup);
+                if (row)
+                {
+                    MessageBox.Show("Item Setup Updated Successfully");
+                    GetAllDataItemPartySetup();
+                }
+                else
+                {
+                    MessageBox.Show("Item Setup Updated Faild");
+                }
+                ClearAllForm();
             }
         }
 
-        private void catagoryComboBox_SelectionChangeCommitted(object sender, EventArgs e)
+        private void ClearAllForm()
         {
-            SuperShopDatabaseContext db = new SuperShopDatabaseContext();
-
-            int catId = (int)catagoryComboBox.SelectedValue;
+            catagoryComboBox.SelectedValue = -1;
+            nameTextBox.Clear();
+            costPriceTextBox.Clear();
+            salesPriceTextBox.Clear();
+            codeTextBox.Clear();
+            descriptionTextBox.Clear();
+            itemPictureBox.Image = null;
+            updateButton.Enabled = false;
+            deleteButton.Enabled = false;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ClearAllForm();
+        }
+
+        private void ShowLastCode()
+        {
+            var shows = db.ItemSetups.Max(c => c.Id);
+            var result = db.ItemSetups.Where(c => c.Code == shows.ToString());
+            codeTextBox.Text = result.ToString();
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are You Sure to Delete this Record ?", "Organization", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                int id = (int)itmeSetupDataGridView.SelectedRows[0].Cells["Id"].Value;
+                if (db.ItemSetups.FirstOrDefault(c => c.Id == id) != null)
+                {
+                    itemSetup.IsDeleteMode = true;
+                    db.SaveChanges();
+                }
+            }
+            ClearAllForm();
+            GetAllDataItemPartySetup();
+        }
+
+        //private void catagoryComboBox_SelectionChangeCommitted(object sender, EventArgs e)
+        //{
+        //    string valueCode = catagoryComboBox.Text;
+        //    var catagoryCode = from codeValue in db.SetupItemCatagories
+        //                       where codeValue.Code == valueCode
+        //                       select codeValue;
+
+        //    catagoryCodeTextBox.Text = catagoryCode.ToString();
+        //}
     }
 }

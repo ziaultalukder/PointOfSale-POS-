@@ -50,6 +50,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.idLabel = new System.Windows.Forms.Label();
             this.costPriceRrrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.itmeSetupDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.costPriceRrrorProvider)).BeginInit();
@@ -57,21 +58,24 @@
             // 
             // itmeSetupDataGridView
             // 
+            this.itmeSetupDataGridView.AllowUserToAddRows = false;
+            this.itmeSetupDataGridView.AllowUserToDeleteRows = false;
             this.itmeSetupDataGridView.ColumnHeadersHeight = 33;
-            this.itmeSetupDataGridView.Location = new System.Drawing.Point(25, 416);
+            this.itmeSetupDataGridView.Location = new System.Drawing.Point(25, 382);
             this.itmeSetupDataGridView.Name = "itmeSetupDataGridView";
+            this.itmeSetupDataGridView.ReadOnly = true;
             this.itmeSetupDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.itmeSetupDataGridView.Size = new System.Drawing.Size(861, 222);
+            this.itmeSetupDataGridView.Size = new System.Drawing.Size(861, 191);
             this.itmeSetupDataGridView.TabIndex = 30;
             this.itmeSetupDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.itmeSetupDataGridView_CellClick);
             this.itmeSetupDataGridView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.itmeSetupDataGridView_MouseDoubleClick);
             // 
             // itemPictureBox
             // 
-            this.itemPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.itemPictureBox.Location = new System.Drawing.Point(497, 25);
+            this.itemPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.itemPictureBox.Location = new System.Drawing.Point(683, 12);
             this.itemPictureBox.Name = "itemPictureBox";
-            this.itemPictureBox.Size = new System.Drawing.Size(270, 262);
+            this.itemPictureBox.Size = new System.Drawing.Size(203, 189);
             this.itemPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.itemPictureBox.TabIndex = 28;
             this.itemPictureBox.TabStop = false;
@@ -79,7 +83,7 @@
             // browserButton
             // 
             this.browserButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.browserButton.Location = new System.Drawing.Point(562, 307);
+            this.browserButton.Location = new System.Drawing.Point(738, 228);
             this.browserButton.Name = "browserButton";
             this.browserButton.Size = new System.Drawing.Size(148, 40);
             this.browserButton.TabIndex = 26;
@@ -90,17 +94,18 @@
             // deleteButton
             // 
             this.deleteButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteButton.Location = new System.Drawing.Point(267, 360);
+            this.deleteButton.Location = new System.Drawing.Point(396, 324);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(109, 40);
             this.deleteButton.TabIndex = 25;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // updateButton
             // 
             this.updateButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateButton.Location = new System.Drawing.Point(146, 360);
+            this.updateButton.Location = new System.Drawing.Point(275, 324);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(109, 40);
             this.updateButton.TabIndex = 24;
@@ -111,7 +116,7 @@
             // saveButton
             // 
             this.saveButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveButton.Location = new System.Drawing.Point(25, 360);
+            this.saveButton.Location = new System.Drawing.Point(26, 324);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(109, 40);
             this.saveButton.TabIndex = 27;
@@ -125,7 +130,7 @@
             this.descriptionTextBox.Location = new System.Drawing.Point(127, 238);
             this.descriptionTextBox.Multiline = true;
             this.descriptionTextBox.Name = "descriptionTextBox";
-            this.descriptionTextBox.Size = new System.Drawing.Size(320, 94);
+            this.descriptionTextBox.Size = new System.Drawing.Size(320, 61);
             this.descriptionTextBox.TabIndex = 22;
             // 
             // label6
@@ -143,6 +148,7 @@
             this.codeTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.codeTextBox.Location = new System.Drawing.Point(127, 197);
             this.codeTextBox.Name = "codeTextBox";
+            this.codeTextBox.ReadOnly = true;
             this.codeTextBox.Size = new System.Drawing.Size(149, 27);
             this.codeTextBox.TabIndex = 21;
             // 
@@ -211,8 +217,6 @@
             this.catagoryComboBox.Name = "catagoryComboBox";
             this.catagoryComboBox.Size = new System.Drawing.Size(320, 29);
             this.catagoryComboBox.TabIndex = 31;
-            this.catagoryComboBox.SelectedIndexChanged += new System.EventHandler(this.catagoryComboBox_SelectedIndexChanged);
-            this.catagoryComboBox.SelectionChangeCommitted += new System.EventHandler(this.catagoryComboBox_SelectionChangeCommitted);
             // 
             // catagoryCodeTextBox
             // 
@@ -256,15 +260,27 @@
             // 
             this.costPriceRrrorProvider.ContainerControl = this;
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(150, 324);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(109, 40);
+            this.button1.TabIndex = 25;
+            this.button1.Text = "Cancel";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // ItemSetup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(924, 672);
+            this.ClientSize = new System.Drawing.Size(914, 586);
             this.Controls.Add(this.catagoryComboBox);
             this.Controls.Add(this.itmeSetupDataGridView);
             this.Controls.Add(this.itemPictureBox);
             this.Controls.Add(this.browserButton);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.updateButton);
             this.Controls.Add(this.saveButton);
@@ -316,5 +332,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label idLabel;
         private System.Windows.Forms.ErrorProvider costPriceRrrorProvider;
+        private System.Windows.Forms.Button button1;
     }
 }

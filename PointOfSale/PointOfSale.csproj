@@ -78,6 +78,10 @@
     <Compile Include="Migrations\201802242244479_organization.Designer.cs">
       <DependentUpon>201802242244479_organization.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802251618023_itemsetup.cs" />
+    <Compile Include="Migrations\201802251618023_itemsetup.Designer.cs">
+      <DependentUpon>201802251618023_itemsetup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Expence.cs" />
@@ -207,6 +211,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802242244479_organization.resx">
       <DependentUpon>201802242244479_organization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802251618023_itemsetup.resx">
+      <DependentUpon>201802251618023_itemsetup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\EmployeeUI.resx">
       <DependentUpon>EmployeeUI.cs</DependentUpon>

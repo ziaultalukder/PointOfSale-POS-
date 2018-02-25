@@ -18,6 +18,7 @@ namespace PointOfSale.UI
     {
         SuperShopDatabaseContext db = new SuperShopDatabaseContext();
         Models.SetupItemCatagory setupItemCatagory = new Models.SetupItemCatagory();
+        SetupItemCatagoryManager setupItemManager = new SetupItemCatagoryManager();
         public SetupItemCatagory()
         {
             InitializeComponent();
@@ -61,65 +62,75 @@ namespace PointOfSale.UI
         {
             itemCatagoryComboBox.Show();
         }
+
         private void Savebutton_Click(object sender, EventArgs e)
         {
-
-            
-
-            setupItemCatagory.Name = nameTextBox.Text;
-            setupItemCatagory.Code = codeTextBox.Text;
-            setupItemCatagory.Description = descriptionTextBox.Text;
-           // setupItemCatagory.Id = codeTextBox.Text;
-            setupItemCatagory.Image = ConvertToFileByte(this.itemCatagoryPictureBox.ImageLocation);
-            setupItemCatagory.CatagoryType = radRootCategory.Checked ? "Parent" : "Child";
-            if (itemCatagoryComboBox.Text == "")
+            Random r = new Random();
+            if (IsFormValidated())
             {
                 setupItemCatagory.Name = nameTextBox.Text;
+
+                if (setupItemManager.IsNameAlreadyExist(setupItemCatagory.Name))
+                {
+                    MessageBox.Show("Setup Item Catagory Name Already Exist");
+                }
+
+                setupItemCatagory.Code = r.Next().ToString();
+                setupItemCatagory.Description = descriptionTextBox.Text;
+                // setupItemCatagory.Id = codeTextBox.Text;
+                setupItemCatagory.Image = ConvertToFileByte(this.itemCatagoryPictureBox.ImageLocation);
+                setupItemCatagory.CatagoryType = radRootCategory.Checked ? "Parent" : "Child";
+                if (itemCatagoryComboBox.Text == "")
+                {
+                    setupItemCatagory.Name = nameTextBox.Text;
+                }
+                else
+                {
+                    setupItemCatagory.CatagoryId = (int) itemCatagoryComboBox.SelectedValue;
+                }
+
+                //if (IsFormValidated()) return;
+
+                var row = setupItemManager.InsertSetupItemCatagory(setupItemCatagory);
+                if (row)
+                {
+                    MessageBox.Show("Setup Item Catagory Inserted");
+                }
+                else
+                {
+                    MessageBox.Show("Setup Item Catagory Inserted Failed");
+                }
+                btnDelete.Enabled = false;
+                GetSetupItemCatagory();
             }
-            else
-            {
-                setupItemCatagory.CatagoryId = (int)itemCatagoryComboBox.SelectedValue;
-            }
+        }
 
-            SetupItemCatagoryManager setupItemManager = new SetupItemCatagoryManager();
-
-
+        private bool IsFormValidated()
+        {
             if (string.IsNullOrEmpty(nameTextBox.Text))
             {
                 MessageBox.Show("Name Field Empty");
-                return;
+                return false;
             }
-            else if (string.IsNullOrEmpty(codeTextBox.Text))
-            {
-                MessageBox.Show("Code Field Empty");
-                return;
-            }
-            else if (setupItemCatagory.Code.Length <= 6)
-            {
-                MessageBox.Show("Security Code Must Be 6 Disit");
-                return;
-            }
-            else if (string.IsNullOrEmpty(descriptionTextBox.Text))
+            //if (string.IsNullOrEmpty(codeTextBox.Text))
+            //{
+            //    MessageBox.Show("Code Field Empty");
+            //    return false;
+            //}
+            //if (setupItemCatagory.Code.Length <= 6)
+            //{
+            //    MessageBox.Show("Security Code Must Be 6 Disit");
+            //    return false;
+            //}
+            if (string.IsNullOrEmpty(descriptionTextBox.Text))
             {
                 MessageBox.Show("Description Field Empty");
-                return;
+                return false;
             }
             
-
-
-            var row = setupItemManager.InsertSetupItemCatagory(setupItemCatagory);
-            if (row)
-            {
-                MessageBox.Show("Setup Item Catagory Inserted");
-            }
-            else
-            {
-                MessageBox.Show("Setup Item Catagory Inserted Failed");
-            }
-            btnDelete.Enabled = false;
-            GetSetupItemCatagory();
+            return true;
         }
-        
+
         private void SetupItemCatagory_Load(object sender, EventArgs e)
         {
             SuperShopDatabaseContext db = new SuperShopDatabaseContext();
@@ -140,6 +151,7 @@ namespace PointOfSale.UI
         {
             
             setupItemCatagoryDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            //setupItemCatagoryDataGridView = DataGridViewImageCellLayout.Stretch;
             setupItemCatagoryDataGridView.RowTemplate.Height = 50;
             setupItemCatagoryDataGridView.AllowUserToAddRows = false;
 
@@ -156,6 +168,7 @@ namespace PointOfSale.UI
                             CatagoryType = c.CatagoryType,
                             CatagoryId = c.CatagoryId
                         }).ToList();
+            // = DataGridViewImageCellLayout.Stretch;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)

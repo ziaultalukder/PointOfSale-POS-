@@ -30,6 +30,7 @@
         {
             this.SetupItemCategory = new System.Windows.Forms.GroupBox();
             this.itemCatagoryPictureBox = new System.Windows.Forms.PictureBox();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.imageBrowseButton = new System.Windows.Forms.Button();
@@ -47,7 +48,6 @@
             this.radChildCategory = new System.Windows.Forms.RadioButton();
             this.radRootCategory = new System.Windows.Forms.RadioButton();
             this.setupItemCatagoryDataGridView = new System.Windows.Forms.DataGridView();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.SetupItemCategory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemCatagoryPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.setupItemCatagoryDataGridView)).BeginInit();
@@ -90,6 +90,16 @@
             this.itemCatagoryPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.itemCatagoryPictureBox.TabIndex = 6;
             this.itemCatagoryPictureBox.TabStop = false;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(397, 262);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(82, 38);
+            this.btnCancel.TabIndex = 5;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnDelete
             // 
@@ -146,6 +156,7 @@
             this.codeTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.codeTextBox.Location = new System.Drawing.Point(189, 141);
             this.codeTextBox.Name = "codeTextBox";
+            this.codeTextBox.ReadOnly = true;
             this.codeTextBox.Size = new System.Drawing.Size(249, 27);
             this.codeTextBox.TabIndex = 3;
             // 
@@ -254,6 +265,7 @@
             // 
             // setupItemCatagoryDataGridView
             // 
+            this.setupItemCatagoryDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.setupItemCatagoryDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.setupItemCatagoryDataGridView.Location = new System.Drawing.Point(23, 367);
             this.setupItemCatagoryDataGridView.Name = "setupItemCatagoryDataGridView";
@@ -261,16 +273,6 @@
             this.setupItemCatagoryDataGridView.Size = new System.Drawing.Size(744, 234);
             this.setupItemCatagoryDataGridView.TabIndex = 3;
             this.setupItemCatagoryDataGridView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.setupItemCatagoryDataGridView_MouseDoubleClick);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(397, 262);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(82, 38);
-            this.btnCancel.TabIndex = 5;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // SetupItemCatagory
             // 
