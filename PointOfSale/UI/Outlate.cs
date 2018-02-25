@@ -27,6 +27,9 @@ namespace PointOfSale.UI
             outlateComboBox.DisplayMember = "Name";
             outlateComboBox.ValueMember = "Id";
 
+            deleteButton.Enabled = false;
+            updateButton.Enabled = false;
+
             GetOutlateValue();
             Clear();
         }
@@ -101,6 +104,8 @@ namespace PointOfSale.UI
             {
                 MessageBox.Show("Outlate Inserted Failed");
             }
+            deleteButton.Enabled = false;
+            updateButton.Enabled = false;
             Clear();
         }
 
@@ -161,17 +166,22 @@ namespace PointOfSale.UI
             {
                 MessageBox.Show("Outlate Updated Failed");
             }
+            deleteButton.Enabled = true;
+            updateButton.Enabled = true;
             Clear();
         }
 
         private void outlateDataGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            
             idLabel.Text = outlateDataGridView.SelectedRows[0].Cells[0].Value.ToString();
             nameTextBox.Text = outlateDataGridView.SelectedRows[0].Cells[1].Value.ToString();
             codeTextBox.Text = outlateDataGridView.SelectedRows[0].Cells[2].Value.ToString();
             contactTextBox.Text = outlateDataGridView.SelectedRows[0].Cells[3].Value.ToString();
             addressTextBox.Text = outlateDataGridView.SelectedRows[0].Cells[4].Value.ToString();
             outlateComboBox.Text = outlateDataGridView.SelectedRows[0].Cells[5].Value.ToString();
+            deleteButton.Enabled = true;
+            updateButton.Enabled = true;
         }
 
         private void searchTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -198,6 +208,8 @@ namespace PointOfSale.UI
         private void Clear()
         {
             nameTextBox.Text = outlateComboBox.Text = codeTextBox .Text = contactTextBox.Text = addressTextBox.Text = "";
+            //deleteButton.Enabled = false;
+            //updateButton.Enabled = false;
         }
     }
 }

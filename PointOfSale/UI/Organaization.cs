@@ -202,10 +202,10 @@ namespace PointOfSale.UI
 
         private void organaizationdataGridView_DoubleClick(object sender, EventArgs e)
         {
-            if (organaizationdataGridView.CurrentRow !=null)
+            if (organaizationdataGridView.CurrentRow != null)
             {
-                int id = Convert.ToInt32(organaizationdataGridView.CurrentRow.Cells["Id"].Value);
-                var getDgv = db.Organaization.FirstOrDefault(c => c.Id == id);
+                int dgvIndex = (int)organaizationdataGridView.CurrentRow.Cells["Id"].Value;
+                var getDgv = db.Organaization.FirstOrDefault(c => c.Id == dgvIndex);
                 organaization = getDgv;
                 if (organaization != null)
                 {
@@ -213,7 +213,7 @@ namespace PointOfSale.UI
                     codeTextBox.Text = organaization.Code;
                     contactTextBox.Text = organaization.Contact;
                     addressTextBox.Text = organaization.Description;
-                    if (organaization.Image !=null)
+                    if (organaization.Image != null)
                     {
                         GetPhoto();
                     }
@@ -224,6 +224,20 @@ namespace PointOfSale.UI
                 }
                 SetFormUpdateMode();
             }
+            //nameTextBox.Text = organaizationdataGridView.SelectedRows[0].Cells[0].Value.ToString();
+            //codeTextBox.Text = organaizationdataGridView.SelectedRows[0].Cells[1].Value.ToString();
+            //contactTextBox.Text = organaizationdataGridView.SelectedRows[0].Cells[2].Value.ToString();
+            //addressTextBox.Text = organaizationdataGridView.SelectedRows[0].Cells[3].Value.ToString();
+            //if (organaizationdataGridView.SelectedRows[0].Cells[4].Value != null)
+            //{
+            //    GetPhoto();
+            //}
+            //else
+            //{
+            //    organaizationPictureBox.Image = null;
+            //}
+            ////organaizationPictureBox.Image = organaizationdataGridView.SelectedRows[0].Cells[4].Value.ToString();
+            //SetFormUpdateMode();
         }
 
         private void SetFormUpdateMode()

@@ -42,32 +42,6 @@ namespace PointOfSale.UI
             ClearAllForm();
         }
 
-        private void GetEmployeeValue()
-        {
-            //SuperShopDatabaseContext db = new SuperShopDatabaseContext();
-            //dgvEmployees.DataSource = db.Employee.ToList();
-
-            //var allEmployee = (from empl in db.Employee join outlate in db.Outlates on empl.Id equals outlate.Id
-            //                   select new
-            //                   {
-            //                       SL = empl.Id,
-            //                       empl.Name,
-            //                       empl.Code,
-            //                       empl.Contact,
-            //                       empl.Email,
-            //                       empl.JoinintDate,
-            //                       empl.EmergencyNumber,
-            //                       empl.FatherName,
-            //                       empl.MotherName,
-            //                       empl.Nid,
-            //                       empl.PresentAddress,
-            //                       empl.PermanentAddress,
-            //                       empl.Image,
-            //                       OutlateName = outlate.Name
-            //                   }).ToList(); 
-            //dataGridView1.DataSource = allEmployee;
-        }
-
         private void BrowseButton_Click(object sender, EventArgs e)
         {
             string photo = null;
@@ -80,29 +54,12 @@ namespace PointOfSale.UI
                 photo = ofd.FileName;
                 employeePictureBox.ImageLocation = photo;
             }
-            //OpenFileDialog openFileDialog = new OpenFileDialog();
-            //openFileDialog.Title = "Please Select Image";
-            //openFileDialog.Filter = "JPG|*.jpg|PNG|*.png|GIF|*gif";
             ofd.Multiselect = false;
-
-            //if (openFileDialog.ShowDialog() == DialogResult.OK)
-            //{
-            //    this.employeePictureBox.ImageLocation = openFileDialog.FileName;
-            //}
             FileStream fs = new FileStream(photo , FileMode.Open,FileAccess.Read);
             BinaryReader br = new BinaryReader(fs);
             employee.Image = br.ReadBytes((int) fs.Length);
         }
-        //private byte[] ConvertToFileByte(string iPath)
-        //{
-        //    //byte[] data = null;
-        //    //FileInfo info = new FileInfo(iPath);
-        //    //long numByte = info.Length;
-        //    //FileStream fileStream = new FileStream(iPath, FileMode.Open, FileAccess.Read);
-        //    //BinaryReader Br = new BinaryReader(fileStream);
-        //    //data = Br.ReadBytes((int)numByte);
-        //    //return data;
-        //}
+        
 
         private void saveButton_Click(object sender, EventArgs e)
         {
@@ -152,98 +109,6 @@ namespace PointOfSale.UI
             }
             LoadDataGridView();
             ClearAllForm();
-           // Models.Employee employee = new Models.Employee();
-            //employee.Name = nameTextBox.Text;
-            //employee.Code = codeTextBox.Text;
-            //employee.Contact = contactTextBox.Text;
-            //employee.Email = emailTextBox.Text;
-            //employee.JoinintDate = joiningDateTimePicker.Value;
-            //employee.EmergencyNumber = emergencyTextBox.Text;
-            //employee.FatherName = fatherNameTextBox.Text;
-            //employee.MotherName = motherTextBox.Text;
-            //employee.Nid = nidTextBox.Text;
-            //employee.PresentAddress = presenTextBox.Text;
-            //employee.PermanentAddress = permanentTextBox.Text;
-            //employee.Image = ConvertToFileByte(this.employeePictureBox.ImageLocation);
-            //employee.OutlateId = (int)outlateComboBox.SelectedValue;
-
-            //EmployeeManager employeeManager = new EmployeeManager();
-
-
-
-            //if (string.IsNullOrEmpty(outlateComboBox.Text))
-            //{
-            //    MessageBox.Show("Please Select an Outlate");
-            //    return;
-            //}
-            //else if (string.IsNullOrEmpty(nameTextBox.Text))
-            //{
-            //    MessageBox.Show("Name Field Empty");
-            //    return;
-            //}
-            //else if (contactTextBox.Text == String.Empty)
-            //{
-            //    MessageBox.Show("Contact Field Empty");
-            //    return;
-            //}
-            //else if (emergencyTextBox.Text == String.Empty)
-            //{
-            //    MessageBox.Show("Emergency Field Empty");
-            //    return;
-            //}
-            //else if (string.IsNullOrEmpty(codeTextBox.Text))
-            //{
-            //    MessageBox.Show("Code Field Empty");
-            //    return;
-            //}
-            //else if (employee.Code.Length <= 6)
-            //{
-            //    MessageBox.Show("Security Code Must Be 6 Disit");
-            //    return;
-            //}
-            //else if (string.IsNullOrEmpty(presenTextBox.Text))
-            //{
-            //    MessageBox.Show("Presentation Field Empty");
-            //    return;
-            //}
-            //else if (string.IsNullOrEmpty(permanentTextBox.Text))
-            //{
-            //    MessageBox.Show("Permanent Address Field Empty");
-            //    return;
-            //}
-            //else if (string.IsNullOrEmpty(emailTextBox.Text))
-            //{
-            //    MessageBox.Show("Email Field Empty");
-            //    return;
-            //}
-            //else if (string.IsNullOrEmpty(fatherNameTextBox.Text))
-            //{
-            //    MessageBox.Show("Father Name Field Empty");
-            //    return;
-            //}
-            //else if (string.IsNullOrEmpty(motherTextBox.Text))
-            //{
-            //    MessageBox.Show("Mother Name Field Empty");
-            //    return;
-            //}
-            //else if (string.IsNullOrEmpty(nidTextBox.Text))
-            //{
-            //    MessageBox.Show("NID Field Empty");
-            //    return;
-            //}
-
-            
-            
-            //var row = employeeManager.InsertEmployee(employee);
-            //if (row)
-            //{
-            //    MessageBox.Show("Employee Inserted");
-            //    GetEmployeeValue();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Employee Inserted Failed");
-            //}
         }
 
         private void ClearAllForm()
@@ -253,6 +118,7 @@ namespace PointOfSale.UI
             outlateComboBox.SelectedIndex = -1;
             joiningDateTimePicker.ResetText();
             emailTextBox.Clear();
+            contactTextBox.Clear();
             txtBoxRefefence.Clear();
             emergencyTextBox.Clear();
             nidTextBox.Clear();
@@ -339,140 +205,6 @@ namespace PointOfSale.UI
             }
         }
 
-        private void updateButton_Click(object sender, EventArgs e)
-        {
-
-            ////Models.Employee employee = new Models.Employee();
-            //employee.Id = Convert.ToInt32(idLabel.Text);
-            //employee.Name = nameTextBox.Text;
-            //employee.Code = codeTextBox.Text;
-            //employee.Contact = contactTextBox.Text;
-            //employee.Email = emailTextBox.Text;
-            //employee.JoinintDate = joiningDateTimePicker.Value;
-            //employee.EmergencyNumber = emergencyTextBox.Text;
-            //employee.FatherName = fatherNameTextBox.Text;
-            //employee.MotherName = motherTextBox.Text;
-            //employee.Nid = nidTextBox.Text;
-            //employee.PresentAddress = presenTextBox.Text;
-            //employee.PermanentAddress = permanentTextBox.Text;
-            //employee.Image = ConvertToFileByte(this.employeePictureBox.ImageLocation);
-            //employee.OutlateId = (int)outlateComboBox.SelectedValue;
-
-            //EmployeeManager employeeManager = new EmployeeManager();
-
-
-
-            
-
-            //if (string.IsNullOrEmpty(outlateComboBox.Text))
-            //{
-            //    MessageBox.Show("Please Select an Outlate");
-            //    return;
-            //}
-            //else if (string.IsNullOrEmpty(nameTextBox.Text))
-            //{
-            //    MessageBox.Show("Name Field Empty");
-            //    return;
-            //}
-            //else if (contactTextBox.Text == String.Empty)
-            //{
-            //    MessageBox.Show("Contact Field Empty");
-            //    return;
-            //}
-            //else if (emergencyTextBox.Text == String.Empty)
-            //{
-            //    MessageBox.Show("Emergency Field Empty");
-            //    return;
-            //}
-            //else if (string.IsNullOrEmpty(codeTextBox.Text))
-            //{
-            //    MessageBox.Show("Code Field Empty");
-            //    return;
-            //}
-            //else if (employee.Code.Length <= 6)
-            //{
-            //    MessageBox.Show("Security Code Must Be 6 Disit");
-            //    return;
-            //}
-            //else if (string.IsNullOrEmpty(presenTextBox.Text))
-            //{
-            //    MessageBox.Show("Presentation Field Empty");
-            //    return;
-            //}
-            //else if (string.IsNullOrEmpty(permanentTextBox.Text))
-            //{
-            //    MessageBox.Show("Permanent Address Field Empty");
-            //    return;
-            //}
-            //else if (string.IsNullOrEmpty(emailTextBox.Text))
-            //{
-            //    MessageBox.Show("Email Field Empty");
-            //    return;
-            //}
-            //else if (string.IsNullOrEmpty(fatherNameTextBox.Text))
-            //{
-            //    MessageBox.Show("Father Name Field Empty");
-            //    return;
-            //}
-            //else if (string.IsNullOrEmpty(motherTextBox.Text))
-            //{
-            //    MessageBox.Show("Mother Name Field Empty");
-            //    return;
-            //}
-            //else if (string.IsNullOrEmpty(nidTextBox.Text))
-            //{
-            //    MessageBox.Show("NID Field Empty");
-            //    return;
-            //}
-
-
-            
-            //var row = employeeManager.UpdatedEmployee(employee);
-            //if (row)
-            //{
-            //    MessageBox.Show("Employee Updated Success");
-            //    GetEmployeeValue();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Employee Updated Failed");
-            //}
-        }
-
-        //private void contactTextBox_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
-        //    {
-        //        e.Handled = true;
-        //    }
-        //}
-
-        //private void emergencyTextBox_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
-        //    {
-        //        e.Handled = true;
-        //    }
-        //}
-
-        //private void nidTextBox_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
-        //    {
-        //        e.Handled = true;
-        //    }
-        //}
-
-        //private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-        //{
-
-        //}
-
-        //private void deleteButton_Click(object sender, EventArgs e)
-        //{
-
-        //}
-
         private void AutoCodeGenerate()
         {
             int counts = 1;
@@ -556,7 +288,22 @@ namespace PointOfSale.UI
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Are You Sure to Delete this Record ?", "Organization", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                int id = (int)dgvEmployees.SelectedRows[0].Cells["Id"].Value;
+                if (db.Employee.FirstOrDefault(c => c.Id == id) != null)
+                {
+                    employee.Delete = true;
+                    db.SaveChanges();
+                }
+            }
+            ClearAllForm();
+            LoadDataGridView();
+        }
 
+        private void nameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            AutoCodeGenerate();
         }
     }
 }
