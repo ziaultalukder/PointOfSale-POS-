@@ -1,4 +1,4 @@
-﻿namespace PointOfSalePersonal.UI
+﻿namespace PointOfSale.UI
 {
     partial class ExpenseCategorySetupUI
     {
@@ -192,6 +192,7 @@
             this.cmbParentCategory.Name = "cmbParentCategory";
             this.cmbParentCategory.Size = new System.Drawing.Size(249, 29);
             this.cmbParentCategory.TabIndex = 2;
+            this.cmbParentCategory.SelectedIndexChanged += new System.EventHandler(this.cmbParentCategory_SelectedIndexChanged);
             this.cmbParentCategory.Click += new System.EventHandler(this.cmbParentCategory_Click);
             // 
             // lblCategoryId

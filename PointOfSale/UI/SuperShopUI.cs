@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PointOfSalePersonal.UI;
+using PointOfSale.UI;
 
 
 namespace PointOfSale.UI
@@ -100,7 +100,7 @@ namespace PointOfSale.UI
 
         private void btnPurchaseResult_Click(object sender, EventArgs e)
         {
-            PurchaseUI purchaseOperation = new PurchaseUI();
+            PurchaseResultUI purchaseOperation = new PurchaseResultUI();
             purchaseOperation.Show();
         }
 

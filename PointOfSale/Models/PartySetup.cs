@@ -19,5 +19,6 @@ namespace PointOfSale.Models
         public DateTime DataTime { get; set; }
         public string Customer { get; set; }
         public string Supplier { get; set; }
+        public bool IsDeleteMode { get; set; }
     }
 }

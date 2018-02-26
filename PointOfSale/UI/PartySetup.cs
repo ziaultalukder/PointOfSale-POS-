@@ -16,9 +16,13 @@ namespace PointOfSale.UI
 {
     public partial class PartySetup : Form
     {
+        SuperShopDatabaseContext db = new SuperShopDatabaseContext();
+        Models.PartySetup partySetup = new Models.PartySetup();
+        PartyManager partyManager = new PartyManager();
         public PartySetup()
         {
             InitializeComponent();
+            ClearAllForm();
         }
         // Browse Image
         private void button5_Click(object sender, EventArgs e)
@@ -46,10 +50,11 @@ namespace PointOfSale.UI
         }
         private void saveButton_Click(object sender, EventArgs e)
         {
-            Models.PartySetup partySetup = new Models.PartySetup();
+            Random rd = new Random();
+            
             partySetup.Name = nameTextBox.Text;
             partySetup.Contact = contactTextBox.Text;
-            partySetup.Code = codeTextBox.Text;
+            partySetup.Code = rd.Next().ToString();
             partySetup.Email = emailTextBox.Text;
             partySetup.Address = addressTextBox.Text;
             partySetup.DataTime = partyDateTimePicker.Value;
@@ -73,7 +78,7 @@ namespace PointOfSale.UI
             partySetup.Image = ConvertToFileByte(this.partyPictureBox.ImageLocation);
 
             
-            PartyManager partyManager = new PartyManager();
+            
 
 
 
@@ -87,16 +92,16 @@ namespace PointOfSale.UI
                 MessageBox.Show("Contact Field Empty");
                 return;
             } 
-            else if (string.IsNullOrEmpty(codeTextBox.Text))
-            {
-                MessageBox.Show("Code Field Empty");
-                return;
-            }
-            else if (partySetup.Code.Length <= 6)
-            {
-                MessageBox.Show("Security Code Must Be 6 Disit");
-                return;
-            }
+            //else if (string.IsNullOrEmpty(codeTextBox.Text))
+            //{
+            //    MessageBox.Show("Code Field Empty");
+            //    return;
+            //}
+            //else if (partySetup.Code.Length <= 6)
+            //{
+            //    MessageBox.Show("Security Code Must Be 6 Disit");
+            //    return;
+            //}
             else if (string.IsNullOrEmpty(addressTextBox.Text))
             {
                 MessageBox.Show("Address Field Emplty");
@@ -107,13 +112,18 @@ namespace PointOfSale.UI
             var row = partyManager.InsertParty(partySetup);
             if (row)
             {
+                codeTextBox.Text = partySetup.Code;
                 MessageBox.Show("Data Inserted Successfully");
                 GetViewdata();
+                ClearAllForm();
+                //updateButton.Enabled = false;
+                //deleteButton.Enabled = false;
             }
             else
             {
                 MessageBox.Show("Data Inserted Failed");
             }
+            
         }
 
         private void viewButton_Click(object sender, EventArgs e)
@@ -123,8 +133,34 @@ namespace PointOfSale.UI
 
         private void GetViewdata()
         {
-            SuperShopDatabaseContext db = new SuperShopDatabaseContext();
-            partyDataGridView.DataSource = db.PartySetup.ToList();
+            //SuperShopDatabaseContext db = new SuperShopDatabaseContext();
+            //partyDataGridView.DataSource = db.PartySetup.ToList();
+            //ClearAllForm();
+
+            var dgvShow = (from partySetup in db.PartySetup
+                           where (partySetup.IsDeleteMode == false)
+                           select new
+                           {
+                               partySetup.Id,
+                               partySetup.Name,
+                               partySetup.Code,
+                               partySetup.Email,
+                               partySetup.Address,
+                               partySetup.Image,
+                               partySetup.DataTime,
+                               partySetup.Customer,
+                               partySetup.Supplier
+                           }).ToList();
+            partyDataGridView.DataSource = dgvShow;
+            var dataGridViewColumn = partyDataGridView.Columns["Id"];
+            if (dataGridViewColumn != null) //dataGridViewColumn.Visible = false;
+                for (int i = 0; i < partyDataGridView.Columns.Count; i++)
+                {
+                    var column = partyDataGridView.Columns[i] as DataGridViewImageColumn;
+                    if (column == null) continue;
+                    column.ImageLayout = DataGridViewImageCellLayout.Stretch;
+                }
+            //organaizationdataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
         private void partyDataGridView_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -142,6 +178,8 @@ namespace PointOfSale.UI
             partyPictureBox.Image = Image.FromStream(ms);
 
             updateButton.Visible = true;
+            updateButton.Enabled = true;
+            deleteButton.Enabled = true;
 
         }
 
@@ -180,16 +218,16 @@ namespace PointOfSale.UI
                 MessageBox.Show("Contact Field Empty");
                 return;
             }
-            else if (string.IsNullOrEmpty(codeTextBox.Text))
-            {
-                MessageBox.Show("Code Field Empty");
-                return;
-            }
-            else if (partySetup.Code.Length <= 6)
-            {
-                MessageBox.Show("Security Code Must Be 6 Disit");
-                return;
-            }
+            //else if (string.IsNullOrEmpty(codeTextBox.Text))
+            //{
+            //    MessageBox.Show("Code Field Empty");
+            //    return;
+            //}
+            //else if (partySetup.Code.Length <= 6)
+            //{
+            //    MessageBox.Show("Security Code Must Be 6 Disit");
+            //    return;
+            //}
             else if (string.IsNullOrEmpty(addressTextBox.Text))
             {
                 MessageBox.Show("Address Field Emplty");
@@ -201,18 +239,19 @@ namespace PointOfSale.UI
             if (row)
             {
                 MessageBox.Show("Party Updated Successfully");
-                SuperShopDatabaseContext db = new SuperShopDatabaseContext();
+                
                 partyDataGridView.DataSource = db.PartySetup.ToList();
             }
             else
             {
                 MessageBox.Show("Party Updated Failed");
             }
+            ClearAllForm();
         }
 
         private void searchTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            SuperShopDatabaseContext db = new SuperShopDatabaseContext();
+            
             var data =
                 (from party in db.PartySetup where party.Contact.Contains(searchTextBox.Text) select party).ToList();
             partyDataGridView.DataSource = data;
@@ -239,8 +278,8 @@ namespace PointOfSale.UI
 
         private void PartySetup_Load(object sender, EventArgs e)
         {
-            SuperShopDatabaseContext db = new SuperShopDatabaseContext();
-            partyDataGridView.DataSource = db.PartySetup.ToList();
+
+            GetViewdata();
 
 
 
@@ -277,6 +316,24 @@ namespace PointOfSale.UI
             {
                 e.Handled = true;
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            ClearAllForm();
+        }
+
+        private void ClearAllForm()
+        {
+            nameTextBox.Clear();
+            contactTextBox.Clear();
+            emailTextBox.Clear();
+            codeTextBox.Clear();
+            addressTextBox.Clear();
+            partyDateTimePicker.ResetText();
+            updateButton.Enabled = false;
+            deleteButton.Enabled = false;
+            partyPictureBox.Image = null;
         }
     }
 }

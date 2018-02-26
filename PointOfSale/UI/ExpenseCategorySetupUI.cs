@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PointOfSalePersonal.UI
+namespace PointOfSale.UI
 {
     public partial class ExpenseCategorySetupUI : Form
     {
@@ -23,7 +23,9 @@ namespace PointOfSalePersonal.UI
         public ExpenseCategorySetupUI()
         {
             InitializeComponent();
-            LoadparentCategoryComboBox();
+            radRootCategory.Checked = true;
+            //LoadparentCategoryComboBox();
+            RootAutoCodeShow();
             LoadgrdExpenseCatagory();
             this.txtCategoryCode.KeyPress += new KeyPressEventHandler(txtCategoryCode_KeyPress);
         }
@@ -34,9 +36,9 @@ namespace PointOfSalePersonal.UI
 
         private void radChildCategory_CheckedChanged(object sender, EventArgs e)
         {
-            //cmbParentCategory.SelectedIndex = -1;
             cmbParentCategory.Show();
             LoadparentCategoryComboBox();
+            cmbParentCategory.SelectedIndex = -1;
         }
 
         private void radRootCategory_CheckedChanged(object sender, EventArgs e)
@@ -55,6 +57,11 @@ namespace PointOfSalePersonal.UI
         private void cmbParentCategory_Click(object sender, EventArgs e)
         {
             LoadparentCategoryComboBox();
+            //cmbParentCategory.SelectedIndex = -1;
+        }
+        private void cmbParentCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ChildAutoCodeShow();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -394,6 +401,53 @@ namespace PointOfSalePersonal.UI
                              select expCat).ToList();
             grdExpenseCategory.DataSource = dgvExpCat;
             //grdExpenseCategory.Columns[0].Visible = false;
+        }
+        private void RootAutoCodeShow()
+        {
+            SuperShopDatabaseContext db = new SuperShopDatabaseContext();
+            int RootCount = 0;
+            RootCount = db.ExpenseCategory.Where(c => c.CategoryType == "Root").Count() +10;
+
+            string RootCode = (RootCount + "00").ToString();
+            txtCategoryCode.Text= RootCode;
+        }
+
+        private void ChildAutoCodeShow()
+        {
+            SuperShopDatabaseContext db = new SuperShopDatabaseContext();
+            if (string.IsNullOrEmpty(cmbParentCategory.Text))
+            {
+                txtCategoryCode.Text = "Please select a Parent Category";
+            }
+            else
+            {
+                string selectedParent = cmbParentCategory.Text;
+                string Count;
+                Count = (db.ExpenseCategory.Where(c => c.ParentName == selectedParent).Count() + 1).ToString();
+                string parentCode = "0000";
+                //parentCode = db.ExpenseCategory.Select(c => c.CategoryName == selectedParent).ToString();
+                //    SuperShopDatabaseContext db = new SuperShopDatabaseContext();
+                //var dgvExpCat = (from expCat in db.ExpenseCategory
+                //                 where expCat.IsDelete == false
+                //                 select new
+                //                 {
+                //                     Sl=expCat.Id,
+                //                     expCat.CategoryName,
+                //                     expCat.CategoryCode,
+                //                     expCat.CategoryType,
+                //                     expCat.ParentName,
+                //                     expCat.CategoryDescription,
+                //                 }).ToList();
+              
+                var parent = db.ExpenseCategory.Where(c => c.CategoryName == selectedParent).FirstOrDefault();
+                
+
+                if(parent!=null)
+                {
+                    parentCode = parent.CategoryCode.ToString();
+                }
+                txtCategoryCode.Text = parentCode + Count;
+            }
         }
     }
 }

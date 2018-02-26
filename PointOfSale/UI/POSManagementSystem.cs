@@ -1,4 +1,4 @@
-﻿using PointOfSalePersonal.UI;
+﻿using PointOfSale.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

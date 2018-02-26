@@ -229,11 +229,11 @@
             this.organaizationdataGridView.AllowUserToAddRows = false;
             this.organaizationdataGridView.AllowUserToDeleteRows = false;
             this.organaizationdataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.organaizationdataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.organaizationdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.organaizationdataGridView.Location = new System.Drawing.Point(12, 371);
             this.organaizationdataGridView.Name = "organaizationdataGridView";
             this.organaizationdataGridView.ReadOnly = true;
+            this.organaizationdataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.organaizationdataGridView.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.organaizationdataGridView.RowTemplate.Height = 50;
