@@ -51,6 +51,12 @@ namespace PointOfSale.UI
                 if (!isUpdateMode)
                 {
                     GetTextBoxValue();
+                    bool isExitOrganizationName = db.Organaization.Count(c => c.Name == organaization.Name) > 0;
+                    if (isExitOrganizationName)
+                    {
+                        MessageBox.Show("Organization Name is Exit ? Please Anather name Try.");
+                        return;
+                    }
                     db.Organaization.Add(organaization);
                     db.SaveChanges();
                     WinMessageBox.ShowSuccessMessage("Record save successfully");
@@ -58,6 +64,12 @@ namespace PointOfSale.UI
                 if (isUpdateMode)
                 {
                     GetTextBoxValue();
+                    bool isExitOrganizationName = db.Organaization.Count(c => c.Name == organaization.Name) > 1;
+                    if (isExitOrganizationName)
+                    {
+                        MessageBox.Show("Organization Name is Exit ? Please Anather name Try.");
+                        return;
+                    }
                     db.Organaization.Attach(organaization);
                     db.Entry( organaization ).State = EntityState.Modified;
                     db.SaveChanges();
@@ -95,22 +107,23 @@ namespace PointOfSale.UI
                 nameTextBox.Focus();
                 return false;
             }
+
             if (addressTextBox.Text.Trim() == string.Empty)
             {
                 WinMessageBox.ShowErrorMessage("Organization address is required.");
                 addressTextBox.Focus();
                 return false;
             }
-            if (organaizationManager.IsNameAlreadyExist(organaization.Name))
-            {
-                MessageBox.Show("Organaization Name Already Exist");
-                return true;
-            }
-            if (organaizationManager.IsContactNoAlreadyExist(organaization.Contact))
-            {
-                MessageBox.Show("Organization Contact No Already Exist");
-                return true;
-            }
+            //if (organaizationManager.IsNameAlreadyExist(organaization.Name))
+            //{
+            //    MessageBox.Show("Organaization Name Already Exist");
+            //    return false;
+            //}
+            //if (organaizationManager.IsContactNoAlreadyExist(organaization.Contact))
+            //{
+            //    MessageBox.Show("Organization Contact No Already Exist");
+            //    return false;
+            //}
             return true;
         }
 
