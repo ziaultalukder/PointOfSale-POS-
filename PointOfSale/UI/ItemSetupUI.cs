@@ -260,9 +260,9 @@ namespace PointOfSale.UI
 
         private void ShowLastCode()
         {
-            var shows = db.ItemSetups.Max(c => c.Id);
-            var result = db.ItemSetups.Where(c => c.Code == shows.ToString());
-            codeTextBox.Text = result.ToString();
+            //var shows = db.ItemSetups.Max(c => c.Id);
+            //var result = db.ItemSetups.Where(c => c.Code == shows.ToString());
+            //codeTextBox.Text = result.ToString();
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
