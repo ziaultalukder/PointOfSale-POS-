@@ -1,6 +1,6 @@
 ﻿namespace PointOfSale.UI
 {
-    partial class PartySetup
+    partial class PartySetupUI
     {
         /// <summary>
         /// Required designer variable.
@@ -334,7 +334,7 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // PartySetup
+            // PartySetupUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -366,8 +366,8 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label1);
-            this.Name = "PartySetup";
-            this.Text = "PartySetup";
+            this.Name = "PartySetupUI";
+            this.Text = "Party Setup Screen";
             this.Load += new System.EventHandler(this.PartySetup_Load);
             ((System.ComponentModel.ISupportInitialize)(this.partyPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.partyDataGridView)).EndInit();

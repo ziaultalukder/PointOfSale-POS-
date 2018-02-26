@@ -164,14 +164,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(919, 791);
+            this.ClientSize = new System.Drawing.Size(919, 741);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.printButton);
             this.Controls.Add(this.showButton);
             this.Controls.Add(this.expnReportDataGridView);
             this.Name = "ExpenceReportUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ExpenceReport";
+            this.Text = "Expence Report Screen";
             this.Load += new System.EventHandler(this.ExpenceReport_Load);
             ((System.ComponentModel.ISupportInitialize)(this.expnReportDataGridView)).EndInit();
             this.groupBox1.ResumeLayout(false);

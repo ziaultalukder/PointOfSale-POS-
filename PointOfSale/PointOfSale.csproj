@@ -143,11 +143,11 @@
     <Compile Include="UI\ExpenseItemSetupUI.Designer.cs">
       <DependentUpon>ExpenseItemSetupUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\ItemSetup.cs">
+    <Compile Include="UI\ItemSetupUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\ItemSetup.Designer.cs">
-      <DependentUpon>ItemSetup.cs</DependentUpon>
+    <Compile Include="UI\ItemSetupUI.Designer.cs">
+      <DependentUpon>ItemSetupUI.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\LogInUI.cs">
       <SubType>Form</SubType>
@@ -155,29 +155,23 @@
     <Compile Include="UI\LogInUI.designer.cs">
       <DependentUpon>LogInUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Organaization.cs">
+    <Compile Include="UI\OrganaizationUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Organaization.Designer.cs">
-      <DependentUpon>Organaization.cs</DependentUpon>
+    <Compile Include="UI\OrganaizationUI.Designer.cs">
+      <DependentUpon>OrganaizationUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Outlate.cs">
+    <Compile Include="UI\OutlateUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Outlate.Designer.cs">
-      <DependentUpon>Outlate.cs</DependentUpon>
+    <Compile Include="UI\OutlateUI.Designer.cs">
+      <DependentUpon>OutlateUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\PartySetup.cs">
+    <Compile Include="UI\PartySetupUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\PartySetup.Designer.cs">
-      <DependentUpon>PartySetup.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\POSManagementSystem.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\POSManagementSystem.designer.cs">
-      <DependentUpon>POSManagementSystem.cs</DependentUpon>
+    <Compile Include="UI\PartySetupUI.Designer.cs">
+      <DependentUpon>PartySetupUI.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\PurchaseResultUI.cs">
       <SubType>Form</SubType>
@@ -197,18 +191,18 @@
     <Compile Include="UI\SalesUI.Designer.cs">
       <DependentUpon>SalesUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\SetupItemCatagory.cs">
+    <Compile Include="UI\SetupItemCatagoryUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\SetupItemCatagory.Designer.cs">
-      <DependentUpon>SetupItemCatagory.cs</DependentUpon>
+    <Compile Include="UI\SetupItemCatagoryUI.Designer.cs">
+      <DependentUpon>SetupItemCatagoryUI.cs</DependentUpon>
     </Compile>
     <Compile Include="WinMessageBox.cs" />
-    <Compile Include="UI\SuperShopUI.cs">
+    <Compile Include="UI\SuperShopDashboardUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\SuperShopUI.designer.cs">
-      <DependentUpon>SuperShopUI.cs</DependentUpon>
+    <Compile Include="UI\SuperShopDashboardUI.designer.cs">
+      <DependentUpon>SuperShopDashboardUI.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Migrations\201802241717359_InitialCreate.resx">
       <DependentUpon>201802241717359_InitialCreate.cs</DependentUpon>
@@ -250,23 +244,20 @@
     <EmbeddedResource Include="UI\ExpenseItemSetupUI.resx">
       <DependentUpon>ExpenseItemSetupUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\ItemSetup.resx">
-      <DependentUpon>ItemSetup.cs</DependentUpon>
+    <EmbeddedResource Include="UI\ItemSetupUI.resx">
+      <DependentUpon>ItemSetupUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\LogInUI.resx">
       <DependentUpon>LogInUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Organaization.resx">
-      <DependentUpon>Organaization.cs</DependentUpon>
+    <EmbeddedResource Include="UI\OrganaizationUI.resx">
+      <DependentUpon>OrganaizationUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Outlate.resx">
-      <DependentUpon>Outlate.cs</DependentUpon>
+    <EmbeddedResource Include="UI\OutlateUI.resx">
+      <DependentUpon>OutlateUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\PartySetup.resx">
-      <DependentUpon>PartySetup.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\POSManagementSystem.resx">
-      <DependentUpon>POSManagementSystem.cs</DependentUpon>
+    <EmbeddedResource Include="UI\PartySetupUI.resx">
+      <DependentUpon>PartySetupUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\PurchaseResultUI.resx">
       <DependentUpon>PurchaseResultUI.cs</DependentUpon>
@@ -277,11 +268,11 @@
     <EmbeddedResource Include="UI\SalesUI.resx">
       <DependentUpon>SalesUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\SetupItemCatagory.resx">
-      <DependentUpon>SetupItemCatagory.cs</DependentUpon>
+    <EmbeddedResource Include="UI\SetupItemCatagoryUI.resx">
+      <DependentUpon>SetupItemCatagoryUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\SuperShopUI.resx">
-      <DependentUpon>SuperShopUI.cs</DependentUpon>
+    <EmbeddedResource Include="UI\SuperShopDashboardUI.resx">
+      <DependentUpon>SuperShopDashboardUI.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="bin\Debug\PointOfSale.exe.config" />
     <None Include="bin\Debug\PointOfSale.vshost.exe.config" />

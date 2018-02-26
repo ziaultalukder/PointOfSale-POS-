@@ -1,6 +1,6 @@
 ﻿namespace PointOfSale.UI
 {
-    partial class ItemSetup
+    partial class ItemSetupUI
     {
         /// <summary>
         /// Required designer variable.
@@ -271,7 +271,7 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // ItemSetup
+            // ItemSetupUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -297,9 +297,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Name = "ItemSetup";
+            this.Name = "ItemSetupUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ItemSetup";
+            this.Text = "Item Setup Screen";
             this.Load += new System.EventHandler(this.ItemSetup_Load);
             ((System.ComponentModel.ISupportInitialize)(this.itmeSetupDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemPictureBox)).EndInit();

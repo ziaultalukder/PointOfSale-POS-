@@ -1,6 +1,6 @@
 ﻿namespace PointOfSale.UI
 {
-    partial class SetupItemCatagory
+    partial class SetupItemCatagoryUI
     {
         /// <summary>
         /// Required designer variable.
@@ -274,16 +274,16 @@
             this.setupItemCatagoryDataGridView.TabIndex = 3;
             this.setupItemCatagoryDataGridView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.setupItemCatagoryDataGridView_MouseDoubleClick);
             // 
-            // SetupItemCatagory
+            // SetupItemCatagoryUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(804, 612);
             this.Controls.Add(this.setupItemCatagoryDataGridView);
             this.Controls.Add(this.SetupItemCategory);
-            this.Name = "SetupItemCatagory";
+            this.Name = "SetupItemCatagoryUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SetupItemCatagory";
+            this.Text = "Setup Item Catagory Screen";
             this.Load += new System.EventHandler(this.SetupItemCatagory_Load);
             this.SetupItemCategory.ResumeLayout(false);
             this.SetupItemCategory.PerformLayout();

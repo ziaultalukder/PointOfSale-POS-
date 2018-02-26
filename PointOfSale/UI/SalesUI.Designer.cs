@@ -807,7 +807,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1053, 971);
+            this.ClientSize = new System.Drawing.Size(1053, 741);
             this.Controls.Add(this.salesItmdataGridView);
             this.Controls.Add(this.grandTotalLabel);
             this.Controls.Add(this.discountLabel);
@@ -831,7 +831,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "SalesUI";
-            this.Text = "Sales";
+            this.Text = "Product Sales Screen";
             this.Load += new System.EventHandler(this.Sales_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

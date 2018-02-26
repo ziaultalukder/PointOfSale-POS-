@@ -14,12 +14,12 @@ using PointOfSale.Manager;
 
 namespace PointOfSale.UI
 {
-    public partial class PartySetup : Form
+    public partial class PartySetupUI : Form
     {
         SuperShopDatabaseContext db = new SuperShopDatabaseContext();
         Models.PartySetup partySetup = new Models.PartySetup();
         PartyManager partyManager = new PartyManager();
-        public PartySetup()
+        public PartySetupUI()
         {
             InitializeComponent();
             ClearAllForm();

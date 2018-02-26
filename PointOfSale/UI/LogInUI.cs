@@ -34,7 +34,7 @@ namespace PointOfSale.UI
                 string password = txtPassword.Text;
                 if (userName == "BKIICT" && password == "admin")
                 {
-                    SuperShopUI posManagementSystem = new SuperShopUI();
+                    SuperShopDashboardUI posManagementSystem = new SuperShopDashboardUI();
                     posManagementSystem.Show();
                 }
                 else

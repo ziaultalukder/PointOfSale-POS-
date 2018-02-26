@@ -14,9 +14,9 @@ using PointOfSale.UI;
 
 namespace PointOfSale.UI
 {
-    public partial class SuperShopUI : Form
+    public partial class SuperShopDashboardUI : Form
     {
-        public SuperShopUI()
+        public SuperShopDashboardUI()
         {
             InitializeComponent();
             timer1.Start();
@@ -26,31 +26,31 @@ namespace PointOfSale.UI
 
         private void btnPartySetup_Click(object sender, EventArgs e)
         {
-            PartySetup partySetup = new PartySetup();
+            PartySetupUI partySetup = new PartySetupUI();
             partySetup.Show();
         }
 
         private void btnItemCategorySetup_Click(object sender, EventArgs e)
         {
-            SetupItemCatagory setupItemCatagory = new SetupItemCatagory();
+            SetupItemCatagoryUI setupItemCatagory = new SetupItemCatagoryUI();
             setupItemCatagory.Show();
         }
 
         private void btnItemSetup_Click(object sender, EventArgs e)
         {
-            ItemSetup itemSetup = new ItemSetup();
+            ItemSetupUI itemSetup = new ItemSetupUI();
             itemSetup.Show();
         }
 
         private void btnOrganizationSetup_Click(object sender, EventArgs e)
         {
-            Organaization organaization = new Organaization();
+            OrganaizationUI organaization = new OrganaizationUI();
             organaization.Show();
         }
 
         private void btnOutletSetup_Click(object sender, EventArgs e)
         {
-            Outlate outlate = new Outlate();
+            OutlateUI outlate = new OutlateUI();
             outlate.Show();
         }
 

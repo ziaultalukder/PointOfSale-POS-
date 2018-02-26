@@ -16,13 +16,13 @@ using PointOfSale.Models;
 
 namespace PointOfSale.UI
 {
-    public partial class Organaization : Form
+    public partial class OrganaizationUI : Form
     {
         SuperShopDatabaseContext db = new SuperShopDatabaseContext();
         Models.Organaization organaization = new Models.Organaization();
         OrganaizationManager organaizationManager = new OrganaizationManager();
         private bool isUpdateMode = false;
-        public Organaization()
+        public OrganaizationUI()
         {
             InitializeComponent();
         }

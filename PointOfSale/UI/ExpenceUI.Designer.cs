@@ -378,7 +378,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1211, 752);
+            this.ClientSize = new System.Drawing.Size(1211, 741);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.groupBox1);
@@ -391,7 +391,7 @@
             this.Controls.Add(this.totalAmmountTextBox);
             this.Name = "ExpenceUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ExpenceUI";
+            this.Text = "Expence Screen";
             this.Load += new System.EventHandler(this.ExpenceUI_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

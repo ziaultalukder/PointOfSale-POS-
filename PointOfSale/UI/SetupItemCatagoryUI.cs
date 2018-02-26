@@ -14,12 +14,12 @@ using System.Windows.Forms;
 
 namespace PointOfSale.UI
 {
-    public partial class SetupItemCatagory : Form
+    public partial class SetupItemCatagoryUI : Form
     {
         SuperShopDatabaseContext db = new SuperShopDatabaseContext();
         Models.SetupItemCatagory setupItemCatagory = new Models.SetupItemCatagory();
         SetupItemCatagoryManager setupItemManager = new SetupItemCatagoryManager();
-        public SetupItemCatagory()
+        public SetupItemCatagoryUI()
         {
             InitializeComponent();
             AutoCodeGenerate();

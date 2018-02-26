@@ -454,7 +454,7 @@
             this.Controls.Add(this.label14);
             this.Name = "EmployeeUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Employee";
+            this.Text = "Employee Screen";
             this.Load += new System.EventHandler(this.Employee_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeErrorProvider)).EndInit();

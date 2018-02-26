@@ -1,6 +1,6 @@
 ﻿namespace PointOfSale.UI
 {
-    partial class Organaization
+    partial class OrganaizationUI
     {
         /// <summary>
         /// Required designer variable.
@@ -326,11 +326,7 @@
             this.Column4.Name = "Column4";
             this.Column4.Width = 150;
             // 
-            // organaizationBindingSource2
-            // 
-            this.organaizationBindingSource2.DataSource = typeof(PointOfSale.Models.Organaization);
-            // 
-            // Organaization
+            // OrganaizationUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -342,9 +338,9 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label5);
-            this.Name = "Organaization";
+            this.Name = "OrganaizationUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Organaization";
+            this.Text = "Organaization Screen";
             this.Load += new System.EventHandler(this.Organaization_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

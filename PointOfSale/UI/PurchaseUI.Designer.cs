@@ -419,7 +419,7 @@
             this.Controls.Add(this.qtyTextBox);
             this.Name = "PurchaseUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PurchaseUI";
+            this.Text = "Purchase Operation Screen";
             this.Load += new System.EventHandler(this.PurchaseUI_Load);
             ((System.ComponentModel.ISupportInitialize)(this.purchaseDataGridView)).EndInit();
             this.groupBox1.ResumeLayout(false);

@@ -16,12 +16,12 @@ using PointOfSale.Manager;
 
 namespace PointOfSale.UI
 {
-    public partial class ItemSetup : Form
+    public partial class ItemSetupUI : Form
     {
         Models.ItemSetups itemSetup = new Models.ItemSetups();
         SuperShopDatabaseContext db = new SuperShopDatabaseContext();
         ItemSetupManager itemSetupManager = new ItemSetupManager();
-        public ItemSetup()
+        public ItemSetupUI()
         {
             InitializeComponent();
             ShowLastCode();

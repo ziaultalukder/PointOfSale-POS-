@@ -300,7 +300,7 @@
             this.Controls.Add(this.grpSetupExpenseCategory);
             this.Name = "ExpenseCategorySetupUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Expense Category Setup Form";
+            this.Text = "Expense Category Setup Screen";
             this.grpSetupExpenseCategory.ResumeLayout(false);
             this.grpSetupExpenseCategory.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdExpenseCategory)).EndInit();

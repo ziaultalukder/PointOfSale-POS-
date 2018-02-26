@@ -12,10 +12,10 @@ using PointOfSale.Manager;
 
 namespace PointOfSale.UI
 {
-    public partial class Outlate : Form
+    public partial class OutlateUI : Form
     {
         Models.Outlate outlate = new Models.Outlate();
-        public Outlate()
+        public OutlateUI()
         {
             InitializeComponent();
         }

@@ -1,6 +1,6 @@
 ﻿namespace PointOfSale.UI
 {
-    partial class Outlate
+    partial class OutlateUI
     {
         /// <summary>
         /// Required designer variable.
@@ -268,7 +268,7 @@
             this.label10.TabIndex = 5;
             this.label10.Text = "*";
             // 
-            // Outlate
+            // OutlateUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -294,9 +294,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.outlateComboBox);
-            this.Name = "Outlate";
+            this.Name = "OutlateUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Outlate";
+            this.Text = "Outlate/Branch Screen";
             this.Load += new System.EventHandler(this.Outlate_Load);
             ((System.ComponentModel.ISupportInitialize)(this.outlateDataGridView)).EndInit();
             this.ResumeLayout(false);

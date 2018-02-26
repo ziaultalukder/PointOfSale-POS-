@@ -385,7 +385,7 @@
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             // 
-            // FrmOpExpense
+            // ExpenseOpUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -397,8 +397,8 @@
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.dgvExpense);
             this.Controls.Add(this.btnSave);
-            this.Name = "FrmOpExpense";
-            this.Text = "FrmExpenseOperation";
+            this.Name = "ExpenseOpUI";
+            this.Text = "Expense Operation Screen";
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);

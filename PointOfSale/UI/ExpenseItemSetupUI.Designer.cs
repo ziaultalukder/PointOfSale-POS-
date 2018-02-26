@@ -30,6 +30,7 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmbExpenseCategory = new System.Windows.Forms.ComboBox();
+            this.updateButton = new System.Windows.Forms.Button();
             this.btnView = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -37,13 +38,12 @@
             this.txtExpenseItemCode = new System.Windows.Forms.TextBox();
             this.txtExpenseCategoryCode = new System.Windows.Forms.TextBox();
             this.txtExpenseItemName = new System.Windows.Forms.TextBox();
+            this.idLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.grdExpenseItems = new System.Windows.Forms.DataGridView();
-            this.idLabel = new System.Windows.Forms.Label();
-            this.updateButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdExpenseItems)).BeginInit();
             this.SuspendLayout();
@@ -80,6 +80,16 @@
             this.cmbExpenseCategory.Size = new System.Drawing.Size(315, 29);
             this.cmbExpenseCategory.TabIndex = 3;
             this.cmbExpenseCategory.SelectedIndexChanged += new System.EventHandler(this.cmbExpenseCategory_SelectedIndexChanged);
+            // 
+            // updateButton
+            // 
+            this.updateButton.Location = new System.Drawing.Point(386, 255);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(82, 29);
+            this.updateButton.TabIndex = 2;
+            this.updateButton.Text = "Update";
+            this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
             // btnView
             // 
@@ -141,6 +151,15 @@
             this.txtExpenseItemName.Size = new System.Drawing.Size(315, 27);
             this.txtExpenseItemName.TabIndex = 1;
             // 
+            // idLabel
+            // 
+            this.idLabel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.idLabel.Location = new System.Drawing.Point(475, 128);
+            this.idLabel.Name = "idLabel";
+            this.idLabel.Size = new System.Drawing.Size(129, 19);
+            this.idLabel.TabIndex = 0;
+            this.idLabel.Visible = false;
+            // 
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -187,35 +206,16 @@
             this.grdExpenseItems.TabIndex = 1;
             this.grdExpenseItems.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grdExpenseItems_CellMouseDoubleClick);
             // 
-            // idLabel
-            // 
-            this.idLabel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idLabel.Location = new System.Drawing.Point(475, 128);
-            this.idLabel.Name = "idLabel";
-            this.idLabel.Size = new System.Drawing.Size(129, 19);
-            this.idLabel.TabIndex = 0;
-            this.idLabel.Visible = false;
-            // 
-            // updateButton
-            // 
-            this.updateButton.Location = new System.Drawing.Point(386, 255);
-            this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(82, 29);
-            this.updateButton.TabIndex = 2;
-            this.updateButton.Text = "Update";
-            this.updateButton.UseVisualStyleBackColor = true;
-            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
-            // 
-            // FrmSetupExpenseItem
+            // ExpenseItemSetupUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(724, 688);
             this.Controls.Add(this.grdExpenseItems);
             this.Controls.Add(this.groupBox1);
-            this.Name = "FrmSetupExpenseItem";
+            this.Name = "ExpenseItemSetupUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Expense Item Setup form";
+            this.Text = "Expense Item Setup Screen";
             this.Load += new System.EventHandler(this.ExpenseItemSetupUI_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
