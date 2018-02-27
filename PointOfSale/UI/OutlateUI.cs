@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,8 @@ namespace PointOfSale.UI
 {
     public partial class OutlateUI : Form
     {
+        SuperShopDatabaseContext db = new SuperShopDatabaseContext();
+        OutlateManager outlateManager = new OutlateManager();
         Models.Outlate outlate = new Models.Outlate();
         public OutlateUI()
         {
@@ -22,7 +25,6 @@ namespace PointOfSale.UI
         
         private void Outlate_Load(object sender, EventArgs e)
         {
-            SuperShopDatabaseContext db = new SuperShopDatabaseContext();
             outlateComboBox.DataSource = db.Organaization.ToList();
             outlateComboBox.DisplayMember = "Name";
             outlateComboBox.ValueMember = "Id";
@@ -36,7 +38,7 @@ namespace PointOfSale.UI
 
         private void GetOutlateValue()
         {
-            SuperShopDatabaseContext db = new SuperShopDatabaseContext();
+            
             //outlateDataGridView.DataSource = db.Outlates.ToList();
 
             var outlates = (from Ol in db.Outlates
@@ -48,65 +50,69 @@ namespace PointOfSale.UI
                                 Ol.Code,
                                 Ol.Contact,
                                 Ol.Address,
-                                Organaization = org.Name,
-
+                                Organaization = org.Name
                             }).ToList();
             outlateDataGridView.DataSource = outlates;
         }
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            Random r = new Random();
+            if (IsFormValidated())
+            {
+                //Random r = new Random();
+                outlate.Name = nameTextBox.Text;
+                outlate.Code = codeTextBox.Text;
+                outlate.Contact = contactTextBox.Text;
+                outlate.Address = addressTextBox.Text;
+                outlate.OrganaizationId = (int)outlateComboBox.SelectedValue;
+                bool isNameExits = db.Outlates.Count(c => c.Name == outlate.Name) > 0;
+                if (isNameExits)
+                {
+                    WinMessageBox.ShowErrorMessage("Outlat/Branch name is already exits, Please another name Try.");
+                    return;
+                }
+                var row = outlateManager.Insertoutlate(outlate);
+                if (row)
+                {
+                    WinMessageBox.ShowSuccessMessage("Outlet/Branch record save successfully.");
+                    GetOutlateValue();
+                    Clear();
+                }
+                else
+                {
+                    WinMessageBox.ShowErrorMessage("Outlet/Branch record save failed.");
+                }
+                deleteButton.Enabled = false;
+                updateButton.Enabled = false;
+            }
+        }
 
-            //Models.Outlate outlate = new Models.Outlate();
-            outlate.Name = nameTextBox.Text;
-            outlate.Code = r.Next().ToString();
-            outlate.Contact = contactTextBox.Text;
-            outlate.Address = addressTextBox.Text;
-            outlate.OrganaizationId = (int)outlateComboBox.SelectedValue;
-
-            OutlateManager outlateManager = new OutlateManager();
-
-
-            if(string.IsNullOrEmpty(nameTextBox.Text))
+        private bool IsFormValidated()
+        {
+            if (outlateComboBox.SelectedIndex == -1)
             {
-                MessageBox.Show("Name Field Emplty");
-                return;
+                WinMessageBox.ShowErrorMessage("Organization name is select.");
+                return false;
             }
-            //else if (string.IsNullOrEmpty(codeTextBox.Text))
-            //{
-            //    MessageBox.Show("Code Field Emplty");
-            //    return;
-            //}
-            //else if (outlate.Code.Length <= 6)
-            //{
-            //    MessageBox.Show("Security Code Must Be 6 Disit");
-            //    return;
-            //}
-            else if (string.IsNullOrEmpty(contactTextBox.Text))
+            if (nameTextBox.Text.Trim()==string.Empty)
             {
-                MessageBox.Show("Contact Field Emplty");
-                return;
+                WinMessageBox.ShowErrorMessage("Outlet/Branch name is required.");
+                nameTextBox.Focus();
+                return false;
             }
-            else if (string.IsNullOrEmpty(addressTextBox.Text))
+            if (contactTextBox.Text.Trim()==string.Empty)
             {
-                MessageBox.Show("Address Field Emplty");
-                return;
+                WinMessageBox.ShowErrorMessage("Contact number is required.");
+                contactTextBox.Focus();
+                return false;
             }
-            
-            var row = outlateManager.Insertoutlate(outlate);
-            if (row)
+            if (addressTextBox.Text.Trim()==string.Empty)
             {
-                MessageBox.Show("Outlate Inserted");
-                GetOutlateValue();
+                WinMessageBox.ShowErrorMessage("Address line is required.");
+                addressTextBox.Focus();
+                return false;
             }
-            else
-            {
-                MessageBox.Show("Outlate Inserted Failed");
-            }
-            deleteButton.Enabled = false;
-            updateButton.Enabled = false;
-            Clear();
+            return true;
         }
 
         private void contactTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -119,56 +125,36 @@ namespace PointOfSale.UI
         
         private void updateButton_Click(object sender, EventArgs e)
         {
-            //Models.Outlate outlate = new Models.Outlate();
-            outlate.Id = Convert.ToInt32(idLabel.Text);
-            outlate.Name = nameTextBox.Text;
-            outlate.Code = codeTextBox.Text;
-            outlate.Contact = contactTextBox.Text;
-            outlate.Address = addressTextBox.Text;
-            outlate.OrganaizationId = (int)outlateComboBox.SelectedValue;
+            if (IsFormValidated())
+            {
+                outlate.Id = Convert.ToInt32(idLabel.Text);
+                outlate.Name = nameTextBox.Text;
+                outlate.Code = codeTextBox.Text;
+                outlate.Contact = contactTextBox.Text;
+                outlate.Address = addressTextBox.Text;
 
-            OutlateManager outlateManager = new OutlateManager();
+                outlate.OrganaizationId = (int) outlateComboBox.SelectedValue;
+                bool isNameExits = db.Outlates.Count(c => c.Name == outlate.Name) > 1;
+                if (isNameExits)
+                {
+                    WinMessageBox.ShowErrorMessage("Outlat/Branch name is already exits, Please another name Try.");
+                    return;
+                }
 
-
-            if (string.IsNullOrEmpty(nameTextBox.Text))
-            {
-                MessageBox.Show("Name Field Emplty");
-                return;
+                var row = outlateManager.Updateoutlate(outlate);
+                if (row)
+                {
+                    MessageBox.Show("Outlate/Branch is Updated");
+                    GetOutlateValue();
+                    Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Outlate Updated Failed");
+                }
+                deleteButton.Enabled = true;
+                updateButton.Enabled = true;
             }
-            else if (string.IsNullOrEmpty(codeTextBox.Text))
-            {
-                MessageBox.Show("Code Field Emplty");
-                return;
-            }
-            else if (outlate.Code.Length <= 6)
-            {
-                MessageBox.Show("Security Code Must Be 6 Disit");
-                return;
-            }
-            else if (string.IsNullOrEmpty(contactTextBox.Text))
-            {
-                MessageBox.Show("Contact Field Emplty");
-                return;
-            }
-            else if (string.IsNullOrEmpty(addressTextBox.Text))
-            {
-                MessageBox.Show("Address Field Emplty");
-                return;
-            }
-
-            var row = outlateManager.Updateoutlate(outlate);
-            if (row)
-            {
-                MessageBox.Show("Outlate Updated");
-                GetOutlateValue();
-            }
-            else
-            {
-                MessageBox.Show("Outlate Updated Failed");
-            }
-            deleteButton.Enabled = true;
-            updateButton.Enabled = true;
-            Clear();
         }
 
         private void outlateDataGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -187,16 +173,14 @@ namespace PointOfSale.UI
         private void searchTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             string searchItem = searchTextBox.Text;
-            SuperShopDatabaseContext db = new SuperShopDatabaseContext();
             var data = (from ol in db.Outlates where ol.Name.Contains(searchItem) select ol).ToList();
            outlateDataGridView.DataSource = data;
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            OutlateManager om = new OutlateManager();
             outlate.Id = Convert.ToInt32(idLabel.Text);
-            var row = om.DeleteOutlet(outlate);
+            var row = outlateManager.DeleteOutlet(outlate);
             if (row)
             {
                 MessageBox.Show("Delete Successfully.");
@@ -207,9 +191,30 @@ namespace PointOfSale.UI
 
         private void Clear()
         {
-            nameTextBox.Text = outlateComboBox.Text = codeTextBox .Text = contactTextBox.Text = addressTextBox.Text = "";
+            nameTextBox.Clear();
+            outlateComboBox.SelectedValue = -1;
+            codeTextBox .Clear();
+            contactTextBox.Clear();
+            addressTextBox.Clear();
             //deleteButton.Enabled = false;
             //updateButton.Enabled = false;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Clear();
+        }
+        private void AutoCodeShow()
+        {
+            int count = 1;
+            count = db.Outlates.Include(c => c.Id).Count() + count;
+            //var firstThreeChars = Name.Length <= 3 ? Name : Name.Substring(0, 3);
+            codeTextBox.Text = "2000" + count.ToString();
+        }
+
+        private void nameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            AutoCodeShow();
         }
     }
 }

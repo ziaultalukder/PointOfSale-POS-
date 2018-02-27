@@ -90,13 +90,11 @@ namespace PointOfSale.UI
         }
 
         private void AutoCodeShow()
-        { 
-             int count = 1;
+        {
+            int count = 1;
             count = db.Organaization.Include(c => c.Id).Count() + count;
             //var firstThreeChars = Name.Length <= 3 ? Name : Name.Substring(0, 3);
             codeTextBox.Text = "1000" + count.ToString();
-
-
         }
 
         private bool IsFormValidated()

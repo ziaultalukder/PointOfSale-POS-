@@ -49,11 +49,14 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.outlateDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // outlateComboBox
             // 
+            this.outlateComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.outlateComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.outlateComboBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.outlateComboBox.FormattingEnabled = true;
             this.outlateComboBox.Location = new System.Drawing.Point(144, 12);
@@ -79,11 +82,12 @@
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(289, 27);
             this.nameTextBox.TabIndex = 2;
+            this.nameTextBox.TextChanged += new System.EventHandler(this.nameTextBox_TextChanged);
             // 
             // saveButton
             // 
             this.saveButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveButton.Location = new System.Drawing.Point(27, 270);
+            this.saveButton.Location = new System.Drawing.Point(27, 275);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(92, 35);
             this.saveButton.TabIndex = 3;
@@ -95,12 +99,14 @@
             // 
             this.outlateDataGridView.AllowUserToAddRows = false;
             this.outlateDataGridView.AllowUserToDeleteRows = false;
+            this.outlateDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.outlateDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.outlateDataGridView.Location = new System.Drawing.Point(25, 324);
             this.outlateDataGridView.Name = "outlateDataGridView";
             this.outlateDataGridView.ReadOnly = true;
+            this.outlateDataGridView.RowTemplate.Height = 35;
             this.outlateDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.outlateDataGridView.Size = new System.Drawing.Size(695, 195);
+            this.outlateDataGridView.Size = new System.Drawing.Size(718, 195);
             this.outlateDataGridView.TabIndex = 4;
             this.outlateDataGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.outlateDataGridView_CellMouseDoubleClick);
             // 
@@ -176,7 +182,7 @@
             // updateButton
             // 
             this.updateButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateButton.Location = new System.Drawing.Point(131, 270);
+            this.updateButton.Location = new System.Drawing.Point(131, 275);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(82, 35);
             this.updateButton.TabIndex = 3;
@@ -187,7 +193,7 @@
             // deleteButton
             // 
             this.deleteButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteButton.Location = new System.Drawing.Point(222, 270);
+            this.deleteButton.Location = new System.Drawing.Point(222, 275);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(94, 35);
             this.deleteButton.TabIndex = 3;
@@ -208,9 +214,9 @@
             // 
             this.searchTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchTextBox.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.searchTextBox.Location = new System.Drawing.Point(357, 274);
+            this.searchTextBox.Location = new System.Drawing.Point(440, 283);
             this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(241, 27);
+            this.searchTextBox.Size = new System.Drawing.Size(181, 27);
             this.searchTextBox.TabIndex = 2;
             this.searchTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchTextBox_KeyPress);
             // 
@@ -218,7 +224,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(604, 275);
+            this.label6.Location = new System.Drawing.Point(627, 284);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(116, 21);
             this.label6.TabIndex = 1;
@@ -268,16 +274,28 @@
             this.label10.TabIndex = 5;
             this.label10.Text = "*";
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(326, 275);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(94, 35);
+            this.btnCancel.TabIndex = 3;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // OutlateUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(794, 534);
+            this.ClientSize = new System.Drawing.Size(765, 534);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.outlateDataGridView);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.updateButton);
             this.Controls.Add(this.saveButton);
@@ -327,5 +345,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnCancel;
     }
 }
