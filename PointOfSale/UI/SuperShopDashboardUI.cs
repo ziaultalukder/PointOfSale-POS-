@@ -127,7 +127,8 @@ namespace PointOfSale.UI
 
         private void btnSalesReport_Click(object sender, EventArgs e)
         {
-
+            SalesReportUI srui = new SalesReportUI();
+            srui.Show();
         }
     }
 }

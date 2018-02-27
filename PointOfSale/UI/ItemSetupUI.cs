@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PointOfSale.DatabaseContext;
 using PointOfSale.Manager;
+using PointOfSale.Models;
 
 namespace PointOfSale.UI
 {
@@ -30,12 +31,43 @@ namespace PointOfSale.UI
         
         private void ItemSetup_Load(object sender, EventArgs e)
         {
-            catagoryComboBox.DataSource = db.SetupItemCatagories.ToList();
-            catagoryComboBox.DisplayMember = "Name";
-            catagoryComboBox.ValueMember = "Id";
+            List<SetupItemCatagoryView> gridDtaList = new List<SetupItemCatagoryView>();
+            var test = db.SetupItemCatagories.ToList();
 
+            foreach (var item in test)
+            {
+                var newData = new SetupItemCatagoryView
+                {
+                    Id = item.Id,
+                    Image = item.Image,
+                    Name = item.Name,
+                    Code = item.Code,
+                    Description = item.Description,
+                    CatagoryId = item.CatagoryId
+                };
+
+                var path = GetSetupItemCatagory(item, new List<string>());
+                path.Reverse();
+                newData.CatagoryPath = path.Aggregate((i, j) => i + " > " + j);
+                gridDtaList.Add(newData);
+            }
+
+            catagoryComboBox.DisplayMember = "CatagoryPath";
+            catagoryComboBox.ValueMember = "Id";
+            catagoryComboBox.DataSource = gridDtaList;
             ClearAllForm();
             GetAllDataItemPartySetup();
+        }
+
+        private List<string> GetSetupItemCatagory(SetupItemCatagory model, List<string> name)
+        {
+            name.Add(model.Name);
+
+            if (model.CatagoryId != null)
+            {
+                GetSetupItemCatagory(model.Catagory, name);
+            }
+            return name;
         }
         private void browserButton_Click(object sender, EventArgs e)
         {

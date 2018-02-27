@@ -67,28 +67,31 @@ namespace PointOfSale.UI
                                  Id = sl.Id
                              }).ToArray().LastOrDefault();
 
-            salesNumberLabel.Text = SalesInfo.SaleNo;
-            outlateLabel.Text = SalesInfo.Outlet;
-            salesDateLabel.Text = SalesInfo.SaleDate.ToString();
-            soldByLabel.Text = SalesInfo.SoldBy;
-            customerNameLabel.Text = SalesInfo.CustomerName;
-            customerContactLabel.Text = SalesInfo.CustomerNumber;
-            subTotalLabel.Text = SalesInfo.SubTotal.ToString();
-            discountLabel.Text = SalesInfo.Discount.ToString();
-            vatLlabel.Text = SalesInfo.Vat.ToString();
-            grandTotalLabel.Text = SalesInfo.TotalPrice.ToString();
-            //int sl = 0;
-            var salesItem = db.SalesItem.Where(c => c.SalesId == SalesInfo.Id)
-                .Select (c=>new
-                {
-                    //SL=sl+1,
-                    ItemName = c.ItemName,
-                    Quantity = c.Quantity,
-                    Price = c.Price,
-                    LineTotal = c.LineTotal
+            if (SalesInfo != null)
+            {
+                salesNumberLabel.Text = SalesInfo.SaleNo;
+                outlateLabel.Text = SalesInfo.Outlet;
+                salesDateLabel.Text = SalesInfo.SaleDate.ToString();
+                soldByLabel.Text = SalesInfo.SoldBy;
+                customerNameLabel.Text = SalesInfo.CustomerName;
+                customerContactLabel.Text = SalesInfo.CustomerNumber;
+                subTotalLabel.Text = SalesInfo.SubTotal.ToString();
+                discountLabel.Text = SalesInfo.Discount.ToString();
+                vatLlabel.Text = SalesInfo.Vat.ToString();
+                grandTotalLabel.Text = SalesInfo.TotalPrice.ToString();
+                //int sl = 0;
+                var salesItem = db.SalesItem.Where(c => c.SalesId == SalesInfo.Id)
+                    .Select (c=>new
+                    {
+                        //SL=sl+1,
+                        ItemName = c.ItemName,
+                        Quantity = c.Quantity,
+                        Price = c.Price,
+                        LineTotal = c.LineTotal
 
-                }).ToList();
-            salesItmdataGridView.DataSource = salesItem;
+                    }).ToList();
+                salesItmdataGridView.DataSource = salesItem;
+            }
         }
 
         private decimal discount = 0;

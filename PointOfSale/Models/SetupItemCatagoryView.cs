@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PointOfSale.Models
 {
-    public class SetupItemCatagory
+    public class SetupItemCatagoryView
     {
         public int Id { get; set; }
         [StringLength(255)]
@@ -18,11 +18,9 @@ namespace PointOfSale.Models
         public string Description { get; set; }
         [StringLength(55)]
         public string CatagoryType { get; set; }
-
         public byte[] Image { get; set; }
         public int? CatagoryId { get; set; }
-        public SetupItemCatagory Catagory { get; set; }
-        public bool  IsDeleteMode { get; set; }
+        public string CatagoryPath { get; set; }
 
     }
 }

@@ -86,6 +86,10 @@
     <Compile Include="Migrations\201802261255462_partysetup.Designer.cs">
       <DependentUpon>201802261255462_partysetup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802272114586_setupitemcatagory.cs" />
+    <Compile Include="Migrations\201802272114586_setupitemcatagory.Designer.cs">
+      <DependentUpon>201802272114586_setupitemcatagory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Expence.cs" />
@@ -99,6 +103,7 @@
     <Compile Include="Models\PurchaseItem.cs" />
     <Compile Include="Models\Sales.cs" />
     <Compile Include="Models\SalesItem.cs" />
+    <Compile Include="Models\SetupItemCatagoryView.cs" />
     <Compile Include="Models\SetupItemCatagory.cs" />
     <Compile Include="Models\ExpenseCategory.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
@@ -185,6 +190,12 @@
     <Compile Include="UI\PurchaseUI.Designer.cs">
       <DependentUpon>PurchaseUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\SalesReportUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SalesReportUI.Designer.cs">
+      <DependentUpon>SalesReportUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\SalesUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -215,6 +226,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802261255462_partysetup.resx">
       <DependentUpon>201802261255462_partysetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802272114586_setupitemcatagory.resx">
+      <DependentUpon>201802272114586_setupitemcatagory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\EmployeeUI.resx">
       <DependentUpon>EmployeeUI.cs</DependentUpon>
@@ -264,6 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\PurchaseUI.resx">
       <DependentUpon>PurchaseUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SalesReportUI.resx">
+      <DependentUpon>SalesReportUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SalesUI.resx">
       <DependentUpon>SalesUI.cs</DependentUpon>

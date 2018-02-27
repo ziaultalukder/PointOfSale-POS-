@@ -170,6 +170,7 @@
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(249, 27);
             this.nameTextBox.TabIndex = 3;
+            this.nameTextBox.TextChanged += new System.EventHandler(this.nameTextBox_TextChanged);
             // 
             // idLabel
             // 
@@ -275,7 +276,8 @@
             this.setupItemCatagoryDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.setupItemCatagoryDataGridView.Size = new System.Drawing.Size(769, 234);
             this.setupItemCatagoryDataGridView.TabIndex = 3;
-            this.setupItemCatagoryDataGridView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.setupItemCatagoryDataGridView_MouseDoubleClick);
+            this.setupItemCatagoryDataGridView.DoubleClick += new System.EventHandler(this.setupItemCatagoryDataGridView_DoubleClick);
+          //  this.setupItemCatagoryDataGridView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.setupItemCatagoryDataGridView_MouseDoubleClick);
             // 
             // SetupItemCatagoryUI
             // 
