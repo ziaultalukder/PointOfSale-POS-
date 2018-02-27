@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetupItemCatagoryUI));
             this.SetupItemCategory = new System.Windows.Forms.GroupBox();
             this.itemCatagoryPictureBox = new System.Windows.Forms.PictureBox();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -76,17 +77,19 @@
             this.SetupItemCategory.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SetupItemCategory.Location = new System.Drawing.Point(23, 15);
             this.SetupItemCategory.Name = "SetupItemCategory";
-            this.SetupItemCategory.Size = new System.Drawing.Size(744, 311);
+            this.SetupItemCategory.Size = new System.Drawing.Size(769, 311);
             this.SetupItemCategory.TabIndex = 2;
             this.SetupItemCategory.TabStop = false;
             this.SetupItemCategory.Text = "Setup Expense Category";
             // 
             // itemCatagoryPictureBox
             // 
+            this.itemCatagoryPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("itemCatagoryPictureBox.BackgroundImage")));
+            this.itemCatagoryPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.itemCatagoryPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.itemCatagoryPictureBox.Location = new System.Drawing.Point(507, 49);
+            this.itemCatagoryPictureBox.Location = new System.Drawing.Point(565, 32);
             this.itemCatagoryPictureBox.Name = "itemCatagoryPictureBox";
-            this.itemCatagoryPictureBox.Size = new System.Drawing.Size(207, 181);
+            this.itemCatagoryPictureBox.Size = new System.Drawing.Size(198, 181);
             this.itemCatagoryPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.itemCatagoryPictureBox.TabIndex = 6;
             this.itemCatagoryPictureBox.TabStop = false;
@@ -124,7 +127,7 @@
             // imageBrowseButton
             // 
             this.imageBrowseButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.imageBrowseButton.Location = new System.Drawing.Point(615, 262);
+            this.imageBrowseButton.Location = new System.Drawing.Point(664, 236);
             this.imageBrowseButton.Name = "imageBrowseButton";
             this.imageBrowseButton.Size = new System.Drawing.Size(99, 30);
             this.imageBrowseButton.TabIndex = 5;
@@ -267,10 +270,10 @@
             // 
             this.setupItemCatagoryDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.setupItemCatagoryDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.setupItemCatagoryDataGridView.Location = new System.Drawing.Point(23, 367);
+            this.setupItemCatagoryDataGridView.Location = new System.Drawing.Point(23, 337);
             this.setupItemCatagoryDataGridView.Name = "setupItemCatagoryDataGridView";
             this.setupItemCatagoryDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.setupItemCatagoryDataGridView.Size = new System.Drawing.Size(744, 234);
+            this.setupItemCatagoryDataGridView.Size = new System.Drawing.Size(769, 234);
             this.setupItemCatagoryDataGridView.TabIndex = 3;
             this.setupItemCatagoryDataGridView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.setupItemCatagoryDataGridView_MouseDoubleClick);
             // 
@@ -278,7 +281,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(804, 612);
+            this.ClientSize = new System.Drawing.Size(804, 582);
             this.Controls.Add(this.setupItemCatagoryDataGridView);
             this.Controls.Add(this.SetupItemCategory);
             this.Name = "SetupItemCatagoryUI";

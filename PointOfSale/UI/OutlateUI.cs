@@ -174,7 +174,7 @@ namespace PointOfSale.UI
         {
             string searchItem = searchTextBox.Text;
             var data = (from ol in db.Outlates where ol.Name.Contains(searchItem) select ol).ToList();
-           outlateDataGridView.DataSource = data;
+            outlateDataGridView.DataSource = data;
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
