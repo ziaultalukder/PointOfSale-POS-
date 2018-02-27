@@ -63,52 +63,84 @@ namespace PointOfSale.UI
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            if (!isUpadteMode)
+            if (IsFormValidated())
             {
-                TextBoxValue();
-                bool isExistContact = db.Employee.Count(c => c.Contact == employee.Contact) > 0;
-                bool isExistEmail = db.Employee.Count(x => x.Email == employee.Email) > 0;
-                if (isExistContact)
-                {
-                    MessageBox.Show("Contact No Already Exits. Please another Contact No.");
-                    return;
-                }
-                if (isExistEmail)
-                {
-                    MessageBox.Show("Email No Already Exist. Please another Email Address.");
-                    return;
-                }
-                db.Employee.Add(employee);
-                int rows = db.SaveChanges();
-                if (rows>0)
-                {
-                    MessageBox.Show("Record Save Successfully.");
-                }
-                else
-                {
-                    MessageBox.Show("Record Save Failed.");
-                }
-            }
-            if (isUpadteMode)
-            {
-                if (MessageBox.Show("Are You Sure to Update this Record","Information",MessageBoxButtons.YesNo)==DialogResult.Yes)
+
+
+                if (!isUpadteMode)
                 {
                     TextBoxValue();
-                    db.Employee.Attach(employee);
-                    db.Entry( employee ).State = EntityState.Modified;
-                    int rows = db.SaveChanges();
-                    if (rows>0)
+                    bool isExistContact = db.Employee.Count(c => c.Contact == employee.Contact) > 0;
+                    bool isExistEmail = db.Employee.Count(x => x.Email == employee.Email) > 0;
+                    bool isExistNID = db.Employee.Count(c => c.Nid == employee.Nid) > 0;
+                    if (isExistContact)
                     {
-                        MessageBox.Show("Record Updated Successfully.");
+                        MessageBox.Show("Contact No Already Exits. Please another Contact No.");
+                        return;
+                    }
+                    if (isExistEmail)
+                    {
+                        MessageBox.Show("Email No Already Exist. Please another Email Address.");
+                        return;
+                    }
+                    if (isExistNID)
+                    {
+                        WinMessageBox.ShowErrorMessage("NID number is already exits, Please another NID.");
+                        return;
+                    }
+
+                    db.Employee.Add(employee);
+                    int rows = db.SaveChanges();
+                    if (rows > 0)
+                    {
+                        MessageBox.Show("Record Save Successfully.");
                     }
                     else
                     {
-                        MessageBox.Show("Record Updated Failed.");
+                        MessageBox.Show("Record Save Failed.");
                     }
                 }
+                if (isUpadteMode)
+                {
+                    if (MessageBox.Show("Are You Sure to Update this Record", "Information", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        TextBoxValue();
+
+                        bool isExistContact = db.Employee.Count(c => c.Contact == employee.Contact) > 1;
+                        bool isExistEmail = db.Employee.Count(x => x.Email == employee.Email) > 1;
+                        bool isExistNID = db.Employee.Count(c => c.Nid == employee.Nid) > 1;
+                        if (isExistContact)
+                        {
+                            MessageBox.Show("Contact No Already Exits. Please another Contact No.");
+                            return;
+                        }
+                        if (isExistEmail)
+                        {
+                            MessageBox.Show("Email No Already Exist. Please another Email Address.");
+                            return;
+                        }
+                        if (isExistNID)
+                        {
+                            WinMessageBox.ShowErrorMessage("NID number is already exits, Please another NID.");
+                            return;
+                        }
+
+                        db.Employee.Attach(employee);
+                        db.Entry(employee).State = EntityState.Modified;
+                        int rows = db.SaveChanges();
+                        if (rows > 0)
+                        {
+                            MessageBox.Show("Record Updated Successfully.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Record Updated Failed.");
+                        }
+                    }
+                }
+                LoadDataGridView();
+                ClearAllForm();
             }
-            LoadDataGridView();
-            ClearAllForm();
         }
 
         private void ClearAllForm()
@@ -304,6 +336,62 @@ namespace PointOfSale.UI
         private void nameTextBox_TextChanged(object sender, EventArgs e)
         {
             AutoCodeGenerate();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            tabControlEmployee.SelectedIndex = 1;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            tabControlEmployee.SelectedIndex = 0;
+        }
+
+        private bool IsFormValidated()
+        {
+            if (nameTextBox.Text .Trim()==string .Empty)
+            {
+                WinMessageBox.ShowErrorMessage("Employee name is required.");
+                nameTextBox.Focus();
+                return false;
+            }
+            if (outlateComboBox.SelectedIndex == -1)
+            {
+                WinMessageBox.ShowErrorMessage("Outlat/Branch name is select.");
+                return false;
+            }
+            if (contactTextBox .Text .Trim()==string .Empty)
+            {
+                WinMessageBox.ShowErrorMessage("Contact number is required.");
+                contactTextBox.Focus();
+                return false;
+            }
+            if (emailTextBox.Text .Trim()==string .Empty)
+            {
+                WinMessageBox.ShowErrorMessage("Email address is required.");
+                emailTextBox.Focus();
+                return false;
+            }
+            return true;
+        }
+
+        private void employeePictureBox_DoubleClick(object sender, EventArgs e)
+        {
+            string photo = null;
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Title = "Select Logo";
+            ofd.Filter = "Logo File (*.png;*.jpg;*.bmp;*.gif)|*.png;*.jpg;*.bmp;*.gif";
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                photo = ofd.FileName;
+                employeePictureBox.ImageLocation = photo;
+            }
+            ofd.Multiselect = false;
+            FileStream fs = new FileStream(photo, FileMode.Open, FileAccess.Read);
+            BinaryReader br = new BinaryReader(fs);
+            employee.Image = br.ReadBytes((int)fs.Length);
         }
     }
 }

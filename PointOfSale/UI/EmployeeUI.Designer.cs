@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeUI));
             this.dgvEmployees = new System.Windows.Forms.DataGridView();
             this.employeeErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.outlateComboBox = new System.Windows.Forms.ComboBox();
@@ -60,17 +61,19 @@
             this.saveButton = new System.Windows.Forms.Button();
             this.BrowseButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControlEmployee = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.txtBoxRefefence = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btnCancel = new System.Windows.Forms.Button();
             this.txtBoxSearch = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeErrorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeePictureBox)).BeginInit();
-            this.tabControl1.SuspendLayout();
+            this.tabControlEmployee.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.SuspendLayout();
@@ -95,6 +98,8 @@
             // 
             // outlateComboBox
             // 
+            this.outlateComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.outlateComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.outlateComboBox.FormattingEnabled = true;
             this.outlateComboBox.Location = new System.Drawing.Point(180, 97);
             this.outlateComboBox.Name = "outlateComboBox";
@@ -114,9 +119,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(32, 101);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 17);
+            this.label1.Size = new System.Drawing.Size(99, 17);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Outlate/Branch:";
+            this.label1.Text = "Outlat/Branch:";
             // 
             // label2
             // 
@@ -129,6 +134,8 @@
             // 
             // employeePictureBox
             // 
+            this.employeePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("employeePictureBox.BackgroundImage")));
+            this.employeePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.employeePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.employeePictureBox.Location = new System.Drawing.Point(808, 3);
             this.employeePictureBox.Name = "employeePictureBox";
@@ -136,6 +143,7 @@
             this.employeePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.employeePictureBox.TabIndex = 5;
             this.employeePictureBox.TabStop = false;
+            this.employeePictureBox.DoubleClick += new System.EventHandler(this.employeePictureBox_DoubleClick);
             // 
             // label3
             // 
@@ -343,16 +351,16 @@
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
-            // tabControl1
+            // tabControlEmployee
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(9, 19);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(995, 323);
-            this.tabControl1.TabIndex = 7;
+            this.tabControlEmployee.Controls.Add(this.tabPage1);
+            this.tabControlEmployee.Controls.Add(this.tabPage2);
+            this.tabControlEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControlEmployee.Location = new System.Drawing.Point(9, 19);
+            this.tabControlEmployee.Name = "tabControlEmployee";
+            this.tabControlEmployee.SelectedIndex = 0;
+            this.tabControlEmployee.Size = new System.Drawing.Size(995, 323);
+            this.tabControlEmployee.TabIndex = 7;
             // 
             // tabPage1
             // 
@@ -362,6 +370,7 @@
             this.tabPage1.Controls.Add(this.employeePictureBox);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.label6);
+            this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.BrowseButton);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.label5);
@@ -378,7 +387,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(987, 294);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Official";
+            this.tabPage1.Text = "Official Info";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // txtBoxRefefence
@@ -391,6 +400,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPage2.Controls.Add(this.button2);
             this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.fatherNameTextBox);
             this.tabPage2.Controls.Add(this.emergencyTextBox);
@@ -408,7 +419,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(987, 294);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Personal";
+            this.tabPage2.Text = "Personal Info";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // btnCancel
@@ -440,6 +451,27 @@
             this.label14.TabIndex = 0;
             this.label14.Text = "Search by Name:";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(887, 257);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(96, 30);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Next Page";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.DarkGray;
+            this.button2.Location = new System.Drawing.Point(7, 253);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(109, 33);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Previous Page";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // EmployeeUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -448,7 +480,7 @@
             this.Controls.Add(this.dgvEmployees);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.deleteButton);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControlEmployee);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.txtBoxSearch);
             this.Controls.Add(this.label14);
@@ -459,7 +491,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeErrorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeePictureBox)).EndInit();
-            this.tabControl1.ResumeLayout(false);
+            this.tabControlEmployee.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
@@ -473,7 +505,7 @@
         private System.Windows.Forms.DataGridView dgvEmployees;
         private System.Windows.Forms.ErrorProvider employeeErrorProvider;
         private System.Windows.Forms.Button deleteButton;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControlEmployee;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -508,5 +540,7 @@
         private System.Windows.Forms.TextBox txtBoxRefefence;
         private System.Windows.Forms.TextBox txtBoxSearch;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
