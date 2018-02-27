@@ -17,7 +17,6 @@ namespace PointOfSale
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new POSManagementSystem());
             Application.Run(new SuperShopDashboardUI());
         }
     }

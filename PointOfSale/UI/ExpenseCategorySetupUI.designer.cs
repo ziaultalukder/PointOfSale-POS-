@@ -50,12 +50,20 @@
             this.radChildCategory = new System.Windows.Forms.RadioButton();
             this.radRootCategory = new System.Windows.Forms.RadioButton();
             this.grdExpenseCategory = new System.Windows.Forms.DataGridView();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lblSelectParent = new System.Windows.Forms.Label();
             this.grpSetupExpenseCategory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdExpenseCategory)).BeginInit();
             this.SuspendLayout();
             // 
             // grpSetupExpenseCategory
             // 
+            this.grpSetupExpenseCategory.Controls.Add(this.label9);
+            this.grpSetupExpenseCategory.Controls.Add(this.label8);
+            this.grpSetupExpenseCategory.Controls.Add(this.lblSelectParent);
+            this.grpSetupExpenseCategory.Controls.Add(this.label6);
             this.grpSetupExpenseCategory.Controls.Add(this.lblId);
             this.grpSetupExpenseCategory.Controls.Add(this.btnCancle);
             this.grpSetupExpenseCategory.Controls.Add(this.btnDelete);
@@ -97,7 +105,7 @@
             this.btnCancle.Location = new System.Drawing.Point(152, 286);
             this.btnCancle.Name = "btnCancle";
             this.btnCancle.Size = new System.Drawing.Size(75, 36);
-            this.btnCancle.TabIndex = 5;
+            this.btnCancle.TabIndex = 7;
             this.btnCancle.Text = "Refresh";
             this.btnCancle.UseVisualStyleBackColor = true;
             this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
@@ -129,7 +137,7 @@
             this.btnSave.Location = new System.Drawing.Point(240, 286);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 36);
-            this.btnSave.TabIndex = 5;
+            this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -148,14 +156,14 @@
             this.txtCategoryDiscription.Multiline = true;
             this.txtCategoryDiscription.Name = "txtCategoryDiscription";
             this.txtCategoryDiscription.Size = new System.Drawing.Size(249, 55);
-            this.txtCategoryDiscription.TabIndex = 3;
+            this.txtCategoryDiscription.TabIndex = 5;
             // 
             // txtCategoryCode
             // 
             this.txtCategoryCode.Location = new System.Drawing.Point(234, 142);
             this.txtCategoryCode.Name = "txtCategoryCode";
             this.txtCategoryCode.Size = new System.Drawing.Size(249, 27);
-            this.txtCategoryCode.TabIndex = 3;
+            this.txtCategoryCode.TabIndex = 2;
             // 
             // txtCategoryId
             // 
@@ -171,7 +179,7 @@
             this.txtCategoryName.Location = new System.Drawing.Point(234, 111);
             this.txtCategoryName.Name = "txtCategoryName";
             this.txtCategoryName.Size = new System.Drawing.Size(249, 27);
-            this.txtCategoryName.TabIndex = 3;
+            this.txtCategoryName.TabIndex = 1;
             // 
             // label5
             // 
@@ -191,7 +199,7 @@
             this.cmbParentCategory.Location = new System.Drawing.Point(234, 78);
             this.cmbParentCategory.Name = "cmbParentCategory";
             this.cmbParentCategory.Size = new System.Drawing.Size(249, 29);
-            this.cmbParentCategory.TabIndex = 2;
+            this.cmbParentCategory.TabIndex = 5;
             this.cmbParentCategory.SelectedIndexChanged += new System.EventHandler(this.cmbParentCategory_SelectedIndexChanged);
             this.cmbParentCategory.Click += new System.EventHandler(this.cmbParentCategory_Click);
             // 
@@ -262,7 +270,7 @@
             this.radChildCategory.Location = new System.Drawing.Point(385, 26);
             this.radChildCategory.Name = "radChildCategory";
             this.radChildCategory.Size = new System.Drawing.Size(147, 25);
-            this.radChildCategory.TabIndex = 0;
+            this.radChildCategory.TabIndex = 3;
             this.radChildCategory.TabStop = true;
             this.radChildCategory.Text = "Child Category";
             this.radChildCategory.UseVisualStyleBackColor = true;
@@ -290,6 +298,48 @@
             this.grdExpenseCategory.TabIndex = 1;
             this.grdExpenseCategory.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grdExpenseCategory_CellMouseClick);
             this.grdExpenseCategory.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grdExpenseCategory_CellMouseDoubleClick);
+            this.grdExpenseCategory.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grdExpenseCategory_ColumnHeaderMouseClick);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(199, 30);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(16, 21);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "*";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.Red;
+            this.label8.Location = new System.Drawing.Point(199, 109);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(16, 21);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "*";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(199, 142);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(16, 21);
+            this.label9.TabIndex = 7;
+            this.label9.Text = "*";
+            // 
+            // lblSelectParent
+            // 
+            this.lblSelectParent.AutoSize = true;
+            this.lblSelectParent.ForeColor = System.Drawing.Color.Red;
+            this.lblSelectParent.Location = new System.Drawing.Point(199, 81);
+            this.lblSelectParent.Name = "lblSelectParent";
+            this.lblSelectParent.Size = new System.Drawing.Size(16, 21);
+            this.lblSelectParent.TabIndex = 7;
+            this.lblSelectParent.Text = "*";
+            this.lblSelectParent.Visible = false;
             // 
             // ExpenseCategorySetupUI
             // 
@@ -332,5 +382,9 @@
         private System.Windows.Forms.Label idLabel;
         private System.Windows.Forms.TextBox txtCategoryId;
         private System.Windows.Forms.Label lblCategoryId;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblSelectParent;
+        private System.Windows.Forms.Label label6;
     }
 }
