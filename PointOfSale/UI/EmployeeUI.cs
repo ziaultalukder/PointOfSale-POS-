@@ -46,7 +46,7 @@ namespace PointOfSale.UI
         {
             string photo = null;
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Title = "Select Logo";
+            ofd.Title = "Select Photo";
             ofd.Filter = "Logo File (*.png;*.jpg;*.bmp;*.gif)|*.png;*.jpg;*.bmp;*.gif";
 
             if (ofd.ShowDialog() == DialogResult.OK)
@@ -380,8 +380,8 @@ namespace PointOfSale.UI
         {
             string photo = null;
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Title = "Select Logo";
-            ofd.Filter = "Logo File (*.png;*.jpg;*.bmp;*.gif)|*.png;*.jpg;*.bmp;*.gif";
+            ofd.Title = "Select Photo";
+            ofd.Filter = "Photo File (*.png;*.jpg;*.bmp;*.gif)|*.png;*.jpg;*.bmp;*.gif";
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {

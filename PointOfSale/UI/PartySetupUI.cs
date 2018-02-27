@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -27,116 +28,99 @@ namespace PointOfSale.UI
         // Browse Image
         private void button5_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Title = "Please Select Image";
-            openFileDialog.Filter = "JPG|*.jpg|PNG|*.png|GIF|*gif";
-            openFileDialog.Multiselect = false;
+            string photo = null;
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Title = "Select Photo";
+            ofd.Filter = "Photo File (*.png;*.jpg;*.bmp;*.gif)|*.png;*.jpg;*.bmp;*.gif";
 
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            if (ofd.ShowDialog() == DialogResult.OK)
             {
-                this.partyPictureBox.ImageLocation = openFileDialog.FileName;
+                photo = ofd.FileName;
+                partyPictureBox.ImageLocation = photo;
             }
+            ofd.Multiselect = false;
+            FileStream fs = new FileStream(photo, FileMode.Open, FileAccess.Read);
+            BinaryReader br = new BinaryReader(fs);
+            partySetup.Image = br.ReadBytes((int)fs.Length);
 
         }
-        private byte[] ConvertToFileByte(string iPath)
-        {
-            byte[] data = null;
-            FileInfo info = new FileInfo(iPath);
-            long numByte = info.Length;
-            FileStream fileStream = new FileStream(iPath, FileMode.Open, FileAccess.Read);
-            BinaryReader Br = new BinaryReader(fileStream);
-            data = Br.ReadBytes((int)numByte);
-            return data;
-        }
+       
         private void saveButton_Click(object sender, EventArgs e)
         {
-            Random rd = new Random();
-            
-            partySetup.Name = nameTextBox.Text;
-            partySetup.Contact = contactTextBox.Text;
-            partySetup.Code = rd.Next().ToString();
-            partySetup.Email = emailTextBox.Text;
-            partySetup.Address = addressTextBox.Text;
-            partySetup.DataTime = partyDateTimePicker.Value;
-            
-            
-            if (customerCheckBox.Checked && supplierCheckBox.Checked)
+            if (IsFormValidated())
             {
-                partySetup.Customer = customerCheckBox.Text;
-                partySetup.Supplier = supplierCheckBox.Text;
-            }
-            else if (supplierCheckBox.Checked)
-            {
-                partySetup.Supplier = supplierCheckBox.Text;
-            }
-            else if (customerCheckBox.Checked)
-            {
-                partySetup.Customer = customerCheckBox.Text;
-            }
+                partySetup.Name = nameTextBox.Text;
+                partySetup.Contact = contactTextBox.Text;
+                partySetup.Code = codeTextBox.Text;
+                partySetup.Email = emailTextBox.Text;
+                partySetup.Address = addressTextBox.Text;
+                partySetup.DataTime = partyDateTimePicker.Value;
+
+                if (customerCheckBox.Checked && supplierCheckBox.Checked)
+                {
+                    partySetup.Customer = customerCheckBox.Text;
+                    partySetup.Supplier = supplierCheckBox.Text;
+                }
+                else if (supplierCheckBox.Checked)
+                {
+                    partySetup.Supplier = supplierCheckBox.Text;
+                }
+                else if (customerCheckBox.Checked)
+                {
+                    partySetup.Customer = customerCheckBox.Text;
+                }
+
+                partySetup.Image = partySetup.Image;
 
 
-            partySetup.Image = ConvertToFileByte(this.partyPictureBox.ImageLocation);
-
-            
-            
-
-
-
-            if (string.IsNullOrEmpty(nameTextBox.Text))
-            {
-                MessageBox.Show("Name Field Empty");
-                return;
+                //if (IsFormValidated()) return;
+                var row = partyManager.InsertParty(partySetup);
+                if (row)
+                {
+                    //codeTextBox.Text = partySetup.Code;
+                    WinMessageBox.ShowSuccessMessage("Record save is successfully.");
+                    GetViewdata();
+                    ClearAllForm();
+                    //updateButton.Enabled = false;
+                    //deleteButton.Enabled = false;
+                }
+                else
+                {
+                    WinMessageBox.ShowErrorMessage("Record save is failed !");
+                }
             }
-            else if (contactTextBox.Text == String.Empty)
-            {
-                MessageBox.Show("Contact Field Empty");
-                return;
-            } 
-            //else if (string.IsNullOrEmpty(codeTextBox.Text))
-            //{
-            //    MessageBox.Show("Code Field Empty");
-            //    return;
-            //}
-            //else if (partySetup.Code.Length <= 6)
-            //{
-            //    MessageBox.Show("Security Code Must Be 6 Disit");
-            //    return;
-            //}
-            else if (string.IsNullOrEmpty(addressTextBox.Text))
-            {
-                MessageBox.Show("Address Field Emplty");
-                return;
-            }
-            
-
-            var row = partyManager.InsertParty(partySetup);
-            if (row)
-            {
-                codeTextBox.Text = partySetup.Code;
-                MessageBox.Show("Data Inserted Successfully");
-                GetViewdata();
-                ClearAllForm();
-                //updateButton.Enabled = false;
-                //deleteButton.Enabled = false;
-            }
-            else
-            {
-                MessageBox.Show("Data Inserted Failed");
-            }
-            
         }
 
-        private void viewButton_Click(object sender, EventArgs e)
+        private bool IsFormValidated()
         {
-            GetViewdata();
+            if (nameTextBox.Text.Trim()==string .Empty)
+            {
+                WinMessageBox.ShowErrorMessage("Name is required.");
+                nameTextBox.Focus();
+                return false;
+            }
+            if (contactTextBox.Text.Trim() == string .Empty)
+            {
+                WinMessageBox.ShowErrorMessage("Contact number is required.");
+                contactTextBox.Focus();
+                return false;
+            }
+            if (emailTextBox.Text.Trim() == string.Empty)
+            {
+                WinMessageBox.ShowErrorMessage("Email address is required.");
+                emailTextBox.Focus();
+                return false;
+            }
+            if (addressTextBox.Text.Trim()==string .Empty)
+            {
+                WinMessageBox.ShowErrorMessage("Address line is required.");
+                addressTextBox.Focus();
+                return false;
+            }
+            return true;
         }
-
         private void GetViewdata()
         {
-            //SuperShopDatabaseContext db = new SuperShopDatabaseContext();
-            //partyDataGridView.DataSource = db.PartySetup.ToList();
-            //ClearAllForm();
-
             var dgvShow = (from partySetup in db.PartySetup
                            where (partySetup.IsDeleteMode == false)
                            select new
@@ -160,135 +144,76 @@ namespace PointOfSale.UI
                     if (column == null) continue;
                     column.ImageLayout = DataGridViewImageCellLayout.Stretch;
                 }
-            //organaizationdataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-        }
-
-        private void partyDataGridView_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            idLabel.Text             = partyDataGridView.SelectedRows[0].Cells[0].Value.ToString();
-            nameTextBox.Text         = partyDataGridView.SelectedRows[0].Cells[1].Value.ToString();
-            contactTextBox.Text      = partyDataGridView.SelectedRows[0].Cells[2].Value.ToString();
-            codeTextBox.Text         = partyDataGridView.SelectedRows[0].Cells[3].Value.ToString();
-            emailTextBox.Text        = partyDataGridView.SelectedRows[0].Cells[4].Value.ToString();
-            addressTextBox.Text      = partyDataGridView.SelectedRows[0].Cells[5].Value.ToString();
-            //customerRadioButton.Text = partyDataGridView.SelectedRows[0].Cells[8].Value.ToString();
-
-            byte[] imageData = (byte[])partyDataGridView.CurrentRow.Cells[6].Value;
-            MemoryStream ms = new MemoryStream(imageData);
-            partyPictureBox.Image = Image.FromStream(ms);
-
-            updateButton.Visible = true;
-            updateButton.Enabled = true;
-            deleteButton.Enabled = true;
-
+            
         }
 
         private void updateButton_Click(object sender, EventArgs e)
         {
-            Models.PartySetup partySetup = new Models.PartySetup();
-            partySetup.Id = Convert.ToInt32(idLabel.Text); 
-            partySetup.Name = nameTextBox.Text;
-            partySetup.Contact = contactTextBox.Text;
-            partySetup.Code = codeTextBox.Text;
-            partySetup.Email = emailTextBox.Text;
-            partySetup.Address = addressTextBox.Text;
-            partySetup.DataTime = partyDateTimePicker.Value;
-            if (customerCheckBox.Checked)
+            if (IsFormValidated())
             {
-                partySetup.Customer = customerCheckBox.Text;
-            }
-            else
-            {
-                partySetup.Supplier = supplierCheckBox.Text;
-            }
-            
-            
-            partySetup.Image = ConvertToFileByte(this.partyPictureBox.ImageLocation);
+                if (MessageBox.Show("Are You Sure to Update this Record", "Information", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    //partySetup.Id = Convert.ToInt32(idLabel.Text);
+                    partySetup.Name = nameTextBox.Text;
+                    partySetup.Contact = contactTextBox.Text;
+                    partySetup.Code = codeTextBox.Text;
+                    partySetup.Email = emailTextBox.Text;
+                    partySetup.Address = addressTextBox.Text;
+                    partySetup.DataTime = partyDateTimePicker.Value;
 
-            PartyManager partyManager = new PartyManager();
+                    if (customerCheckBox.Checked)
+                    {
+                        partySetup.Customer = customerCheckBox.Text;
+                    }
+                    else
+                    {
+                        partySetup.Supplier = supplierCheckBox.Text;
+                    }
 
+                    partySetup.Image = partySetup.Image;
 
-            if (string.IsNullOrEmpty(nameTextBox.Text))
-            {
-                MessageBox.Show("Name Field Empty");
-                return;
+                    var row = partyManager.UpdateParty(partySetup);
+                    if (row)
+                    {
+                        WinMessageBox.ShowSuccessMessage("Record update is successfully.");
+                        GetViewdata();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Party Updated Failed");
+                    }
+                    ClearAllForm();
+                }
             }
-            else if (contactTextBox.Text == String.Empty)
-            {
-                MessageBox.Show("Contact Field Empty");
-                return;
-            }
-            //else if (string.IsNullOrEmpty(codeTextBox.Text))
-            //{
-            //    MessageBox.Show("Code Field Empty");
-            //    return;
-            //}
-            //else if (partySetup.Code.Length <= 6)
-            //{
-            //    MessageBox.Show("Security Code Must Be 6 Disit");
-            //    return;
-            //}
-            else if (string.IsNullOrEmpty(addressTextBox.Text))
-            {
-                MessageBox.Show("Address Field Emplty");
-                return;
-            }
-
-
-            var row = partyManager.UpdateParty(partySetup);
-            if (row)
-            {
-                MessageBox.Show("Party Updated Successfully");
-                
-                partyDataGridView.DataSource = db.PartySetup.ToList();
-            }
-            else
-            {
-                MessageBox.Show("Party Updated Failed");
-            }
-            ClearAllForm();
         }
 
         private void searchTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
-            var data =
-                (from party in db.PartySetup where party.Contact.Contains(searchTextBox.Text) select party).ToList();
+            var data = (from party in db.PartySetup where party.Contact.Contains(searchTextBox.Text) select party).ToList();
             partyDataGridView.DataSource = data;
-
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            Models.PartySetup partySetup = new Models.PartySetup();
-            partySetup.Id = Convert.ToInt32(idLabel.Text);
-            PartyManager partyManager = new PartyManager();
+            if (MessageBox.Show("Are You Sure to Delete this Record ?", "Organization", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                int selectedId = (int)partyDataGridView.CurrentRow.Cells["Id"].Value;
+                var updateParty = db.PartySetup.FirstOrDefault(c => c.Id == selectedId);
+                if (selectedId != 0)
+                {
+                    updateParty.IsDeleteMode = true;
+                    db.SaveChanges();
+                    WinMessageBox.ShowSuccessMessage("Record delete is successfully.");
+                }
+            }
+            GetViewdata();
+            ClearAllForm();
             
-            DialogResult dialogResult = MessageBox.Show("Are You Sure", "Deleted Party", MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-            if (dialogResult == DialogResult.Yes)
-            {
-                var row = partyManager.DeleteSetupParty(partySetup);
-            }
-            else
-            {
-                MessageBox.Show("delete Failed");
-            }
         }
 
         private void PartySetup_Load(object sender, EventArgs e)
         {
-
             GetViewdata();
-
-
-
-
-        }
-
-        private void partyDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void searchButton_Click(object sender, EventArgs e)
@@ -334,6 +259,69 @@ namespace PointOfSale.UI
             updateButton.Enabled = false;
             deleteButton.Enabled = false;
             partyPictureBox.Image = null;
+        }
+
+        private void partyPictureBox_DoubleClick(object sender, EventArgs e)
+        {
+            string photo = null;
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Title = "Select Photo";
+            ofd.Filter = "Photo File (*.png;*.jpg;*.bmp;*.gif)|*.png;*.jpg;*.bmp;*.gif";
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                photo = ofd.FileName;
+                partyPictureBox.ImageLocation = photo;
+            }
+            ofd.Multiselect = false;
+            FileStream fs = new FileStream(photo, FileMode.Open, FileAccess.Read);
+            BinaryReader br = new BinaryReader(fs);
+            partySetup.Image = br.ReadBytes((int)fs.Length);
+        }
+
+        private void AutoCodeGenerate()
+        {
+            int counts = 1;
+            counts = db.Employee.Include(c => c.Id).Count() + counts;
+            codeTextBox.Text = 100000 + counts.ToString();
+        }
+
+        private void nameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            AutoCodeGenerate();
+        }
+
+        private void partyDataGridView_DoubleClick(object sender, EventArgs e)
+        {
+            if (partyDataGridView.CurrentRow != null)
+            {
+                int dgvIndex = (int)partyDataGridView.CurrentRow.Cells["Id"].Value;
+                var dgvObj = db.PartySetup.FirstOrDefault(c => c.Id == dgvIndex);
+                partySetup = dgvObj;
+            }
+            if (partySetup != null)
+            {
+                nameTextBox.Text = partySetup.Name;
+                contactTextBox.Text = partySetup.Contact;
+                emailTextBox.Text = partySetup.Email;
+                codeTextBox.Text = partySetup.Code;
+                addressTextBox.Text = partySetup.Address;
+                partyDateTimePicker.Value = partySetup.DataTime;
+                if (partySetup.Image != null)
+                {
+                    byte[] data = partySetup.Image;
+                    MemoryStream ms = new MemoryStream(data);
+                    partyPictureBox.Image = Image.FromStream(ms);
+                }
+                else
+                {
+                    partyPictureBox.Image = null;
+                }
+                updateButton.Visible = true;
+                updateButton.Enabled = true;
+                deleteButton.Enabled = true;
+            }
+            //SetFormUpdateMode();
         }
     }
 }
