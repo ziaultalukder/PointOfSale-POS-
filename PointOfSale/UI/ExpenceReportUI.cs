@@ -101,7 +101,7 @@ namespace PointOfSale.UI
             DateTime fromDate = fromDateTimePicker.Value.Date;
             DateTime toDate = toDateTimePicker.Value.Date;
             var dateCompare = db.Expences.Where(c => c.OutletId == id).AsEnumerable()
-                .Where(c => c.ExpenceDate.Date >= fromDateTimePicker.Value && c.ExpenceDate <= toDateTimePicker.Value)
+                .Where(c => c.ExpenceDate.Date >= fromDate && c.ExpenceDate <= toDate)
 
                 .Select(c => new
                 {

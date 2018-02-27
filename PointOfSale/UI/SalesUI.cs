@@ -151,6 +151,8 @@ namespace PointOfSale.UI
             var objPartySetup = db.PartySetup.FirstOrDefault(c => c.Contact == number);
             customerNameTextBox.Text = objPartySetup != null ? objPartySetup.Name : "Customer Not Fount";
             int ids = objPartySetup != null ? objPartySetup.Id:0;
+
+            //string id = objPartySetup != null ? objPartySetup.Id :"fds"
             idLabel.Text = ids.ToString();
         }
 
