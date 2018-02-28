@@ -30,9 +30,9 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmbExpenseCategory = new System.Windows.Forms.ComboBox();
-            this.updateButton = new System.Windows.Forms.Button();
-            this.btnView = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtExpenseItemDescription = new System.Windows.Forms.TextBox();
             this.txtExpenseItemCode = new System.Windows.Forms.TextBox();
@@ -51,9 +51,9 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.cmbExpenseCategory);
-            this.groupBox1.Controls.Add(this.updateButton);
-            this.groupBox1.Controls.Add(this.btnView);
-            this.groupBox1.Controls.Add(this.btnCancel);
+            this.groupBox1.Controls.Add(this.btnUpdate);
+            this.groupBox1.Controls.Add(this.btnDelete);
+            this.groupBox1.Controls.Add(this.btnRefresh);
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.txtExpenseItemDescription);
             this.groupBox1.Controls.Add(this.txtExpenseItemCode);
@@ -67,53 +67,55 @@
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(21, 22);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(631, 303);
+            this.groupBox1.Size = new System.Drawing.Size(662, 303);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Expense Item";
             // 
             // cmbExpenseCategory
             // 
+            this.cmbExpenseCategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmbExpenseCategory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbExpenseCategory.FormattingEnabled = true;
-            this.cmbExpenseCategory.Location = new System.Drawing.Point(146, 26);
+            this.cmbExpenseCategory.Location = new System.Drawing.Point(171, 26);
             this.cmbExpenseCategory.Name = "cmbExpenseCategory";
-            this.cmbExpenseCategory.Size = new System.Drawing.Size(315, 29);
+            this.cmbExpenseCategory.Size = new System.Drawing.Size(437, 29);
             this.cmbExpenseCategory.TabIndex = 3;
             this.cmbExpenseCategory.SelectedIndexChanged += new System.EventHandler(this.cmbExpenseCategory_SelectedIndexChanged);
             // 
-            // updateButton
+            // btnUpdate
             // 
-            this.updateButton.Location = new System.Drawing.Point(386, 255);
-            this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(82, 29);
-            this.updateButton.TabIndex = 2;
-            this.updateButton.Text = "Update";
-            this.updateButton.UseVisualStyleBackColor = true;
-            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
+            this.btnUpdate.Location = new System.Drawing.Point(286, 255);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(82, 29);
+            this.btnUpdate.TabIndex = 2;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // btnView
+            // btnDelete
             // 
-            this.btnView.Location = new System.Drawing.Point(305, 255);
-            this.btnView.Name = "btnView";
-            this.btnView.Size = new System.Drawing.Size(75, 29);
-            this.btnView.TabIndex = 2;
-            this.btnView.Text = "View";
-            this.btnView.UseVisualStyleBackColor = true;
-            this.btnView.Click += new System.EventHandler(this.btnView_Click);
+            this.btnDelete.Location = new System.Drawing.Point(408, 255);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 29);
+            this.btnDelete.TabIndex = 2;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // btnCancel
+            // btnRefresh
             // 
-            this.btnCancel.Location = new System.Drawing.Point(227, 255);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(72, 29);
-            this.btnCancel.TabIndex = 2;
-            this.btnCancel.Text = "Cancle";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnRefresh.Location = new System.Drawing.Point(514, 255);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(94, 29);
+            this.btnRefresh.TabIndex = 2;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(146, 255);
+            this.btnSave.Location = new System.Drawing.Point(171, 255);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 29);
             this.btnSave.TabIndex = 2;
@@ -123,22 +125,22 @@
             // 
             // txtExpenseItemDescription
             // 
-            this.txtExpenseItemDescription.Location = new System.Drawing.Point(146, 128);
+            this.txtExpenseItemDescription.Location = new System.Drawing.Point(171, 138);
             this.txtExpenseItemDescription.Multiline = true;
             this.txtExpenseItemDescription.Name = "txtExpenseItemDescription";
-            this.txtExpenseItemDescription.Size = new System.Drawing.Size(315, 102);
+            this.txtExpenseItemDescription.Size = new System.Drawing.Size(437, 102);
             this.txtExpenseItemDescription.TabIndex = 1;
             // 
             // txtExpenseItemCode
             // 
-            this.txtExpenseItemCode.Location = new System.Drawing.Point(146, 95);
+            this.txtExpenseItemCode.Location = new System.Drawing.Point(340, 100);
             this.txtExpenseItemCode.Name = "txtExpenseItemCode";
-            this.txtExpenseItemCode.Size = new System.Drawing.Size(146, 27);
+            this.txtExpenseItemCode.Size = new System.Drawing.Size(268, 27);
             this.txtExpenseItemCode.TabIndex = 1;
             // 
             // txtExpenseCategoryCode
             // 
-            this.txtExpenseCategoryCode.Location = new System.Drawing.Point(298, 95);
+            this.txtExpenseCategoryCode.Location = new System.Drawing.Point(171, 100);
             this.txtExpenseCategoryCode.Name = "txtExpenseCategoryCode";
             this.txtExpenseCategoryCode.ReadOnly = true;
             this.txtExpenseCategoryCode.Size = new System.Drawing.Size(163, 27);
@@ -146,15 +148,15 @@
             // 
             // txtExpenseItemName
             // 
-            this.txtExpenseItemName.Location = new System.Drawing.Point(146, 62);
+            this.txtExpenseItemName.Location = new System.Drawing.Point(171, 62);
             this.txtExpenseItemName.Name = "txtExpenseItemName";
-            this.txtExpenseItemName.Size = new System.Drawing.Size(315, 27);
+            this.txtExpenseItemName.Size = new System.Drawing.Size(437, 27);
             this.txtExpenseItemName.TabIndex = 1;
             // 
             // idLabel
             // 
             this.idLabel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idLabel.Location = new System.Drawing.Point(475, 128);
+            this.idLabel.Location = new System.Drawing.Point(35, 179);
             this.idLabel.Name = "idLabel";
             this.idLabel.Size = new System.Drawing.Size(129, 19);
             this.idLabel.TabIndex = 0;
@@ -163,41 +165,43 @@
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(31, 133);
+            this.label4.Location = new System.Drawing.Point(35, 143);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(85, 19);
+            this.label4.Size = new System.Drawing.Size(106, 26);
             this.label4.TabIndex = 0;
             this.label4.Text = "Description";
             // 
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(69, 93);
+            this.label3.Location = new System.Drawing.Point(35, 103);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 19);
+            this.label3.Size = new System.Drawing.Size(106, 26);
             this.label3.TabIndex = 0;
             this.label3.Text = "Code";
             // 
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(56, 62);
+            this.label2.Location = new System.Drawing.Point(35, 62);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 19);
+            this.label2.Size = new System.Drawing.Size(106, 26);
             this.label2.TabIndex = 0;
             this.label2.Text = "Name";
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(31, 33);
+            this.label1.Location = new System.Drawing.Point(39, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 19);
+            this.label1.Size = new System.Drawing.Size(102, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "Category";
             // 
             // grdExpenseItems
             // 
+            this.grdExpenseItems.AllowUserToOrderColumns = true;
+            this.grdExpenseItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.grdExpenseItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdExpenseItems.Location = new System.Drawing.Point(21, 344);
             this.grdExpenseItems.Name = "grdExpenseItems";
@@ -229,18 +233,18 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtExpenseItemDescription;
         private System.Windows.Forms.TextBox txtExpenseItemCode;
-        private System.Windows.Forms.TextBox txtExpenseCategoryCode;
         private System.Windows.Forms.TextBox txtExpenseItemName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbExpenseCategory;
-        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.DataGridView grdExpenseItems;
-        private System.Windows.Forms.Button btnView;
+        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Label idLabel;
-        private System.Windows.Forms.Button updateButton;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.TextBox txtExpenseCategoryCode;
     }
 }

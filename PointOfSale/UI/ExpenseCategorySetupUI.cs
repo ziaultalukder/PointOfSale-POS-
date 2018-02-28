@@ -111,16 +111,16 @@ namespace PointOfSale.UI
                 bool isInteger = int.TryParse(txtCategoryCode.Text.Trim(), out isInt);
                 if (!isInteger)
                 {
-                    MessageBox.Show("Please enter the Numbers only, Between 1000 to 99999999!!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please enter the Numbers only, Between 1000 to 9999!!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
                 else
                 {
                     int testCode=Convert.ToInt32(txtCategoryCode.Text);
-                    if (testCode<1000 || testCode>99999999)
+                    if (testCode<1000 || testCode>9999)
                     {
-                        MessageBox.Show("Please enter the Code Between 1000 to 99999999!!!");
+                        MessageBox.Show("Please enter the Code Between 1000 to 9999!!!");
                         return;
                     }
                     //SuperShopDatabaseContext db = new SuperShopDatabaseContext();
@@ -184,16 +184,16 @@ namespace PointOfSale.UI
                 bool isInteger = int.TryParse(txtCategoryCode.Text.Trim(), out isInt);
                 if (!isInteger)
                 {
-                    MessageBox.Show("Please enter the Numbers only, Between 1000 to 99999999!!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please enter the Numbers only, Between 1000 to 9999!!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
                 else
                 {
                     int testCode = Convert.ToInt32(txtCategoryCode.Text);
-                    if (testCode < 1000 || testCode > 99999999)
+                    if (testCode < 1000 || testCode > 9999)
                     {
-                        MessageBox.Show("Please enter the Code Between 1000 to 99999999!!!");
+                        MessageBox.Show("Please enter the Code Between 1000 to 9999!!!");
                         return;
                     }
                     //SuperShopDatabaseContext db = new SuperShopDatabaseContext();
@@ -496,7 +496,7 @@ namespace PointOfSale.UI
         private void AutoCodeShow()
         {
             Random random = new Random();
-            var AutoCode = random.Next(100001,999999);
+            var AutoCode = random.Next(1001,9999);
             txtCategoryCode.Text = AutoCode.ToString();
         }
 
