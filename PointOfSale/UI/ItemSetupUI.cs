@@ -55,6 +55,7 @@ namespace PointOfSale.UI
             catagoryComboBox.DisplayMember = "CatagoryPath";
             catagoryComboBox.ValueMember = "Id";
             catagoryComboBox.DataSource = gridDtaList;
+
             ClearAllForm();
             GetAllDataItemPartySetup();
         }
@@ -185,7 +186,8 @@ namespace PointOfSale.UI
                             items.CostPrice,
                             items.SalesPrice,
                             items.Image,
-                            items.Description
+                            items.Description,
+                            Catagory=items
                         }).ToList();
             itmeSetupDataGridView.DataSource = item;
             var dataGridViewColumn = itmeSetupDataGridView.Columns["Id"];
