@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,9 +37,10 @@ namespace PointOfSale.UI
             itemComboBox.ValueMember = "Id";
             //itemComboBox.SelectedIndex = -1;
 
+            ClearAllForm();
 
 
-            
+
 
 
 
@@ -149,6 +152,49 @@ namespace PointOfSale.UI
         private void outletcomboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             bool result = int.TryParse(outletcomboBox.SelectedIndex.ToString(), out id);
+        }
+
+        private void AutoBarcodeGenerate()
+        {
+            if (outletcomboBox.SelectedItem != null)
+            {
+                string barcode = itemComboBox.SelectedValue.ToString();
+                Bitmap bitmap = new Bitmap(barcode.Length*40, 150);
+                using (Graphics graphics = Graphics.FromImage(bitmap))
+                {
+                    Font oFont = new Font("IDAHC39M Code 39 Barcode", 20);
+                    PointF pointF = new PointF(2f, 2f);
+                    SolidBrush black = new SolidBrush(Color.Black);
+                    SolidBrush White = new SolidBrush(Color.White);
+                    graphics.FillRectangle(White, 0, 0, bitmap.Width, bitmap.Height);
+                    graphics.DrawString("*" + barcode + "*", oFont, black, pointF);
+                }
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    bitmap.Save(ms, ImageFormat.Png);
+                    pictureBoxBarcode.Image = bitmap;
+                    pictureBoxBarcode.Height = bitmap.Height;
+                    pictureBoxBarcode.Width = bitmap.Width;
+                }
+            }
+        }
+
+        private void itemComboBox_TextChanged(object sender, EventArgs e)
+        {
+            AutoBarcodeGenerate();
+        }
+
+        private void ClearAllForm()
+        {
+            itemComboBox.SelectedValue = -1;
+            qtyTextBox .Clear();
+            priceTextBox.Clear();
+            outletcomboBox.SelectedValue = -1;
+            employeecomboBox.SelectedValue = -1;
+            partyTypeComboBox.SelectedValue = -1;
+            dateTimePicker.ResetText();
+            remarksTextBox.Clear();
+
         }
     }
 }
