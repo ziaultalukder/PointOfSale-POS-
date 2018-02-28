@@ -304,12 +304,15 @@
             // 
             // ExpenceitemComboBox
             // 
+            this.ExpenceitemComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.ExpenceitemComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ExpenceitemComboBox.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExpenceitemComboBox.FormattingEnabled = true;
             this.ExpenceitemComboBox.Location = new System.Drawing.Point(86, 27);
             this.ExpenceitemComboBox.Name = "ExpenceitemComboBox";
             this.ExpenceitemComboBox.Size = new System.Drawing.Size(163, 25);
             this.ExpenceitemComboBox.TabIndex = 12;
+            this.ExpenceitemComboBox.SelectedIndexChanged += new System.EventHandler(this.ExpenceitemComboBox_SelectedIndexChanged);
             // 
             // dueTextBox
             // 

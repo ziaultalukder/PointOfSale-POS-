@@ -24,7 +24,14 @@ namespace PointOfSale.UI
         {
             InitializeComponent();
             RefreshAll();
-
+            this.grdExpenseItems.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.grdExpenseItems_RowPostPaint);
+        }
+        private void grdExpenseItems_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(grdExpenseItems.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
         }
         private void btnRefresh_Click(object sender, EventArgs e)
         {
@@ -84,7 +91,7 @@ namespace PointOfSale.UI
                     }
                     expenseItem.Code = txtExpenseItemCode.Text;
                 }
-                expenseItem.Description = "ExpenseCategory:: " + cmbExpenseCategory.Text.ToString() + Environment.NewLine + txtExpenseItemDescription.Text;
+                expenseItem.Description = "ExpenseCategory:: " + cmbExpenseCategory.Text.ToString() + Environment.NewLine + "-> " + txtExpenseItemDescription.Text;
                 expenseItem.IsDelete = false;
                 //expenseItem.ExpenseCategory.CategoryName = cmbExpenseCategory.Text.ToString();
                 var row = expenseItemManager.InsertExpenseCategoryItems(expenseItem);
@@ -124,7 +131,7 @@ namespace PointOfSale.UI
             expenseItem.Id = Convert.ToInt32(idLabel.Text);
             expenseItem.Code =  txtExpenseItemCode.Text;
             expenseItem.CategoryCode = Convert.ToInt32(txtExpenseCategoryCode.Text);
-            expenseItem.Description = "ExpenseCategory:: " + cmbExpenseCategory.Text.ToString() + Environment.NewLine + "  " + txtExpenseItemDescription.Text;
+            expenseItem.Description = "ExpenseCategory:: " + cmbExpenseCategory.Text.ToString() + Environment.NewLine + "-> " + txtExpenseItemDescription.Text;
             //expenseItem.Description = "ExpenseCategory:: " + cmbExpenseCategory.Text.ToString() + Environment.NewLine + txtExpenseItemDescription.Text;
             expenseItem.Name = txtExpenseItemName.Text;
             expenseItem.IsDelete = false;
@@ -162,7 +169,7 @@ namespace PointOfSale.UI
             expenseItem.Id = Convert.ToInt32(idLabel.Text);
             expenseItem.Code = txtExpenseItemCode.Text;
             expenseItem.CategoryCode = Convert.ToInt32(txtExpenseCategoryCode.Text);
-            expenseItem.Description = "ExpenseCategory:: " + cmbExpenseCategory.Text.ToString() + Environment.NewLine + "  " + txtExpenseItemDescription.Text;
+            expenseItem.Description = "ExpenseCategory:: " + cmbExpenseCategory.Text.ToString() + Environment.NewLine + "-> " + txtExpenseItemDescription.Text;
             expenseItem.Name = txtExpenseItemName.Text;
             expenseItem.IsDelete = true;
             var row = expenseItemManager.UpdateExpenseCategoryItems(expenseItem);
