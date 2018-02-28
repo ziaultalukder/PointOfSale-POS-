@@ -46,6 +46,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.catagoryComboBox = new System.Windows.Forms.ComboBox();
+            this.catagoryCodeTextBox = new System.Windows.Forms.TextBox();
             this.salesPriceTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.idLabel = new System.Windows.Forms.Label();
@@ -155,7 +156,7 @@
             this.codeTextBox.Location = new System.Drawing.Point(127, 197);
             this.codeTextBox.Name = "codeTextBox";
             this.codeTextBox.ReadOnly = true;
-            this.codeTextBox.Size = new System.Drawing.Size(202, 27);
+            this.codeTextBox.Size = new System.Drawing.Size(149, 27);
             this.codeTextBox.TabIndex = 21;
             // 
             // label4
@@ -226,6 +227,15 @@
             this.catagoryComboBox.Name = "catagoryComboBox";
             this.catagoryComboBox.Size = new System.Drawing.Size(320, 29);
             this.catagoryComboBox.TabIndex = 0;
+            // 
+            // catagoryCodeTextBox
+            // 
+            this.catagoryCodeTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.catagoryCodeTextBox.Location = new System.Drawing.Point(297, 197);
+            this.catagoryCodeTextBox.Name = "catagoryCodeTextBox";
+            this.catagoryCodeTextBox.ReadOnly = true;
+            this.catagoryCodeTextBox.Size = new System.Drawing.Size(150, 27);
+            this.catagoryCodeTextBox.TabIndex = 21;
             // 
             // salesPriceTextBox
             // 
@@ -308,6 +318,7 @@
             this.Controls.Add(this.descriptionTextBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label6);
+            this.Controls.Add(this.catagoryCodeTextBox);
             this.Controls.Add(this.codeTextBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.nameTextBox);
@@ -349,6 +360,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox catagoryComboBox;
+        private System.Windows.Forms.TextBox catagoryCodeTextBox;
         private System.Windows.Forms.TextBox salesPriceTextBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label idLabel;

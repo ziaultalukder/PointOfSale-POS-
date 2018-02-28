@@ -124,7 +124,8 @@ namespace PointOfSale.UI
             expenseItem.Id = Convert.ToInt32(idLabel.Text);
             expenseItem.Code =  txtExpenseItemCode.Text;
             expenseItem.CategoryCode = Convert.ToInt32(txtExpenseCategoryCode.Text);
-            expenseItem.Description = "ExpenseCategory:: " + cmbExpenseCategory.Text.ToString() + Environment.NewLine + txtExpenseItemDescription.Text;
+            expenseItem.Description = "ExpenseCategory:: " + cmbExpenseCategory.Text.ToString() + Environment.NewLine + "  " + txtExpenseItemDescription.Text;
+            //expenseItem.Description = "ExpenseCategory:: " + cmbExpenseCategory.Text.ToString() + Environment.NewLine + txtExpenseItemDescription.Text;
             expenseItem.Name = txtExpenseItemName.Text;
             expenseItem.IsDelete = false;
             var row = expenseItemManager.UpdateExpenseCategoryItems(expenseItem);
@@ -161,7 +162,7 @@ namespace PointOfSale.UI
             expenseItem.Id = Convert.ToInt32(idLabel.Text);
             expenseItem.Code = txtExpenseItemCode.Text;
             expenseItem.CategoryCode = Convert.ToInt32(txtExpenseCategoryCode.Text);
-            expenseItem.Description = "ExpenseCategory:: " + cmbExpenseCategory.Text.ToString() + Environment.NewLine + txtExpenseItemDescription.Text;
+            expenseItem.Description = "ExpenseCategory:: " + cmbExpenseCategory.Text.ToString() + Environment.NewLine + "  " + txtExpenseItemDescription.Text;
             expenseItem.Name = txtExpenseItemName.Text;
             expenseItem.IsDelete = true;
             var row = expenseItemManager.UpdateExpenseCategoryItems(expenseItem);
@@ -282,6 +283,24 @@ namespace PointOfSale.UI
                     itemCode =items.ToString();
                 }
                 txtExpenseItemCode.Text = cmbExpenseCategory.SelectedValue + itemCode;
+            }
+        }
+
+        private void textBoxSrc_TextChanged(object sender, EventArgs e)
+        {
+            using (db = new SuperShopDatabaseContext())
+            {
+                string textSearch = textBoxSrc.Text;
+                var searchResult = (from qs in db.ExpenseCategoryItems
+                            where qs.Name.StartsWith(textSearch) && qs.IsDelete == false || qs.Code.StartsWith(textSearch) && qs.IsDelete == false
+                            select new
+                            {
+                                qs.Name,
+                                qs.Code,
+                                qs.Description,
+                                ExpenseCategoryName = qs.ExpenseCategory.CategoryName
+                            }).ToList();
+                grdExpenseItems.DataSource = searchResult;
             }
         }
     }

@@ -177,7 +177,7 @@ namespace PointOfSale.UI
                 select new
                 {
                     emplo.Id ,
-                    OutlateName = outlet.Name,
+                    OutlateName = outlet.Name ,
                     emplo.Name ,
                     emplo.Code ,
                     emplo.Contact ,

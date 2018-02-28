@@ -48,8 +48,30 @@ namespace PointOfSale.UI
             FileStream fs = new FileStream(photo, FileMode.Open, FileAccess.Read);
             BinaryReader br = new BinaryReader(fs);
             setupItemCatagory.Image = br.ReadBytes((int)fs.Length);
+
+            //OpenFileDialog openFileDialog = new OpenFileDialog();
+            //openFileDialog.Title = "Please Select Image";
+            //openFileDialog.Filter = "JPG|*.jpg|PNG|*.png|GIF|*gif";
+            //openFileDialog.Multiselect = false;
+
+            //if (openFileDialog.ShowDialog() == DialogResult.OK)
+            //{
+            //    this.itemCatagoryPictureBox.ImageLocation = openFileDialog.FileName;
+            //}
         }
-        
+        //private byte[] ConvertToFileByte(string iPath)
+        //{
+        //    byte[] data = null;
+        //    if (iPath != null)
+        //    {
+        //        FileInfo info = new FileInfo(iPath);
+        //        long numByte = info.Length;
+        //        FileStream fileStream = new FileStream(iPath, FileMode.Open, FileAccess.Read);
+        //        BinaryReader Br = new BinaryReader(fileStream);
+        //        data = Br.ReadBytes((int)numByte);
+        //    }
+        //    return data;
+        //}
         private void radRootCategory_CheckedChanged(object sender, EventArgs e)
         {
             itemCatagoryComboBox.Hide();
@@ -84,15 +106,13 @@ namespace PointOfSale.UI
                 if (row)
                 {
                     WinMessageBox.ShowSuccessMessage("Item catagory save is successfully.");
-                    btnDelete.Enabled = false;
-                    GetSetupItemCatagory();
-                    ClearAllForm();
-                    ChildComboBoxDataBind();
                 }
                 else
                 {
                     WinMessageBox.ShowErrorMessage("Item catagory save is failed.");
                 }
+                btnDelete.Enabled = false;
+                GetSetupItemCatagory();
             }
         }
 
@@ -114,17 +134,12 @@ namespace PointOfSale.UI
 
         private void SetupItemCatagory_Load(object sender, EventArgs e)
         {
-            ChildComboBoxDataBind();
-
-            GetSetupItemCatagory();
-            ClearAllForm();
-        }
-
-        private void ChildComboBoxDataBind()
-        {
             itemCatagoryComboBox.DataSource = db.SetupItemCatagories.ToList();
             itemCatagoryComboBox.ValueMember = "Name";
             itemCatagoryComboBox.ValueMember = "Id";
+
+            GetSetupItemCatagory();
+            ClearAllForm();
         }
 
         private void GetSetupItemCatagory()
@@ -157,7 +172,6 @@ namespace PointOfSale.UI
                     Name = item.Name,
                     Code = item.Code,
                     Description = item.Description,
-                    CatagoryType =item .CatagoryType,
                     CatagoryId = item.CatagoryId
                 };
 
@@ -211,7 +225,6 @@ namespace PointOfSale.UI
                 {
                     WinMessageBox.ShowSuccessMessage("Item Catagory Updated Successfully.");
                     GetSetupItemCatagory();
-                    ClearAllForm();
                 }
                 else
                 {
@@ -223,6 +236,30 @@ namespace PointOfSale.UI
             //btnUpdate.Visible = true;
             
         }
+
+        //private void setupItemCatagoryDataGridView_MouseDoubleClick(object sender, MouseEventArgs e)
+        //{
+        //    idLabel.Text            = setupItemCatagoryDataGridView.SelectedRows[0].Cells[0].Value.ToString();
+        //    nameTextBox.Text        = setupItemCatagoryDataGridView.SelectedRows[0].Cells[1].Value.ToString();
+        //    codeTextBox.Text        = setupItemCatagoryDataGridView.SelectedRows[0].Cells[2].Value.ToString();
+        //    descriptionTextBox.Text = setupItemCatagoryDataGridView.SelectedRows[0].Cells[3].Value.ToString();
+
+        //    //itemCatagoryComboBox.Text = setupItemCatagoryDataGridView.SelectedRows[0].Cells[4].Value.ToString();
+            
+        //        byte[] imageData = (byte[]) setupItemCatagoryDataGridView.SelectedRows[0].Cells[4].Value;
+        //        MemoryStream ms = new MemoryStream(imageData);
+        //        itemCatagoryPictureBox.Image = Image.FromStream(ms);
+           
+
+        //    //byte[] imageData = (byte[])setupItemCatagoryDataGridView.SelectedRows[0].Cells[5].Value;
+        //    //MemoryStream ms = new MemoryStream(imageData);
+        //    //itemCatagoryPictureBox.Image = Image.FromStream(ms);
+
+
+        //    itemCatagoryComboBox.Text = setupItemCatagoryDataGridView.SelectedRows[0].Cells[5].Value.ToString();
+        //    btnDelete.Enabled = true;
+        //    btnUpdate.Enabled = true;
+        //}
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -237,7 +274,20 @@ namespace PointOfSale.UI
                     db.SaveChanges();
                 }
             }
-           
+            //Models.SetupItemCatagory setupItemCatagory = new Models.SetupItemCatagory();
+            //if (this.IsDelete)
+            //{
+            //    if (MessageBox.Show("Are You Sure to delete this Record", "Information", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            //    {
+            //        SetupItemCatagoryManager sicm = new SetupItemCatagoryManager();
+            //        setupItemCatagory.Id = Convert.ToInt32(idLabel.Text);
+            //        var rows = sicm.DeleteItemCategory(setupItemCatagory);
+            //        if (rows)
+            //        {
+            //            MessageBox.Show("Delete Successfully.");
+            //        }
+            ////    }
+            //}
             GetSetupItemCatagory();
             ClearAllForm();
         }
