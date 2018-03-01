@@ -62,8 +62,10 @@
             this.itemAddedLabel = new System.Windows.Forms.Label();
             this.totalTextBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.pictureBoxBarcode = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.purchaseDataGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBarcode)).BeginInit();
             this.SuspendLayout();
             // 
             // qtyTextBox
@@ -82,6 +84,7 @@
             this.itemComboBox.Name = "itemComboBox";
             this.itemComboBox.Size = new System.Drawing.Size(159, 25);
             this.itemComboBox.TabIndex = 1;
+            this.itemComboBox.TextChanged += new System.EventHandler(this.itemComboBox_TextChanged);
             // 
             // purchaseDataGridView
             // 
@@ -92,10 +95,10 @@
             this.Column2,
             this.Column3,
             this.Column4});
-            this.purchaseDataGridView.Location = new System.Drawing.Point(123, 99);
+            this.purchaseDataGridView.Location = new System.Drawing.Point(123, 254);
             this.purchaseDataGridView.Name = "purchaseDataGridView";
             this.purchaseDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.purchaseDataGridView.Size = new System.Drawing.Size(551, 424);
+            this.purchaseDataGridView.Size = new System.Drawing.Size(551, 298);
             this.purchaseDataGridView.TabIndex = 2;
             this.purchaseDataGridView.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.purchaseDataGridView_RowPostPaint);
             // 
@@ -287,7 +290,7 @@
             // addButton
             // 
             this.addButton.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addButton.Location = new System.Drawing.Point(527, 56);
+            this.addButton.Location = new System.Drawing.Point(527, 114);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(64, 28);
             this.addButton.TabIndex = 6;
@@ -298,7 +301,7 @@
             // cancleButton
             // 
             this.cancleButton.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancleButton.Location = new System.Drawing.Point(597, 56);
+            this.cancleButton.Location = new System.Drawing.Point(597, 114);
             this.cancleButton.Name = "cancleButton";
             this.cancleButton.Size = new System.Drawing.Size(77, 28);
             this.cancleButton.TabIndex = 6;
@@ -359,7 +362,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(120, 67);
+            this.label11.Location = new System.Drawing.Point(120, 220);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(80, 17);
             this.label11.TabIndex = 3;
@@ -377,7 +380,7 @@
             // totalTextBox
             // 
             this.totalTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalTextBox.Location = new System.Drawing.Point(495, 541);
+            this.totalTextBox.Location = new System.Drawing.Point(495, 564);
             this.totalTextBox.Name = "totalTextBox";
             this.totalTextBox.ReadOnly = true;
             this.totalTextBox.Size = new System.Drawing.Size(179, 27);
@@ -387,17 +390,27 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(356, 544);
+            this.label12.Location = new System.Drawing.Point(356, 567);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(133, 21);
             this.label12.TabIndex = 3;
             this.label12.Text = "Total Ammount";
+            // 
+            // pictureBoxBarcode
+            // 
+            this.pictureBoxBarcode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxBarcode.Location = new System.Drawing.Point(123, 88);
+            this.pictureBoxBarcode.Name = "pictureBoxBarcode";
+            this.pictureBoxBarcode.Size = new System.Drawing.Size(219, 111);
+            this.pictureBoxBarcode.TabIndex = 7;
+            this.pictureBoxBarcode.TabStop = false;
             // 
             // PurchaseUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1210, 663);
+            this.Controls.Add(this.pictureBoxBarcode);
             this.Controls.Add(this.cancleButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.addButton);
@@ -424,6 +437,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.purchaseDataGridView)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBarcode)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -465,5 +479,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.PictureBox pictureBoxBarcode;
     }
 }

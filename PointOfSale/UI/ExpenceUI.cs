@@ -17,17 +17,25 @@ namespace PointOfSale.UI
         public ExpenceUI()
         {
             InitializeComponent();
+            this.ExpenceDataGridView.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.ExpenceDataGridView_RowPostPaint);
+        }
+        private void ExpenceDataGridView_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(ExpenceDataGridView.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
         }
         private void ExpenceUI_Load(object sender, EventArgs e)
         {
             ExpenceDataGridView.AutoGenerateColumns = false;
 
             SuperShopDatabaseContext db = new SuperShopDatabaseContext();
-
-            ExpenceitemComboBox.DataSource = db.ItemSetups.ToList();
-            ExpenceitemComboBox.DisplayMember = "Name";
-            ExpenceitemComboBox.ValueMember = "Id";
-            ExpenceitemComboBox.SelectedIndex = -1;
+            GetExpenseCategoryCmbBoxItems();
+            //ExpenceitemComboBox.DataSource = db.ItemSetups.ToList();
+            //ExpenceitemComboBox.DisplayMember = "Name";
+            //ExpenceitemComboBox.ValueMember = "Id";
+            //ExpenceitemComboBox.SelectedIndex = -1;
 
 
             outletcomboBox.DataSource = db.Outlates.ToList();
@@ -110,6 +118,19 @@ namespace PointOfSale.UI
         private void employeecomboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             bool result = int.TryParse(employeecomboBox.SelectedIndex.ToString(), out employeeId);
+        }
+
+        private void ExpenceitemComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void GetExpenseCategoryCmbBoxItems()
+        {
+            SuperShopDatabaseContext db = new SuperShopDatabaseContext();
+            ExpenceitemComboBox.DataSource = db.ExpenseCategoryItems.ToList();
+            ExpenceitemComboBox.DisplayMember = "Name";
+            ExpenceitemComboBox.ValueMember = "Id";
+            ExpenceitemComboBox.SelectedIndex = -1;
         }
     }
 }
