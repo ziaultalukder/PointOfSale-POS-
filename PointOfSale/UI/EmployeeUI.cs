@@ -69,7 +69,7 @@ namespace PointOfSale.UI
 
                 if (!isUpadteMode)
                 {
-                    TextBoxValue();
+                    TextBoxesValue();
                     bool isExistContact = db.Employee.Count(c => c.Contact == employee.Contact) > 0;
                     bool isExistEmail = db.Employee.Count(x => x.Email == employee.Email) > 0;
                     bool isExistNID = db.Employee.Count(c => c.Nid == employee.Nid) > 0;
@@ -104,7 +104,7 @@ namespace PointOfSale.UI
                 {
                     if (MessageBox.Show("Are You Sure to Update this Record", "Information", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        TextBoxValue();
+                        TextBoxesValue();
 
                         bool isExistContact = db.Employee.Count(c => c.Contact == employee.Contact) > 1;
                         bool isExistEmail = db.Employee.Count(x => x.Email == employee.Email) > 1;
@@ -160,6 +160,7 @@ namespace PointOfSale.UI
             permanentTextBox.Clear();
             employeePictureBox.Image = null;
             SetFormNewMode();
+            btnPrint.Enabled = false;
         }
 
         private void SetFormNewMode()
@@ -205,7 +206,7 @@ namespace PointOfSale.UI
             }
         }
 
-        private void TextBoxValue()
+        private void TextBoxesValue()
         {
             employee.Name = nameTextBox.Text;
             employee.OutlateId = (int) outlateComboBox.SelectedValue;
@@ -278,6 +279,7 @@ namespace PointOfSale.UI
                     employeePictureBox.Image = null;
                 }
             }
+            btnPrint.Enabled = true;
             SetFormUpdateMode();
         }
 
@@ -392,6 +394,37 @@ namespace PointOfSale.UI
             FileStream fs = new FileStream(photo, FileMode.Open, FileAccess.Read);
             BinaryReader br = new BinaryReader(fs);
             employee.Image = br.ReadBytes((int)fs.Length);
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            printPreviewDialogEmployee.Document = printDocumentEmployee;
+            printPreviewDialogEmployee.ShowDialog();
+        }
+
+        private void printDocumentEmployee_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        { 
+            e.Graphics.DrawImage(employeePictureBox.Image, 370, 100, employeePictureBox.Width, employeePictureBox.Height);
+
+            e.Graphics.DrawString("Outlet Name : "+ outlateComboBox.Text, new Font("Arial", 22, FontStyle.Bold), Brushes.Black,new PointF(260,280));
+            e.Graphics.DrawString("Employee Name : " + nameTextBox.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new PointF(20, 350));
+            e.Graphics.DrawString("Employee Code : " + codeTextBox.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new PointF(20, 400));
+            e.Graphics.DrawString("Employee Joining Date : " + joiningDateTimePicker.Value, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new PointF(20, 450));
+            e.Graphics.DrawString("Employee Contact No : " + contactTextBox.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new PointF(20, 500));
+            e.Graphics.DrawString("Employee Email : " + emailTextBox.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new PointF(20, 550));
+            e.Graphics.DrawString("Employee  Emergency Number: " + emergencyTextBox.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new PointF(20, 600));
+            e.Graphics.DrawString("Employee NID : " + nidTextBox.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new PointF(20, 650));
+            e.Graphics.DrawString("Employee Father Name : " + fatherNameTextBox.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new PointF(20, 700));
+            e.Graphics.DrawString("Employee Mother Name : " + motherTextBox.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new PointF(20, 750));
+            e.Graphics.DrawString("Employee Present Address : " + presenTextBox.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new PointF(20, 800));
+            e.Graphics.DrawString("Employee Permanent Address : " + permanentTextBox.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new PointF(20, 850));
+
+        }
+
+        private void btnPDF_Click(object sender, EventArgs e)
+        {
+            printDialogEmployee.Document = printDocumentEmployee;
+            printDialogEmployee.ShowDialog();
         }
     }
 }

@@ -168,6 +168,7 @@ namespace PointOfSale.UI
             outlateComboBox.Text = outlateDataGridView.SelectedRows[0].Cells[5].Value.ToString();
             deleteButton.Enabled = true;
             updateButton.Enabled = true;
+            saveButton.Enabled = false;
         }
 
         private void searchTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -196,8 +197,9 @@ namespace PointOfSale.UI
             codeTextBox .Clear();
             contactTextBox.Clear();
             addressTextBox.Clear();
-            //deleteButton.Enabled = false;
-            //updateButton.Enabled = false;
+            saveButton.Enabled = true;
+            deleteButton.Enabled = false;
+            updateButton.Enabled = false;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

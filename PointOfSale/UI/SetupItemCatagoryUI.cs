@@ -150,18 +150,6 @@ namespace PointOfSale.UI
             setupItemCatagoryDataGridView.RowTemplate.Height = 50;
             setupItemCatagoryDataGridView.AllowUserToAddRows = false;
             var test = db.SetupItemCatagories.ToList();
-            //var data = db.SetupItemCatagories.Select(
-            //        c =>
-            //            new
-            //            {
-            //                Id = c.Id,
-            //                Name = c.Name,
-            //                Code = c.Code,
-            //                Description = c.Description,
-            //                Images = c.Image,
-            //                CatagoryType = c.CatagoryType,
-            //                CatagoryId = c.CatagoryId
-            //            }).ToList();
 
             foreach (var item  in test)
             {

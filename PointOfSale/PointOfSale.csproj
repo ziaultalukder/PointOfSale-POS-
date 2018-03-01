@@ -317,6 +317,31 @@
     <Content Include="bin\Debug\PointOfSale.vshost.exe" />
     <Content Include="obj\Debug\PointOfSale.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
+    <None Include="Resources\icons8_PDF_32px_1.png" />
+    <None Include="Resources\icons8_Back_Arrow_32px.png" />
+    <None Include="Resources\icons8_Forward_Button_32px - Copy.png" />
+    <None Include="Resources\icons8_Print_32px_1.png" />
+    <None Include="Resources\document_blank-previous-32.png" />
+    <None Include="Resources\FowardPage-32.png" />
+    <None Include="Resources\Purchase Report.png" />
+    <None Include="Resources\x-05-32.png" />
+    <None Include="Resources\financial-report-stock-receipt-print-32.png" />
+    <None Include="Resources\flat_seo-07-32.png" />
+    <None Include="Resources\sales-report.png" />
+    <None Include="Resources\check_cots_purchase_results-32.png" />
+    <None Include="Resources\schedule_plan_expenses_income-32.png" />
+    <None Include="Resources\flat_seo-44-32.png" />
+    <None Include="Resources\icon-expenses.png" />
+    <None Include="Resources\icons8_Purchase_Order_32px_1.png" />
+    <None Include="Resources\line_spacing_paragraph.png" />
+    <None Include="Resources\icons8_List_50px.png" />
+    <None Include="Resources\icons8_Ingredients_48px.png" />
+    <None Include="Resources\icons8_List_64px.png" />
+    <None Include="Resources\xxx022-32.png" />
+    <None Include="Resources\delivery_man_parcel.png" />
+    <None Include="Resources\business_meeting.png" />
+    <None Include="Resources\elements_branch.png" />
+    <None Include="Resources\icons8_Organization_32px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

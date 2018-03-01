@@ -36,7 +36,6 @@
             this.joiningDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.employeePictureBox = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -68,14 +67,22 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.txtBoxSearch = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.printPreviewDialogEmployee = new System.Windows.Forms.PrintPreviewDialog();
+            this.printDocumentEmployee = new System.Drawing.Printing.PrintDocument();
+            this.btnPDF = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.employeePictureBox = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.printDialogEmployee = new System.Windows.Forms.PrintDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeErrorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeePictureBox)).BeginInit();
             this.tabControlEmployee.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.employeePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvEmployees
@@ -131,19 +138,6 @@
             this.label2.Size = new System.Drawing.Size(49, 17);
             this.label2.TabIndex = 0;
             this.label2.Text = "Name:";
-            // 
-            // employeePictureBox
-            // 
-            this.employeePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("employeePictureBox.BackgroundImage")));
-            this.employeePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.employeePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.employeePictureBox.Location = new System.Drawing.Point(808, 3);
-            this.employeePictureBox.Name = "employeePictureBox";
-            this.employeePictureBox.Size = new System.Drawing.Size(173, 150);
-            this.employeePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.employeePictureBox.TabIndex = 5;
-            this.employeePictureBox.TabStop = false;
-            this.employeePictureBox.DoubleClick += new System.EventHandler(this.employeePictureBox_DoubleClick);
             // 
             // label3
             // 
@@ -435,9 +429,9 @@
             // 
             // txtBoxSearch
             // 
-            this.txtBoxSearch.Location = new System.Drawing.Point(713, 367);
+            this.txtBoxSearch.Location = new System.Drawing.Point(839, 382);
             this.txtBoxSearch.Name = "txtBoxSearch";
-            this.txtBoxSearch.Size = new System.Drawing.Size(282, 20);
+            this.txtBoxSearch.Size = new System.Drawing.Size(151, 20);
             this.txtBoxSearch.TabIndex = 1;
             this.txtBoxSearch.TextChanged += new System.EventHandler(this.txtBoxSearch_TextChanged);
             this.txtBoxSearch.Leave += new System.EventHandler(this.emailTextBox_Leave);
@@ -445,32 +439,113 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(606, 370);
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(718, 381);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(89, 13);
+            this.label14.Size = new System.Drawing.Size(102, 18);
             this.label14.TabIndex = 0;
-            this.label14.Text = "Search by Name:";
+            this.label14.Text = "Quick Search:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(698, 349);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(122, 18);
+            this.label15.TabIndex = 0;
+            this.label15.Text = "Search by Name:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(839, 350);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(151, 20);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.TextChanged += new System.EventHandler(this.txtBoxSearch_TextChanged);
+            this.textBox1.Leave += new System.EventHandler(this.emailTextBox_Leave);
+            // 
+            // printPreviewDialogEmployee
+            // 
+            this.printPreviewDialogEmployee.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialogEmployee.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialogEmployee.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialogEmployee.Enabled = true;
+            this.printPreviewDialogEmployee.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialogEmployee.Icon")));
+            this.printPreviewDialogEmployee.Name = "printPreviewDialogEmployee";
+            this.printPreviewDialogEmployee.Visible = false;
+            // 
+            // printDocumentEmployee
+            // 
+            this.printDocumentEmployee.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentEmployee_PrintPage);
+            // 
+            // btnPDF
+            // 
+            this.btnPDF.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPDF.Image = global::PointOfSale.Properties.Resources.icons8_PDF_32px_1;
+            this.btnPDF.Location = new System.Drawing.Point(597, 344);
+            this.btnPDF.Name = "btnPDF";
+            this.btnPDF.Size = new System.Drawing.Size(91, 62);
+            this.btnPDF.TabIndex = 6;
+            this.btnPDF.Text = "PDF";
+            this.btnPDF.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnPDF.UseVisualStyleBackColor = true;
+            this.btnPDF.Click += new System.EventHandler(this.btnPDF_Click);
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.Image = global::PointOfSale.Properties.Resources.icons8_Print_32px_1;
+            this.btnPrint.Location = new System.Drawing.Point(492, 344);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(91, 62);
+            this.btnPrint.TabIndex = 6;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // employeePictureBox
+            // 
+            this.employeePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("employeePictureBox.BackgroundImage")));
+            this.employeePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.employeePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.employeePictureBox.Location = new System.Drawing.Point(808, 3);
+            this.employeePictureBox.Name = "employeePictureBox";
+            this.employeePictureBox.Size = new System.Drawing.Size(173, 150);
+            this.employeePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.employeePictureBox.TabIndex = 5;
+            this.employeePictureBox.TabStop = false;
+            this.employeePictureBox.DoubleClick += new System.EventHandler(this.employeePictureBox_DoubleClick);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(887, 257);
+            this.button1.Image = global::PointOfSale.Properties.Resources.icons8_Forward_Button_32px___Copy;
+            this.button1.Location = new System.Drawing.Point(887, 229);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 30);
+            this.button1.Size = new System.Drawing.Size(96, 58);
             this.button1.TabIndex = 6;
             this.button1.Text = "Next Page";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.DarkGray;
-            this.button2.Location = new System.Drawing.Point(7, 253);
+            this.button2.BackColor = System.Drawing.Color.Silver;
+            this.button2.Image = global::PointOfSale.Properties.Resources.icons8_Back_Arrow_32px;
+            this.button2.Location = new System.Drawing.Point(7, 231);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(109, 33);
+            this.button2.Size = new System.Drawing.Size(109, 56);
             this.button2.TabIndex = 2;
             this.button2.Text = "Previous Page";
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // printDialogEmployee
+            // 
+            this.printDialogEmployee.UseEXDialog = true;
             // 
             // EmployeeUI
             // 
@@ -478,11 +553,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1016, 600);
             this.Controls.Add(this.dgvEmployees);
+            this.Controls.Add(this.btnPDF);
+            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.tabControlEmployee);
             this.Controls.Add(this.saveButton);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.txtBoxSearch);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
             this.Name = "EmployeeUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -490,12 +569,12 @@
             this.Load += new System.EventHandler(this.Employee_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeErrorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeePictureBox)).EndInit();
             this.tabControlEmployee.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.employeePictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -542,5 +621,12 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialogEmployee;
+        private System.Drawing.Printing.PrintDocument printDocumentEmployee;
+        private System.Windows.Forms.Button btnPDF;
+        private System.Windows.Forms.PrintDialog printDialogEmployee;
     }
 }

@@ -191,7 +191,7 @@
             this.pruchaseresultDataGridView.GridColor = System.Drawing.SystemColors.ActiveBorder;
             this.pruchaseresultDataGridView.Location = new System.Drawing.Point(121, 362);
             this.pruchaseresultDataGridView.Name = "pruchaseresultDataGridView";
-            this.pruchaseresultDataGridView.Size = new System.Drawing.Size(576, 382);
+            this.pruchaseresultDataGridView.Size = new System.Drawing.Size(576, 347);
             this.pruchaseresultDataGridView.TabIndex = 3;
             // 
             // label12
@@ -256,7 +256,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(825, 741);
+            this.ClientSize = new System.Drawing.Size(825, 729);
             this.Controls.Add(this.barcodeButton);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.pdfbutton);
