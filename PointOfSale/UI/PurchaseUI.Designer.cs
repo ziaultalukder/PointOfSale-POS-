@@ -84,6 +84,7 @@
             this.itemComboBox.Name = "itemComboBox";
             this.itemComboBox.Size = new System.Drawing.Size(159, 25);
             this.itemComboBox.TabIndex = 1;
+            this.itemComboBox.SelectedValueChanged += new System.EventHandler(this.itemComboBox_SelectedValueChanged);
             this.itemComboBox.TextChanged += new System.EventHandler(this.itemComboBox_TextChanged);
             // 
             // purchaseDataGridView

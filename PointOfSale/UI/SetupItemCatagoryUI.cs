@@ -99,6 +99,12 @@ namespace PointOfSale.UI
                 {
                     setupItemCatagory.CatagoryId = (int) itemCatagoryComboBox.SelectedValue;
                 }
+                bool isNameExits = db.SetupItemCatagories.Count(c => c.Name == setupItemCatagory.Name) > 0;
+                if (isNameExits)
+                {
+                    WinMessageBox.ShowErrorMessage("Name is Already Exits. Please another Name.");
+                    return;
+                }
 
                 //if (IsFormValidated()) return;
 
@@ -106,13 +112,15 @@ namespace PointOfSale.UI
                 if (row)
                 {
                     WinMessageBox.ShowSuccessMessage("Item catagory save is successfully.");
+                    btnDelete.Enabled = false;
+                    GetSetupItemCatagory();
+                    ClearAllForm();
                 }
                 else
                 {
                     WinMessageBox.ShowErrorMessage("Item catagory save is failed.");
                 }
-                btnDelete.Enabled = false;
-                GetSetupItemCatagory();
+                
             }
         }
 
@@ -123,11 +131,11 @@ namespace PointOfSale.UI
                 WinMessageBox.ShowErrorMessage("Name is required.");
                 return false;
             }
-            if (descriptionTextBox.Text.Trim()==string .Empty)
-            {
-                WinMessageBox.ShowErrorMessage("Description is required.");
-                return false;
-            }
+            //if (descriptionTextBox.Text.Trim()==string .Empty)
+            //{
+            //    WinMessageBox.ShowErrorMessage("Description is required.");
+            //    return false;
+            //}
             
             return true;
         }
@@ -160,6 +168,7 @@ namespace PointOfSale.UI
                     Name = item.Name,
                     Code = item.Code,
                     Description = item.Description,
+                    CatagoryType =item .CatagoryType,
                     CatagoryId = item.CatagoryId
                 };
 
@@ -171,6 +180,13 @@ namespace PointOfSale.UI
             setupItemCatagoryDataGridView.DataSource = gridDtaList;
             if (setupItemCatagoryDataGridView.Columns != null)
             {
+                //var dataPath = setupItemCatagoryDataGridView.Columns["CatagoryPath"];
+                //dataPath.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                ////if (dataPath != null) dataPath.DataGridViewAutoSizeMode.Fill;
+
+                var dataGridViewColumn = setupItemCatagoryDataGridView.Columns["CatagoryId"];
+                if (dataGridViewColumn != null) dataGridViewColumn.Visible = false;
+
                 var column = setupItemCatagoryDataGridView.Columns[5] as DataGridViewImageColumn;
                 if (column != null) column.ImageLayout = DataGridViewImageCellLayout.Stretch;
             }
@@ -206,6 +222,12 @@ namespace PointOfSale.UI
                 else
                 {
                     setupItemCatagory.CatagoryId = (int) itemCatagoryComboBox.SelectedValue;
+                }
+                bool isNameExits = db.SetupItemCatagories.Count(c => c.Name == setupItemCatagory.Name) > 1;
+                if (isNameExits)
+                {
+                    WinMessageBox.ShowErrorMessage("Name is Already Exits. Please another Name.");
+                    return;
                 }
 
                 var row = setupItemManager.UpdateItemCategory(setupItemCatagory);
@@ -311,6 +333,10 @@ namespace PointOfSale.UI
             }
             if (setupItemCatagory != null)
             {
+                if (itemCatagoryComboBox.SelectedValue != null)
+                {
+                    itemCatagoryComboBox.SelectedValue = setupItemCatagory.CatagoryId;
+                }
                 nameTextBox.Text = setupItemCatagory.Name;
                 codeTextBox.Text = setupItemCatagory.Code;
                 descriptionTextBox.Text = setupItemCatagory.Description;
@@ -328,6 +354,7 @@ namespace PointOfSale.UI
             //SetFormUpdateMode();
             btnDelete.Enabled = true;
             btnUpdate.Enabled = true;
+            Savebutton.Enabled = false;
         }
     }
 }

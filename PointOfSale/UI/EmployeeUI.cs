@@ -12,6 +12,8 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using PointOfSale.DatabaseContext;
 using PointOfSale.Manager;
+//using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace PointOfSale.UI
 {
@@ -423,8 +425,20 @@ namespace PointOfSale.UI
 
         private void btnPDF_Click(object sender, EventArgs e)
         {
-            printDialogEmployee.Document = printDocumentEmployee;
-            printDialogEmployee.ShowDialog();
+            //Document doc = new Document(iTextSharp .text .PageSize .A4 ,60f,50f,40f,40f);
+            //PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream("Test.pdf", FileMode.Create));
+            //doc.Open();
+
+            //iTextSharp.text.Image png = iTextSharp.text.Image.GetInstance("employeePictureBox.Image");
+            //png.ScaleToFit(120f, 120f);
+            //doc.Add(png);
+
+            //Document document = new Document();
+            ////string path = Server.MapPath("~/PDFs");
+            //PdfWriter.GetInstance(document, new FileStream(document + "/TestDoc2.pdf", FileMode.Create));
+            //document.Open();
+            //document.Add(new Phrase(this.nameTextBox.Text.Trim()));
+            //document.Close();
         }
     }
 }

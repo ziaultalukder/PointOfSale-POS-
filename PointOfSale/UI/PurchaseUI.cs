@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -17,6 +18,8 @@ namespace PointOfSale.UI
 {
     public partial class PurchaseUI : Form
     {
+        SuperShopDatabaseContext db = new SuperShopDatabaseContext();
+        Purchase purchase = new Purchase();
         public PurchaseUI()
         {
             InitializeComponent();
@@ -26,7 +29,7 @@ namespace PointOfSale.UI
         {
             purchaseDataGridView.AutoGenerateColumns = false;
 
-            SuperShopDatabaseContext db = new SuperShopDatabaseContext();
+           // SuperShopDatabaseContext db = new SuperShopDatabaseContext();
 
 
             var supplier = db.PartySetup.Where(c => c.Supplier != c.Customer);
@@ -71,6 +74,25 @@ namespace PointOfSale.UI
         private void addButton_Click(object sender, EventArgs e)
         {
             PurchaseItem purchaseItem = new PurchaseItem();
+            
+
+            bool found = false;
+            if (purchaseDataGridView.RowCount >0)
+            {
+                foreach (DataGridViewRow row in purchaseDataGridView.Rows)
+                {
+                    if (Convert .ToString(row .Cells [1].Value) == itemComboBox.Text && Convert .ToString(row .Cells [4].Value)==priceTextBox .Text )
+
+                    {
+                        row.Cells[3].Value = Convert.ToString(1 + Convert.ToInt32(row.Cells[3].Value));
+                        found = true;
+                    }
+                }
+                if (!found)
+                {
+                    purchaseDataGridView.Rows.Add(itemComboBox.Text, priceTextBox.Text, 1);
+                }
+            }
             purchaseItem.ItemName = itemComboBox.Text;
             purchaseItem.Quantity = Convert.ToDecimal(qtyTextBox.Text);
             purchaseItem.Price = Convert.ToDecimal(priceTextBox.Text);
@@ -105,14 +127,14 @@ namespace PointOfSale.UI
         List<Purchase> PurchaseList = new List<Purchase>();
         private void saveButton_Click(object sender, EventArgs e)
         {
-            Random r = new Random();
+            //Random r = new Random();
 
-            Purchase purchase = new Purchase();
+            
             purchase.TotalAmmount = Convert.ToDecimal(totalAmmountTextBox.Text);
             purchase.Due = Convert.ToDecimal(dueTextBox.Text);
             purchase.Remarks = remarksTextBox.Text;
             purchase.PurchaseDate = dateTimePicker.Value;
-            purchase.SalesNumber = r.Next().ToString();
+            purchase.SalesNumber = AutoCodeGenerate().ToString();
             purchase.OutletId = (int)outletcomboBox.SelectedValue;
             purchase.EmployeeId = (int)employeecomboBox.SelectedValue;
             purchase.ItemId = (int)itemComboBox.SelectedValue;
@@ -121,7 +143,7 @@ namespace PointOfSale.UI
 
             PurchaseList.Add(purchase);
 
-            SuperShopDatabaseContext db = new SuperShopDatabaseContext();
+            
             db.Purchases.AddRange(PurchaseList);
             var row = db.SaveChanges();
             if(row> 0)
@@ -151,18 +173,18 @@ namespace PointOfSale.UI
         private int id;
         private void outletcomboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bool result = int.TryParse(outletcomboBox.SelectedIndex.ToString(), out id);
+            //bool result = int.TryParse(outletcomboBox.SelectedIndex.ToString(), out id);
         }
 
         private void AutoBarcodeGenerate()
         {
             if (outletcomboBox.SelectedItem != null)
             {
-                string barcode = itemComboBox.SelectedValue.ToString();
-                Bitmap bitmap = new Bitmap(barcode.Length*40, 150);
+                var barcode = itemComboBox.SelectedItem.ToString();
+                Bitmap bitmap = new Bitmap(barcode.Length*26, 85);
                 using (Graphics graphics = Graphics.FromImage(bitmap))
                 {
-                    Font oFont = new Font("IDAHC39M Code 39 Barcode", 20);
+                    Font oFont = new Font("IDAHC39M Code 39 Barcode", 15);
                     PointF pointF = new PointF(2f, 2f);
                     SolidBrush black = new SolidBrush(Color.Black);
                     SolidBrush White = new SolidBrush(Color.White);
@@ -181,7 +203,7 @@ namespace PointOfSale.UI
 
         private void itemComboBox_TextChanged(object sender, EventArgs e)
         {
-            AutoBarcodeGenerate();
+            //AutoBarcodeGenerate();
         }
 
         private void ClearAllForm()
@@ -195,6 +217,19 @@ namespace PointOfSale.UI
             dateTimePicker.ResetText();
             remarksTextBox.Clear();
 
+        }
+
+        private void itemComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            //AutoBarcodeGenerate();
+        }
+
+        private int AutoCodeGenerate()
+        {
+            int counts = 1;
+            counts = db.Employee.Include(c => c.Id).Count() + counts;
+            int result = 11100 + counts;
+            return result;
         }
     }
 }

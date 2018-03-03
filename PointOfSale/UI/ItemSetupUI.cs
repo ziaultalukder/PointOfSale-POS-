@@ -293,6 +293,7 @@ namespace PointOfSale.UI
                     {
                         MessageBox.Show("Item Setup Updated Faild");
                     }
+                    saveButton.Enabled = false;
                     updateButton.Enabled = true;
                     deleteButton.Enabled = true;
                     ClearAllForm();

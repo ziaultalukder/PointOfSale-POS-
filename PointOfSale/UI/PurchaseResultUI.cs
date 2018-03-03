@@ -59,69 +59,69 @@ namespace PointOfSale.UI
 
         public void GetDatagridViewPDF(DataGridView dgv, string filename)
         {
-            BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1250, BaseFont.EMBEDDED);
-            PdfPTable pdfTable = new PdfPTable(dgv.Columns.Count);
-            pdfTable.DefaultCell.Padding = 3;
-            pdfTable.WidthPercentage = 100;
-            pdfTable.HorizontalAlignment = Element.ALIGN_CENTER;
-            pdfTable.DefaultCell.BorderWidth = 1;
+            //BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1250, BaseFont.EMBEDDED);
+            //PdfPTable pdfTable = new PdfPTable(dgv.Columns.Count);
+            //pdfTable.DefaultCell.Padding = 3;
+            //pdfTable.WidthPercentage = 100;
+            //pdfTable.HorizontalAlignment = Element.ALIGN_CENTER;
+            //pdfTable.DefaultCell.BorderWidth = 1;
 
-            iTextSharp.text.Font text = new iTextSharp.text.Font(bf,14,iTextSharp.text.Font.NORMAL);
-            foreach (DataGridViewColumn columns in dgv.Columns)
-            {
-                PdfPCell cell = new PdfPCell(new Phrase(columns.HeaderText,text));
-                cell.BackgroundColor = new iTextSharp.text.BaseColor(240, 240, 240);
-                pdfTable.AddCell(cell);
-            }
+            //iTextSharp.text.Font text = new iTextSharp.text.Font(bf,14,iTextSharp.text.Font.NORMAL);
+            //foreach (DataGridViewColumn columns in dgv.Columns)
+            //{
+            //    PdfPCell cell = new PdfPCell(new Phrase(columns.HeaderText,text));
+            //    cell.BackgroundColor = new iTextSharp.text.BaseColor(240, 240, 240);
+            //    pdfTable.AddCell(cell);
+            //}
 
-            foreach (DataGridViewRow row in dgv.Rows)
-            {
-                foreach (DataGridViewCell cell in row.Cells)
-                {
-                    pdfTable.AddCell(new Phrase ( cell.Value.ToString(), text));
-                }
-            }
+            //foreach (DataGridViewRow row in dgv.Rows)
+            //{
+            //    foreach (DataGridViewCell cell in row.Cells)
+            //    {
+            //        pdfTable.AddCell(new Phrase ( cell.Value.ToString(), text));
+            //    }
+            //}
 
-            var saveFileDialoge = new SaveFileDialog();
-            saveFileDialoge.FileName = filename;
-            saveFileDialoge.DefaultExt = ".pdf";
-            if (saveFileDialoge.ShowDialog() == DialogResult.OK)
-            {
-                using (FileStream fileStream = new FileStream(saveFileDialoge.FileName,FileMode.Create))
-                {
-                    Document pdfDoc = new Document(PageSize.A4, 60f, 50f, 40f, 40f);
-                    PdfWriter.GetInstance(pdfDoc, fileStream);
-                    pdfDoc.Open();
+            //var saveFileDialoge = new SaveFileDialog();
+            //saveFileDialoge.FileName = filename;
+            //saveFileDialoge.DefaultExt = ".pdf";
+            //if (saveFileDialoge.ShowDialog() == DialogResult.OK)
+            //{
+            //    using (FileStream fileStream = new FileStream(saveFileDialoge.FileName,FileMode.Create))
+            //    {
+            //        Document pdfDoc = new Document(PageSize.A4, 60f, 50f, 40f, 40f);
+            //        PdfWriter.GetInstance(pdfDoc, fileStream);
+            //        pdfDoc.Open();
 
-                    iTextSharp.text.Image Logo = iTextSharp.text.Image.GetInstance("shop-icon.png");
-                    //Logo.ScalePercent(50f);
-                    //Logo.SetAbsolutePosition(pdfDoc.PageSize.Width -36f -150f, pdfDoc.PageSize.Height -36f -216.6f);
+            //        iTextSharp.text.Image Logo = iTextSharp.text.Image.GetInstance("shop-icon.png");
+            //        //Logo.ScalePercent(50f);
+            //        //Logo.SetAbsolutePosition(pdfDoc.PageSize.Width -36f -150f, pdfDoc.PageSize.Height -36f -216.6f);
 
-                    Logo.ScaleToFit(120f, 120f);
-                    pdfDoc.Add(Logo);
+            //        Logo.ScaleToFit(120f, 120f);
+            //        pdfDoc.Add(Logo);
 
-                    Paragraph p1 = new Paragraph();
-                    p1.Add("Address: Mirpur - 10, Dhaka - 1216 \n");
-                    p1.Add("Phone : 01728-388751 \n");
-                    p1.Add("Email : shop@mail.com \n");
-                    p1.Add("\n");
-                    pdfDoc.Add(p1);
+            //        Paragraph p1 = new Paragraph();
+            //        p1.Add("Address: Mirpur - 10, Dhaka - 1216 \n");
+            //        p1.Add("Phone : 01728-388751 \n");
+            //        p1.Add("Email : shop@mail.com \n");
+            //        p1.Add("\n");
+            //        pdfDoc.Add(p1);
 
                     
                     
 
-                    pdfDoc.Add(pdfTable);
-                    pdfDoc.Close();
-                    fileStream.Close();
-                }
-            }
+            //        pdfDoc.Add(pdfTable);
+            //        pdfDoc.Close();
+            //        fileStream.Close();
+            //    }
+            //}
 
         }
 
         private void pdfbutton_Click(object sender, EventArgs e)
         {
 
-           GetDatagridViewPDF(pruchaseresultDataGridView,"test");
+           //GetDatagridViewPDF(pruchaseresultDataGridView,"test");
         }
         private void purchaseResultPrintDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
