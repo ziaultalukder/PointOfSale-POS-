@@ -173,6 +173,16 @@ namespace PointOfSale.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_Barcode_32px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_Barcode_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_Forward_Button_32px___Copy {
             get {
                 object obj = ResourceManager.GetObject("icons8_Forward_Button_32px - Copy", resourceCulture);
@@ -276,6 +286,16 @@ namespace PointOfSale.Properties {
         internal static System.Drawing.Bitmap sales_report {
             get {
                 object obj = ResourceManager.GetObject("sales-report", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap save_as {
+            get {
+                object obj = ResourceManager.GetObject("save_as", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

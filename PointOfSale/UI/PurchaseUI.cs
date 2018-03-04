@@ -42,7 +42,7 @@ namespace PointOfSale.UI
 
             ClearAllForm();
 
-
+            ClearItemAddButton();
 
 
 
@@ -71,42 +71,79 @@ namespace PointOfSale.UI
 
 
         List<PurchaseItem> PurchaseItems = new List<PurchaseItem>();
+
         private void addButton_Click(object sender, EventArgs e)
         {
             PurchaseItem purchaseItem = new PurchaseItem();
-            
 
-            bool found = false;
-            if (purchaseDataGridView.RowCount >0)
+
+            //bool found = false;
+            //if (purchaseDataGridView.RowCount >0)
+            //{
+            //    foreach (DataGridViewRow row in purchaseDataGridView.Rows)
+            //    {
+            //        if (Convert .ToString(row .Cells [1].Value) == itemComboBox.Text && Convert .ToString(row .Cells [4].Value)==priceTextBox .Text )
+
+            //        {
+            //            row.Cells[3].Value = Convert.ToString(1 + Convert.ToInt32(row.Cells[3].Value));
+            //            found = true;
+            //        }
+            //    }
+            //    if (!found)
+            //    {
+            //        purchaseDataGridView.Rows.Add(itemComboBox.Text, priceTextBox.Text, 1);
+            //    }
+            //}
+            if (IsAddButtonValidated())
             {
-                foreach (DataGridViewRow row in purchaseDataGridView.Rows)
+                purchaseItem.Id = AutoIDGenerate();
+                purchaseItem.ItemName = itemComboBox.Text;
+                purchaseItem.Quantity = Convert.ToDecimal(qtyTextBox.Text);
+                if (manualPriceTextBox.Text.Trim() == string.Empty)
                 {
-                    if (Convert .ToString(row .Cells [1].Value) == itemComboBox.Text && Convert .ToString(row .Cells [4].Value)==priceTextBox .Text )
+                    purchaseItem.Price = Convert.ToDecimal(txtBoxCostPrice.Text);
+                }
+                else
+                {
+                    purchaseItem.Price = Convert.ToDecimal(manualPriceTextBox.Text);
+                }
 
-                    {
-                        row.Cells[3].Value = Convert.ToString(1 + Convert.ToInt32(row.Cells[3].Value));
-                        found = true;
-                    }
-                }
-                if (!found)
-                {
-                    purchaseDataGridView.Rows.Add(itemComboBox.Text, priceTextBox.Text, 1);
-                }
+                purchaseItem.LineTotal = purchaseItem.Quantity*purchaseItem.Price;
+
+                PurchaseItems.Add(purchaseItem);
+                purchaseDataGridView.DataSource = null;
+
+                purchaseDataGridView.DataSource = PurchaseItems;
+
+                totalTextBox.Text = TotalAmount().ToString();
+                totalAmmountTextBox.Text = TotalAmount().ToString();
+                ClearItemAddButton();
+
+                //itemAddedLabel.Text = PurchaseItems.Count.ToString();
             }
-            purchaseItem.ItemName = itemComboBox.Text;
-            purchaseItem.Quantity = Convert.ToDecimal(qtyTextBox.Text);
-            purchaseItem.Price = Convert.ToDecimal(priceTextBox.Text);
-            purchaseItem.LineTotal = (Convert.ToDecimal(qtyTextBox.Text) * Convert.ToDecimal(priceTextBox.Text));
+        }
 
-            PurchaseItems.Add(purchaseItem);
-            purchaseDataGridView.DataSource = null;
+        private int AutoIDGenerate()
+        {
+            int counts = 1;
+            counts = db.PurchaseItems.Include(c => c.Id).Count() + counts;
+            int result = 0 + counts;
+            return result;
+        }
 
-            purchaseDataGridView.DataSource = PurchaseItems;
-
-            totalTextBox.Text = TotalAmount().ToString();
-            totalAmmountTextBox.Text = TotalAmount().ToString();
-
-            //itemAddedLabel.Text = PurchaseItems.Count.ToString();
+        private bool IsAddButtonValidated()
+        {
+            if (itemComboBox.SelectedIndex == -1)
+            {
+                WinMessageBox.ShowErrorMessage("Please Item Select.");
+                return false;
+            }
+            if (qtyTextBox.Text .Trim()==string .Empty)
+            {
+                WinMessageBox.ShowErrorMessage("Please Input Quantity.");
+                return false;
+            }
+            return true;
         }
 
         private decimal TotalAmount()
@@ -114,14 +151,25 @@ namespace PointOfSale.UI
             decimal sum = 0;
             for (int i = 0; i < purchaseDataGridView.Rows.Count; i++)
             {
-                sum += Convert.ToDecimal(purchaseDataGridView.Rows[i].Cells[3].Value);
+                sum += Convert.ToDecimal(purchaseDataGridView.Rows[i].Cells[4].Value);
             }
             return sum;
         }
 
         private void cancleButton_Click(object sender, EventArgs e)
         {
-            PurchaseItems.RemoveAt(purchaseDataGridView.SelectedRows[0].Index);
+            ClearItemAddButton();
+
+            //PurchaseItems.RemoveAt(purchaseDataGridView.SelectedRows[0].Index);
+        }
+
+        private void ClearItemAddButton()
+        {
+            itemComboBox.SelectedValue = -1;
+            qtyTextBox.Clear();
+            txtBoxCostPrice.Clear();
+            manualPriceTextBox.Clear();
+            pictureBoxBarcode.Image = null;
         }
 
         List<Purchase> PurchaseList = new List<Purchase>();
@@ -160,7 +208,7 @@ namespace PointOfSale.UI
         public void clearField()
         {
             qtyTextBox.Clear();
-            priceTextBox.Clear();
+            manualPriceTextBox.Clear();
             totalTextBox.Clear();
             totalAmmountTextBox.Clear();
         }
@@ -180,7 +228,12 @@ namespace PointOfSale.UI
         {
             if (outletcomboBox.SelectedItem != null)
             {
-                var barcode = itemComboBox.SelectedItem.ToString();
+                var item = itemComboBox.SelectedItem as ItemSetups;
+                if (item == null)
+                {
+                    return;
+                }
+                var barcode = item.Code ;
                 Bitmap bitmap = new Bitmap(barcode.Length*26, 85);
                 using (Graphics graphics = Graphics.FromImage(bitmap))
                 {
@@ -210,7 +263,7 @@ namespace PointOfSale.UI
         {
             itemComboBox.SelectedValue = -1;
             qtyTextBox .Clear();
-            priceTextBox.Clear();
+            manualPriceTextBox.Clear();
             outletcomboBox.SelectedValue = -1;
             employeecomboBox.SelectedValue = -1;
             partyTypeComboBox.SelectedValue = -1;
@@ -221,7 +274,8 @@ namespace PointOfSale.UI
 
         private void itemComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            //AutoBarcodeGenerate();
+            AutoBarcodeGenerate();
+            GetItemPriceInTextBox();
         }
 
         private int AutoCodeGenerate()
@@ -230,6 +284,34 @@ namespace PointOfSale.UI
             counts = db.Employee.Include(c => c.Id).Count() + counts;
             int result = 11100 + counts;
             return result;
+        }
+
+        private void GetItemPriceInTextBox()
+        {
+            var price = itemComboBox.SelectedItem as ItemSetups;
+            if (price == null)
+            {
+                return;
+            }
+            txtBoxCostPrice.Text = price.CostPrice.ToString();
+        }
+
+        private void purchaseDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (purchaseDataGridView.Columns[e.ColumnIndex].Name == "Delete")
+            {
+                if (MessageBox.Show("Are you sure want to delete this record ?", "Message", MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    //purchaseItemBindingSource.RemoveCurrent();
+                     
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            BarcodeUI barcode = new BarcodeUI();
+            barcode.Show();
         }
     }
 }
