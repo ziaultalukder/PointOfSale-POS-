@@ -39,9 +39,9 @@ namespace PointOfSale.Models
         public PartySetup PartyType { get; set; }
 
 
-        [Required]
-        public int ItemId { get; set; }
-        public ItemSetups Item { get; set; }
+        //[Required]
+        //public int ItemId { get; set; }
+        //public ItemSetups Item { get; set; }
 
         public virtual List<PurchaseItem> PurchaseItemList { get; set; }
     }

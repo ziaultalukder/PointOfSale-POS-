@@ -40,7 +40,8 @@ namespace PointOfSale.UI
             itemComboBox.ValueMember = "Id";
             //itemComboBox.SelectedIndex = -1;
 
-            ClearAllForm();
+            //ClearAllForm();
+            clearField();
 
             ClearItemAddButton();
 
@@ -172,37 +173,75 @@ namespace PointOfSale.UI
             pictureBoxBarcode.Image = null;
         }
 
-        List<Purchase> PurchaseList = new List<Purchase>();
+        //List<Purchase> PurchaseList = new List<Purchase>();
         private void saveButton_Click(object sender, EventArgs e)
         {
-            //Random r = new Random();
-
-            
-            purchase.TotalAmmount = Convert.ToDecimal(totalAmmountTextBox.Text);
-            purchase.Due = Convert.ToDecimal(dueTextBox.Text);
-            purchase.Remarks = remarksTextBox.Text;
-            purchase.PurchaseDate = dateTimePicker.Value;
-            purchase.SalesNumber = AutoCodeGenerate().ToString();
-            purchase.OutletId = (int)outletcomboBox.SelectedValue;
-            purchase.EmployeeId = (int)employeecomboBox.SelectedValue;
-            purchase.ItemId = (int)itemComboBox.SelectedValue;
-            purchase.PartyTypeId = (int)partyTypeComboBox.SelectedValue;
-            purchase.PurchaseItemList = PurchaseItems;
-
-            PurchaseList.Add(purchase);
-
-            
-            db.Purchases.AddRange(PurchaseList);
-            var row = db.SaveChanges();
-            if(row> 0)
+            if (IsSaveButtonValidated())
             {
-                MessageBox.Show("Purchase Item Inserted");
-                clearField();
+                if (purchase != null)
+                {
+                    purchase.TotalAmmount = Convert.ToDecimal(totalAmmountTextBox.Text);
+                    purchase.Due = Convert.ToDecimal(dueTextBox.Text);
+                    purchase.Remarks = remarksTextBox.Text;
+                    purchase.PurchaseDate = dateTimePicker.Value;
+                    purchase.SalesNumber = AutoCodeGenerate().ToString();
+                    purchase.OutletId = (int) outletcomboBox.SelectedValue;
+                    purchase.EmployeeId = (int) employeecomboBox.SelectedValue;
+                    //purchase.ItemId = (int)itemComboBox.SelectedValue;
+                    purchase.PartyTypeId = (int) partyTypeComboBox.SelectedValue;
+                    purchase.PurchaseItemList = PurchaseItems;
+
+                    //PurchaseList.Add(purchase);
+
+
+                    db.Purchases.Add(purchase);
+                    var row = db.SaveChanges();
+                    if (row > 0)
+                    {
+                        WinMessageBox.ShowSuccessMessage("Record save Successfully.");
+                        clearField();
+                        purchaseDataGridView.DataSource = null;
+                    }
+                    else
+                    {
+                        WinMessageBox.ShowErrorMessage("Record save Failed.");
+                    }
+                }
+                else
+                {
+                    WinMessageBox.ShowErrorMessage("Please All Field Added and Save button prese.");
+                }
             }
-            else
+        }
+
+        private bool IsSaveButtonValidated()
+        {
+            if (outletcomboBox.SelectedValue ==null )
             {
-                MessageBox.Show("Purchase Item Inserted Faild");
+                WinMessageBox.ShowErrorMessage("Please select oulet.");
+                return false;
             }
+            if (employeecomboBox.SelectedValue==null)
+            {
+                WinMessageBox.ShowErrorMessage("Please select employee.");
+                return false;
+            }
+            if (partyTypeComboBox.SelectedValue ==null)
+            {
+                WinMessageBox.ShowErrorMessage("Please select supplier");
+                return false;
+            }
+            if (dateTimePicker.Text ==null)
+            {
+                WinMessageBox.ShowErrorMessage("Please select date.");
+                return false;
+            }
+            if (PurchaseItems==null)
+            {
+                WinMessageBox.ShowErrorMessage("Please first added item.");
+                return false;
+            }
+            return true;
         }
 
         public void clearField()
@@ -211,6 +250,11 @@ namespace PointOfSale.UI
             manualPriceTextBox.Clear();
             totalTextBox.Clear();
             totalAmmountTextBox.Clear();
+            outletcomboBox.SelectedItem = -1;
+            employeecomboBox.SelectedItem = -1;
+            partyTypeComboBox.SelectedItem = -1;
+            remarksTextBox.Clear();
+            dateTimePicker.ResetText();
         }
 
         private void purchaseDataGridView_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)

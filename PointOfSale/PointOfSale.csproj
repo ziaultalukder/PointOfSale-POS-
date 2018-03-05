@@ -103,6 +103,10 @@
     <Compile Include="Migrations\201802272114586_setupitemcatagory.Designer.cs">
       <DependentUpon>201802272114586_setupitemcatagory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803050557366_purchase.cs" />
+    <Compile Include="Migrations\201803050557366_purchase.Designer.cs">
+      <DependentUpon>201803050557366_purchase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Expence.cs" />
@@ -252,6 +256,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802272114586_setupitemcatagory.resx">
       <DependentUpon>201802272114586_setupitemcatagory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803050557366_purchase.resx">
+      <DependentUpon>201803050557366_purchase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\BarcodeUI.resx">
       <DependentUpon>BarcodeUI.cs</DependentUpon>

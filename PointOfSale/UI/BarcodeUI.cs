@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Core.Common.CommandTrees;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,8 +25,18 @@ namespace PointOfSale.UI
 
         private void btnShow_Click(object sender, EventArgs e)
         {
-            var codes = db.ItemSetups.Where(c => c.Code == txtBoxItemCode.Text);
-            reportDocument.SetDataSource(codes);
+            string varCode = txtBoxItemCode.Text;
+            string varQty = txtBoxNumberOfCopy.Text;
+            //var data = (from ol in db.Outlates where ol.Name.Contains(searchItem) select ol).ToList();
+
+            //var codes = db.ItemSetups.Where(c => c.Code == searchItem);
+            var data = (from co in db.ItemSetups where co.Code.Contains(varCode) select co).ToList();
+            //for (int i = 1; i < int.Parse(varQty); i++)
+            //{
+            //    //data = data + "(from co in db.ItemSetups where co.Code.Contains(varCode) select co).ToList()";
+            //    //var numberofQty = data + data;
+            //}
+            reportDocument.SetDataSource(data);
             crystalReportViewer1.ReportSource = reportDocument;
         }
 
