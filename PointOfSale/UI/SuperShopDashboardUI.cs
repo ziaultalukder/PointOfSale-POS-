@@ -106,7 +106,8 @@ namespace PointOfSale.UI
 
         private void btnPurchaseReport_Click(object sender, EventArgs e)
         {
-
+            PurchaseReportUI prui= new PurchaseReportUI();
+            prui.Show();
         }
 
         private void btnExpenseReport_Click(object sender, EventArgs e)
