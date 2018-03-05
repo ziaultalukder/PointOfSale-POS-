@@ -201,6 +201,12 @@
     <Compile Include="UI\PartySetupUI.Designer.cs">
       <DependentUpon>PartySetupUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\PurchaseReportUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\PurchaseReportUI.Designer.cs">
+      <DependentUpon>PurchaseReportUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\PurchaseResultUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -306,6 +312,9 @@
     <EmbeddedResource Include="UI\PartySetupUI.resx">
       <DependentUpon>PartySetupUI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\PurchaseReportUI.resx">
+      <DependentUpon>PurchaseReportUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\PurchaseResultUI.resx">
       <DependentUpon>PurchaseResultUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -351,6 +360,12 @@
     <Content Include="bin\Debug\PointOfSale.vshost.exe" />
     <Content Include="obj\Debug\PointOfSale.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
+    <None Include="Resources\icons8_Print_32px_12.png" />
+    <None Include="Resources\icons8_PDF_32px_2.png" />
+    <None Include="Resources\icons8_Show_Property_32px_1.png" />
+    <None Include="Resources\icons8_Report_Card_32px.png" />
+    <None Include="Resources\icons8_Print_32px_11.png" />
+    <None Include="Resources\icons8_PDF_32px.png" />
     <None Include="Resources\save_as.png" />
     <None Include="Resources\icons8_Barcode_32px.png" />
     <None Include="Resources\icons8_PDF_32px_1.png" />

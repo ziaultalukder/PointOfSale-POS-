@@ -31,9 +31,7 @@ namespace PointOfSale.UI
 
            // SuperShopDatabaseContext db = new SuperShopDatabaseContext();
 
-
             var supplier = db.PartySetup.Where(c => c.Supplier != c.Customer);
-
 
             itemComboBox.DataSource = db.ItemSetups.ToList();
             itemComboBox.DisplayMember = "Name";
@@ -41,33 +39,24 @@ namespace PointOfSale.UI
             //itemComboBox.SelectedIndex = -1;
 
             //ClearAllForm();
-            clearField();
+            ClearSaveButtonField();
 
             ClearItemAddButton();
-
-
-
 
             outletcomboBox.DataSource = db.Outlates.ToList();
             outletcomboBox.DisplayMember = "Name";
             outletcomboBox.ValueMember = "Id";
             //outletcomboBox.SelectedIndex = -1;
 
-
             employeecomboBox.DataSource = db.Employee.ToList();
             employeecomboBox.DisplayMember = "Name";
             employeecomboBox.ValueMember = "Id";
             //employeecomboBox.SelectedIndex = -1;
 
-
             partyTypeComboBox.DataSource = db.PartySetup.ToList();
             partyTypeComboBox.DisplayMember = "Name";
             partyTypeComboBox.ValueMember = "Id";
             //partyTypeComboBox.SelectedIndex = -1;
-
-
-
-            
         }
 
 
@@ -199,7 +188,7 @@ namespace PointOfSale.UI
                     if (row > 0)
                     {
                         WinMessageBox.ShowSuccessMessage("Record save Successfully.");
-                        clearField();
+                        ClearSaveButtonField();
                         purchaseDataGridView.DataSource = null;
                     }
                     else
@@ -244,15 +233,15 @@ namespace PointOfSale.UI
             return true;
         }
 
-        public void clearField()
+        public void ClearSaveButtonField()
         {
-            qtyTextBox.Clear();
-            manualPriceTextBox.Clear();
+            //qtyTextBox.Clear();
+            //manualPriceTextBox.Clear();
             totalTextBox.Clear();
             totalAmmountTextBox.Clear();
-            outletcomboBox.SelectedItem = -1;
-            employeecomboBox.SelectedItem = -1;
-            partyTypeComboBox.SelectedItem = -1;
+            outletcomboBox.SelectedText = null;
+            employeecomboBox.SelectedText = null;
+            partyTypeComboBox.SelectedText = null;
             remarksTextBox.Clear();
             dateTimePicker.ResetText();
         }

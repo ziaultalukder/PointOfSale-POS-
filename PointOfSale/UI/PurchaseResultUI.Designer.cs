@@ -44,11 +44,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pruchaseresultDataGridView = new System.Windows.Forms.DataGridView();
             this.label12 = new System.Windows.Forms.Label();
-            this.pdfbutton = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.purchaseResultPrintDocument = new System.Drawing.Printing.PrintDocument();
             this.barcodeButton = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.pdfbutton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pruchaseresultDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -60,7 +60,7 @@
             this.remarksTextBox.Multiline = true;
             this.remarksTextBox.Name = "remarksTextBox";
             this.remarksTextBox.ReadOnly = true;
-            this.remarksTextBox.Size = new System.Drawing.Size(242, 65);
+            this.remarksTextBox.Size = new System.Drawing.Size(265, 51);
             this.remarksTextBox.TabIndex = 0;
             // 
             // label1
@@ -87,9 +87,9 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 52);
+            this.groupBox1.Location = new System.Drawing.Point(17, 18);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(771, 202);
+            this.groupBox1.Size = new System.Drawing.Size(796, 194);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Purchase Info";
@@ -133,7 +133,7 @@
             // employeeLabel
             // 
             this.employeeLabel.AutoSize = true;
-            this.employeeLabel.Location = new System.Drawing.Point(499, 71);
+            this.employeeLabel.Location = new System.Drawing.Point(504, 71);
             this.employeeLabel.Name = "employeeLabel";
             this.employeeLabel.Size = new System.Drawing.Size(58, 21);
             this.employeeLabel.TabIndex = 1;
@@ -151,7 +151,7 @@
             // outletLabel
             // 
             this.outletLabel.AutoSize = true;
-            this.outletLabel.Location = new System.Drawing.Point(499, 33);
+            this.outletLabel.Location = new System.Drawing.Point(504, 33);
             this.outletLabel.Name = "outletLabel";
             this.outletLabel.Size = new System.Drawing.Size(50, 21);
             this.outletLabel.TabIndex = 1;
@@ -186,45 +186,24 @@
             // 
             // pruchaseresultDataGridView
             // 
+            this.pruchaseresultDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.pruchaseresultDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.pruchaseresultDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.pruchaseresultDataGridView.GridColor = System.Drawing.SystemColors.ActiveBorder;
-            this.pruchaseresultDataGridView.Location = new System.Drawing.Point(121, 362);
+            this.pruchaseresultDataGridView.Location = new System.Drawing.Point(45, 287);
             this.pruchaseresultDataGridView.Name = "pruchaseresultDataGridView";
-            this.pruchaseresultDataGridView.Size = new System.Drawing.Size(576, 347);
+            this.pruchaseresultDataGridView.Size = new System.Drawing.Size(732, 304);
             this.pruchaseresultDataGridView.TabIndex = 3;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(117, 323);
+            this.label12.Location = new System.Drawing.Point(42, 267);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(103, 21);
+            this.label12.Size = new System.Drawing.Size(107, 21);
             this.label12.TabIndex = 1;
-            this.label12.Text = "Item Details";
-            // 
-            // pdfbutton
-            // 
-            this.pdfbutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pdfbutton.Location = new System.Drawing.Point(622, 333);
-            this.pdfbutton.Name = "pdfbutton";
-            this.pdfbutton.Size = new System.Drawing.Size(75, 23);
-            this.pdfbutton.TabIndex = 4;
-            this.pdfbutton.Text = "PDF";
-            this.pdfbutton.UseVisualStyleBackColor = true;
-            this.pdfbutton.Click += new System.EventHandler(this.pdfbutton_Click);
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(541, 333);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Print";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.label12.Text = "Item Details:";
             // 
             // printPreviewDialog1
             // 
@@ -243,20 +222,48 @@
             // barcodeButton
             // 
             this.barcodeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.barcodeButton.Location = new System.Drawing.Point(460, 333);
+            this.barcodeButton.Image = global::PointOfSale.Properties.Resources.icons8_Report_Card_32px;
+            this.barcodeButton.Location = new System.Drawing.Point(509, 218);
             this.barcodeButton.Name = "barcodeButton";
-            this.barcodeButton.Size = new System.Drawing.Size(75, 23);
+            this.barcodeButton.Size = new System.Drawing.Size(104, 57);
             this.barcodeButton.TabIndex = 4;
-            this.barcodeButton.Text = "Barcode";
+            this.barcodeButton.Text = "Crystal Result";
+            this.barcodeButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.barcodeButton.UseVisualStyleBackColor = true;
             this.barcodeButton.Click += new System.EventHandler(this.barcodeButton_Click);
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Image = global::PointOfSale.Properties.Resources.icons8_Print_32px_11;
+            this.button2.Location = new System.Drawing.Point(619, 218);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 57);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Print";
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // pdfbutton
+            // 
+            this.pdfbutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pdfbutton.Image = global::PointOfSale.Properties.Resources.icons8_PDF_32px;
+            this.pdfbutton.Location = new System.Drawing.Point(700, 218);
+            this.pdfbutton.Name = "pdfbutton";
+            this.pdfbutton.Size = new System.Drawing.Size(75, 57);
+            this.pdfbutton.TabIndex = 4;
+            this.pdfbutton.Text = "PDF";
+            this.pdfbutton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.pdfbutton.UseVisualStyleBackColor = true;
+            this.pdfbutton.Click += new System.EventHandler(this.pdfbutton_Click);
             // 
             // PurchaseResultUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(825, 729);
+            this.ClientSize = new System.Drawing.Size(825, 607);
             this.Controls.Add(this.barcodeButton);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.pdfbutton);

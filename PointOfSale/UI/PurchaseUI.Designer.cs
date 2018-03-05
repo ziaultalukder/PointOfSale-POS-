@@ -32,6 +32,14 @@
             this.qtyTextBox = new System.Windows.Forms.TextBox();
             this.itemComboBox = new System.Windows.Forms.ComboBox();
             this.purchaseDataGridView = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lineTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.purchaseItemBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.remarksTextBox = new System.Windows.Forms.TextBox();
@@ -59,23 +67,15 @@
             this.label12 = new System.Windows.Forms.Label();
             this.txtBoxCostPrice = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.sl = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pictureBoxBarcode = new System.Windows.Forms.PictureBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.itemNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lineTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.purchaseItemBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.purchaseItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.purchaseItemBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.purchaseDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.purchaseItemBindingSource2)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBarcode)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.purchaseItemBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.purchaseItemBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.purchaseItemBindingSource1)).BeginInit();
             this.SuspendLayout();
@@ -124,6 +124,60 @@
             this.purchaseDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.purchaseDataGridView_CellContentClick);
             this.purchaseDataGridView.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.purchaseDataGridView_RowPostPaint);
             // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // sl
+            // 
+            this.sl.HeaderText = "Serial No";
+            this.sl.Name = "sl";
+            this.sl.ReadOnly = true;
+            // 
+            // itemNameDataGridViewTextBoxColumn
+            // 
+            this.itemNameDataGridViewTextBoxColumn.DataPropertyName = "ItemName";
+            this.itemNameDataGridViewTextBoxColumn.HeaderText = "ItemName";
+            this.itemNameDataGridViewTextBoxColumn.Name = "itemNameDataGridViewTextBoxColumn";
+            this.itemNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lineTotalDataGridViewTextBoxColumn
+            // 
+            this.lineTotalDataGridViewTextBoxColumn.DataPropertyName = "LineTotal";
+            this.lineTotalDataGridViewTextBoxColumn.HeaderText = "LineTotal";
+            this.lineTotalDataGridViewTextBoxColumn.Name = "lineTotalDataGridViewTextBoxColumn";
+            this.lineTotalDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Delete
+            // 
+            this.Delete.HeaderText = "Delete";
+            this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
+            this.Delete.Text = "Delete";
+            this.Delete.UseColumnTextForButtonValue = true;
+            // 
+            // purchaseItemBindingSource2
+            // 
+            this.purchaseItemBindingSource2.DataSource = typeof(PointOfSale.Models.PurchaseItem);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -165,6 +219,8 @@
             // 
             // outletcomboBox
             // 
+            this.outletcomboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.outletcomboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.outletcomboBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.outletcomboBox.FormattingEnabled = true;
             this.outletcomboBox.Location = new System.Drawing.Point(117, 26);
@@ -185,6 +241,8 @@
             // 
             // employeecomboBox
             // 
+            this.employeecomboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.employeecomboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.employeecomboBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.employeecomboBox.FormattingEnabled = true;
             this.employeecomboBox.Location = new System.Drawing.Point(117, 76);
@@ -204,6 +262,8 @@
             // 
             // partyTypeComboBox
             // 
+            this.partyTypeComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.partyTypeComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.partyTypeComboBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.partyTypeComboBox.FormattingEnabled = true;
             this.partyTypeComboBox.Items.AddRange(new object[] {
@@ -398,20 +458,6 @@
             this.label13.TabIndex = 3;
             this.label13.Text = "Manual Price";
             // 
-            // sl
-            // 
-            this.sl.HeaderText = "Serial No";
-            this.sl.Name = "sl";
-            this.sl.ReadOnly = true;
-            // 
-            // Delete
-            // 
-            this.Delete.HeaderText = "Delete";
-            this.Delete.Name = "Delete";
-            this.Delete.ReadOnly = true;
-            this.Delete.Text = "Delete";
-            this.Delete.UseColumnTextForButtonValue = true;
-            // 
             // pictureBoxBarcode
             // 
             this.pictureBoxBarcode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -446,46 +492,6 @@
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // itemNameDataGridViewTextBoxColumn
-            // 
-            this.itemNameDataGridViewTextBoxColumn.DataPropertyName = "ItemName";
-            this.itemNameDataGridViewTextBoxColumn.HeaderText = "ItemName";
-            this.itemNameDataGridViewTextBoxColumn.Name = "itemNameDataGridViewTextBoxColumn";
-            this.itemNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // quantityDataGridViewTextBoxColumn
-            // 
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lineTotalDataGridViewTextBoxColumn
-            // 
-            this.lineTotalDataGridViewTextBoxColumn.DataPropertyName = "LineTotal";
-            this.lineTotalDataGridViewTextBoxColumn.HeaderText = "LineTotal";
-            this.lineTotalDataGridViewTextBoxColumn.Name = "lineTotalDataGridViewTextBoxColumn";
-            this.lineTotalDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // purchaseItemBindingSource2
-            // 
-            this.purchaseItemBindingSource2.DataSource = typeof(PointOfSale.Models.PurchaseItem);
             // 
             // purchaseItemBindingSource
             // 
@@ -528,10 +534,10 @@
             this.Text = "Purchase Operation Screen";
             this.Load += new System.EventHandler(this.PurchaseUI_Load);
             ((System.ComponentModel.ISupportInitialize)(this.purchaseDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.purchaseItemBindingSource2)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBarcode)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.purchaseItemBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.purchaseItemBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.purchaseItemBindingSource1)).EndInit();
             this.ResumeLayout(false);
