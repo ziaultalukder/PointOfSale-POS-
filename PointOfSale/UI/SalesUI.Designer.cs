@@ -35,7 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.itemComboBox = new System.Windows.Forms.ComboBox();
-            this.priceTextBox = new System.Windows.Forms.TextBox();
+            this.txtBoxFixPrice = new System.Windows.Forms.TextBox();
             this.qtyTextBox = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -68,7 +68,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.idTextBox = new System.Windows.Forms.TextBox();
-            this.saveButton = new System.Windows.Forms.Button();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -100,6 +99,9 @@
             this.vatLlabel = new System.Windows.Forms.Label();
             this.discountLabel = new System.Windows.Forms.Label();
             this.grandTotalLabel = new System.Windows.Forms.Label();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.priceTextBox = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -114,32 +116,34 @@
             // 
             this.groupBox1.Controls.Add(this.cancleButton);
             this.groupBox1.Controls.Add(this.addButton);
+            this.groupBox1.Controls.Add(this.label30);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.itemComboBox);
             this.groupBox1.Controls.Add(this.priceTextBox);
+            this.groupBox1.Controls.Add(this.txtBoxFixPrice);
             this.groupBox1.Controls.Add(this.qtyTextBox);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(13, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(624, 106);
+            this.groupBox1.Size = new System.Drawing.Size(709, 142);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sales Item";
             // 
             // cancleButton
             // 
-            this.cancleButton.Location = new System.Drawing.Point(523, 63);
+            this.cancleButton.Location = new System.Drawing.Point(617, 102);
             this.cancleButton.Name = "cancleButton";
-            this.cancleButton.Size = new System.Drawing.Size(81, 31);
+            this.cancleButton.Size = new System.Drawing.Size(80, 31);
             this.cancleButton.TabIndex = 3;
             this.cancleButton.Text = "Cancle";
             this.cancleButton.UseVisualStyleBackColor = true;
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(436, 63);
+            this.addButton.Location = new System.Drawing.Point(528, 102);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(81, 31);
             this.addButton.TabIndex = 3;
@@ -150,50 +154,51 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(452, 26);
+            this.label3.Location = new System.Drawing.Point(482, 24);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 20);
+            this.label3.Size = new System.Drawing.Size(71, 20);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Price";
+            this.label3.Text = "Fix Price:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(282, 26);
+            this.label2.Location = new System.Drawing.Point(300, 24);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 20);
+            this.label2.Size = new System.Drawing.Size(39, 20);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Qty";
+            this.label2.Text = "Qty:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 20);
+            this.label1.Size = new System.Drawing.Size(94, 20);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Item Name";
+            this.label1.Text = "Item Name:";
             // 
             // itemComboBox
             // 
             this.itemComboBox.FormattingEnabled = true;
-            this.itemComboBox.Location = new System.Drawing.Point(98, 23);
+            this.itemComboBox.Location = new System.Drawing.Point(107, 20);
             this.itemComboBox.Name = "itemComboBox";
             this.itemComboBox.Size = new System.Drawing.Size(164, 28);
             this.itemComboBox.TabIndex = 1;
             // 
-            // priceTextBox
+            // txtBoxFixPrice
             // 
-            this.priceTextBox.Location = new System.Drawing.Point(504, 23);
-            this.priceTextBox.Name = "priceTextBox";
-            this.priceTextBox.Size = new System.Drawing.Size(100, 26);
-            this.priceTextBox.TabIndex = 0;
+            this.txtBoxFixPrice.Location = new System.Drawing.Point(561, 21);
+            this.txtBoxFixPrice.Name = "txtBoxFixPrice";
+            this.txtBoxFixPrice.ReadOnly = true;
+            this.txtBoxFixPrice.Size = new System.Drawing.Size(136, 26);
+            this.txtBoxFixPrice.TabIndex = 0;
             // 
             // qtyTextBox
             // 
-            this.qtyTextBox.Location = new System.Drawing.Point(323, 23);
+            this.qtyTextBox.Location = new System.Drawing.Point(350, 21);
             this.qtyTextBox.Name = "qtyTextBox";
-            this.qtyTextBox.Size = new System.Drawing.Size(100, 26);
+            this.qtyTextBox.Size = new System.Drawing.Size(101, 26);
             this.qtyTextBox.TabIndex = 0;
             // 
             // groupBox2
@@ -205,18 +210,19 @@
             this.groupBox2.Controls.Add(this.employeeComboBox);
             this.groupBox2.Controls.Add(this.outletComboBox);
             this.groupBox2.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(674, 24);
+            this.groupBox2.Location = new System.Drawing.Point(737, 14);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(355, 134);
+            this.groupBox2.Size = new System.Drawing.Size(349, 134);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Outlet Info";
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker1.Location = new System.Drawing.Point(92, 94);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(257, 26);
+            this.dateTimePicker1.Size = new System.Drawing.Size(155, 26);
             this.dateTimePicker1.TabIndex = 3;
             // 
             // label5
@@ -251,7 +257,7 @@
             this.employeeComboBox.FormattingEnabled = true;
             this.employeeComboBox.Location = new System.Drawing.Point(92, 60);
             this.employeeComboBox.Name = "employeeComboBox";
-            this.employeeComboBox.Size = new System.Drawing.Size(257, 28);
+            this.employeeComboBox.Size = new System.Drawing.Size(246, 28);
             this.employeeComboBox.TabIndex = 1;
             // 
             // outletComboBox
@@ -259,7 +265,7 @@
             this.outletComboBox.FormattingEnabled = true;
             this.outletComboBox.Location = new System.Drawing.Point(92, 25);
             this.outletComboBox.Name = "outletComboBox";
-            this.outletComboBox.Size = new System.Drawing.Size(257, 28);
+            this.outletComboBox.Size = new System.Drawing.Size(246, 28);
             this.outletComboBox.TabIndex = 1;
             // 
             // groupBox3
@@ -269,7 +275,7 @@
             this.groupBox3.Controls.Add(this.customerNumberTextBox);
             this.groupBox3.Controls.Add(this.customerNameTextBox);
             this.groupBox3.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(674, 164);
+            this.groupBox3.Location = new System.Drawing.Point(737, 154);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(349, 116);
             this.groupBox3.TabIndex = 0;
@@ -321,7 +327,7 @@
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(674, 296);
+            this.groupBox4.Location = new System.Drawing.Point(737, 274);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(349, 133);
             this.groupBox4.TabIndex = 0;
@@ -418,7 +424,7 @@
             this.groupBox5.Controls.Add(this.label17);
             this.groupBox5.Controls.Add(this.label18);
             this.groupBox5.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(674, 451);
+            this.groupBox5.Location = new System.Drawing.Point(737, 410);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(349, 103);
             this.groupBox5.TabIndex = 0;
@@ -481,7 +487,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(334, 511);
+            this.label16.Location = new System.Drawing.Point(452, 401);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(91, 21);
             this.label16.TabIndex = 2;
@@ -490,54 +496,51 @@
             // idTextBox
             // 
             this.idTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idTextBox.Location = new System.Drawing.Point(431, 508);
+            this.idTextBox.Location = new System.Drawing.Point(549, 398);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.ReadOnly = true;
             this.idTextBox.Size = new System.Drawing.Size(172, 27);
             this.idTextBox.TabIndex = 0;
-            // 
-            // saveButton
-            // 
-            this.saveButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveButton.Location = new System.Drawing.Point(674, 560);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(81, 31);
-            this.saveButton.TabIndex = 3;
-            this.saveButton.Text = "Save";
-            this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // Column4
             // 
             this.Column4.DataPropertyName = "LineTotal";
             this.Column4.HeaderText = "Line Total";
             this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
             // Column3
             // 
             this.Column3.DataPropertyName = "Price";
             this.Column3.HeaderText = "Price";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
             // Column2
             // 
             this.Column2.DataPropertyName = "Quantity";
             this.Column2.HeaderText = "Quantity";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // Column1
             // 
             this.Column1.DataPropertyName = "ItemName";
             this.Column1.HeaderText = "Item Name";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // sl
             // 
             this.sl.HeaderText = "SL No";
             this.sl.Name = "sl";
+            this.sl.ReadOnly = true;
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.sl,
@@ -545,9 +548,10 @@
             this.Column2,
             this.Column3,
             this.Column4});
-            this.dataGridView1.Location = new System.Drawing.Point(13, 125);
+            this.dataGridView1.Location = new System.Drawing.Point(13, 161);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(624, 376);
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(709, 225);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView1_RowPostPaint);
             // 
@@ -584,9 +588,9 @@
             this.groupBox6.Controls.Add(this.label23);
             this.groupBox6.Controls.Add(this.label21);
             this.groupBox6.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox6.Location = new System.Drawing.Point(13, 597);
+            this.groupBox6.Location = new System.Drawing.Point(13, 440);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(918, 169);
+            this.groupBox6.Size = new System.Drawing.Size(708, 149);
             this.groupBox6.TabIndex = 0;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Sales Result / Sales Receipt";
@@ -595,7 +599,7 @@
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(441, 128);
+            this.label26.Location = new System.Drawing.Point(387, 104);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(166, 21);
             this.label26.TabIndex = 2;
@@ -605,7 +609,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(16, 128);
+            this.label25.Location = new System.Drawing.Point(6, 104);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(146, 21);
             this.label25.TabIndex = 2;
@@ -660,7 +664,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(536, 84);
+            this.label24.Location = new System.Drawing.Point(387, 74);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(71, 21);
             this.label24.TabIndex = 2;
@@ -670,7 +674,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(62, 84);
+            this.label22.Location = new System.Drawing.Point(52, 74);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(100, 21);
             this.label22.TabIndex = 2;
@@ -680,7 +684,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(538, 39);
+            this.label23.Location = new System.Drawing.Point(387, 39);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(69, 21);
             this.label23.TabIndex = 2;
@@ -690,7 +694,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(39, 39);
+            this.label21.Location = new System.Drawing.Point(29, 39);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(123, 21);
             this.label21.TabIndex = 2;
@@ -803,11 +807,40 @@
             this.grandTotalLabel.Size = new System.Drawing.Size(0, 21);
             this.grandTotalLabel.TabIndex = 2;
             // 
+            // saveButton
+            // 
+            this.saveButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveButton.Image = global::PointOfSale.Properties.Resources.save_as1;
+            this.saveButton.Location = new System.Drawing.Point(1005, 529);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(81, 60);
+            this.saveButton.TabIndex = 3;
+            this.saveButton.Text = "Save";
+            this.saveButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
+            // priceTextBox
+            // 
+            this.priceTextBox.Location = new System.Drawing.Point(561, 57);
+            this.priceTextBox.Name = "priceTextBox";
+            this.priceTextBox.Size = new System.Drawing.Size(136, 26);
+            this.priceTextBox.TabIndex = 0;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(425, 60);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(128, 20);
+            this.label30.TabIndex = 2;
+            this.label30.Text = "Customize Price:";
+            // 
             // SalesUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1053, 741);
+            this.ClientSize = new System.Drawing.Size(1108, 597);
             this.Controls.Add(this.salesItmdataGridView);
             this.Controls.Add(this.grandTotalLabel);
             this.Controls.Add(this.discountLabel);
@@ -831,6 +864,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "SalesUI";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Product Sales Screen";
             this.Load += new System.EventHandler(this.Sales_Load);
             this.groupBox1.ResumeLayout(false);
@@ -861,7 +895,7 @@
         private System.Windows.Forms.ComboBox itemComboBox;
         private System.Windows.Forms.TextBox qtyTextBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox priceTextBox;
+        private System.Windows.Forms.TextBox txtBoxFixPrice;
         private System.Windows.Forms.Button cancleButton;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label4;
@@ -926,5 +960,7 @@
         private System.Windows.Forms.Label vatLlabel;
         private System.Windows.Forms.Label discountLabel;
         private System.Windows.Forms.Label grandTotalLabel;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.TextBox priceTextBox;
     }
 }

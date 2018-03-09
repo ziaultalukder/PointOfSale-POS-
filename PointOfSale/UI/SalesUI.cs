@@ -27,9 +27,9 @@ namespace PointOfSale.UI
             dataGridView1.AutoGenerateColumns = false;
 
             SuperShopDatabaseContext db = new SuperShopDatabaseContext();
-
-            itemComboBox.DataSource = db.ItemSetups.ToList();
-            itemComboBox.DisplayMember = "Name";
+            itemComboBox.DataSource = db.PurchaseItems.ToList();
+            //itemComboBox.DataSource = db.ItemSetups.ToList();
+            itemComboBox.DisplayMember = "ItemName";
             itemComboBox.ValueMember = "Id";
             //itemComboBox.SelectedIndex = -1;
 
@@ -170,8 +170,8 @@ namespace PointOfSale.UI
             SalesItem salesItm = new SalesItem();
             salesItm.ItemName = itemComboBox.Text;
             salesItm.Quantity = Convert.ToDecimal(qtyTextBox.Text);
-            salesItm.Price = Convert.ToDecimal(priceTextBox.Text);
-            salesItm.LineTotal = (Convert.ToDecimal(qtyTextBox.Text)* Convert.ToDecimal(priceTextBox.Text));
+            salesItm.Price = Convert.ToDecimal(txtBoxFixPrice.Text);
+            salesItm.LineTotal = (Convert.ToDecimal(qtyTextBox.Text)* Convert.ToDecimal(txtBoxFixPrice.Text));
 
             SalesItemList.Add(salesItm);
             dataGridView1.DataSource = null;

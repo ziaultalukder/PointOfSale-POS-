@@ -360,6 +360,7 @@
     <Content Include="bin\Debug\PointOfSale.vshost.exe" />
     <Content Include="obj\Debug\PointOfSale.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
+    <None Include="Resources\save_as1.png" />
     <None Include="Resources\icons8_Print_32px_12.png" />
     <None Include="Resources\icons8_PDF_32px_2.png" />
     <None Include="Resources\icons8_Show_Property_32px_1.png" />
