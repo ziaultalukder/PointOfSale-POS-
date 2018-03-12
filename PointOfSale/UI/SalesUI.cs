@@ -170,7 +170,15 @@ namespace PointOfSale.UI
             SalesItem salesItm = new SalesItem();
             salesItm.ItemName = itemComboBox.Text;
             salesItm.Quantity = Convert.ToDecimal(qtyTextBox.Text);
-            salesItm.Price = Convert.ToDecimal(txtBoxFixPrice.Text);
+            if (txtBoxCustomizePrice.Text.Trim() == string.Empty)
+            {
+                salesItm.Price = Convert.ToDecimal(txtBoxFixPrice.Text);
+            }
+            else
+            {
+                salesItm.Price = Convert.ToDecimal(txtBoxCustomizePrice.Text);
+            }
+            //salesItm.Price = Convert.ToDecimal(txtBoxFixPrice.Text);
             salesItm.LineTotal = (Convert.ToDecimal(qtyTextBox.Text)* Convert.ToDecimal(txtBoxFixPrice.Text));
 
             SalesItemList.Add(salesItm);
@@ -304,6 +312,22 @@ namespace PointOfSale.UI
             GetDatagridViewPDF(salesItmdataGridView, "test");
         }
 
-        
+        private void GetItemSalePriceTextBox()
+        {
+            //var saleItem = itemComboBox.SelectedItem as PurchaseItem;
+            var salePrice = itemComboBox.SelectedItem as ItemSetups;
+            if (salePrice == null)
+            {
+                return;
+            }
+
+            txtBoxFixPrice.Text = salePrice.SalesPrice.ToString();
+
+        }
+
+        private void itemComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            GetItemSalePriceTextBox();
+        }
     }
 }

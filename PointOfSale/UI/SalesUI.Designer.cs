@@ -31,10 +31,12 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cancleButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
+            this.label30 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.itemComboBox = new System.Windows.Forms.ComboBox();
+            this.txtBoxCustomizePrice = new System.Windows.Forms.TextBox();
             this.txtBoxFixPrice = new System.Windows.Forms.TextBox();
             this.qtyTextBox = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -100,8 +102,6 @@
             this.discountLabel = new System.Windows.Forms.Label();
             this.grandTotalLabel = new System.Windows.Forms.Label();
             this.saveButton = new System.Windows.Forms.Button();
-            this.priceTextBox = new System.Windows.Forms.TextBox();
-            this.label30 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -121,7 +121,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.itemComboBox);
-            this.groupBox1.Controls.Add(this.priceTextBox);
+            this.groupBox1.Controls.Add(this.txtBoxCustomizePrice);
             this.groupBox1.Controls.Add(this.txtBoxFixPrice);
             this.groupBox1.Controls.Add(this.qtyTextBox);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -150,6 +150,15 @@
             this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(425, 60);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(128, 20);
+            this.label30.TabIndex = 2;
+            this.label30.Text = "Customize Price:";
             // 
             // label3
             // 
@@ -185,6 +194,14 @@
             this.itemComboBox.Name = "itemComboBox";
             this.itemComboBox.Size = new System.Drawing.Size(164, 28);
             this.itemComboBox.TabIndex = 1;
+            this.itemComboBox.SelectedValueChanged += new System.EventHandler(this.itemComboBox_SelectedValueChanged);
+            // 
+            // txtBoxCustomizePrice
+            // 
+            this.txtBoxCustomizePrice.Location = new System.Drawing.Point(561, 57);
+            this.txtBoxCustomizePrice.Name = "txtBoxCustomizePrice";
+            this.txtBoxCustomizePrice.Size = new System.Drawing.Size(136, 26);
+            this.txtBoxCustomizePrice.TabIndex = 0;
             // 
             // txtBoxFixPrice
             // 
@@ -820,22 +837,6 @@
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
-            // priceTextBox
-            // 
-            this.priceTextBox.Location = new System.Drawing.Point(561, 57);
-            this.priceTextBox.Name = "priceTextBox";
-            this.priceTextBox.Size = new System.Drawing.Size(136, 26);
-            this.priceTextBox.TabIndex = 0;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(425, 60);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(128, 20);
-            this.label30.TabIndex = 2;
-            this.label30.Text = "Customize Price:";
-            // 
             // SalesUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -961,6 +962,6 @@
         private System.Windows.Forms.Label discountLabel;
         private System.Windows.Forms.Label grandTotalLabel;
         private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.TextBox priceTextBox;
+        private System.Windows.Forms.TextBox txtBoxCustomizePrice;
     }
 }
