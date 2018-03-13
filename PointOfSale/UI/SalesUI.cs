@@ -27,9 +27,9 @@ namespace PointOfSale.UI
             dataGridView1.AutoGenerateColumns = false;
 
             SuperShopDatabaseContext db = new SuperShopDatabaseContext();
-            itemComboBox.DataSource = db.PurchaseItems.ToList();
+            itemComboBox.DataSource = db.ItemSetups.ToList();
             //itemComboBox.DataSource = db.ItemSetups.ToList();
-            itemComboBox.DisplayMember = "ItemName";
+            itemComboBox.DisplayMember = "Name";
             itemComboBox.ValueMember = "Id";
             //itemComboBox.SelectedIndex = -1;
 

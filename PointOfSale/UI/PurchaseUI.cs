@@ -53,7 +53,7 @@ namespace PointOfSale.UI
             employeecomboBox.ValueMember = "Id";
             //employeecomboBox.SelectedIndex = -1;
 
-            partyTypeComboBox.DataSource = db.PartySetup.ToList();
+            partyTypeComboBox.DataSource = db.PartySetup.Where(c=>c.Supplier != null).ToList();
             partyTypeComboBox.DisplayMember = "Name";
             partyTypeComboBox.ValueMember = "Id";
             //partyTypeComboBox.SelectedIndex = -1;
